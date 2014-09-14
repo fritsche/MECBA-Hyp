@@ -1,0 +1,104 @@
+
+================ NSGAII ================
+Software: OA_AJHotDraw
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 319
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 87078
+
+================ NSGAII ================
+Software: OA_AJHsqldb
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 305
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 73286
+
+================ NSGAII ================
+Software: OA_HealthWatcher
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 117
+Heap Size: 2393Mb
+
+Iruns: 0	Total time: 13810
+
+================ NSGAII ================
+Software: OA_TollSystems
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 73
+Heap Size: 2356Mb
+
+Iruns: 0	Total time: 7291
+
+================ NSGAII ================
+Software: OO_BCEL
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 45
+Heap Size: 2356Mb
+
+Iruns: 0	Total time: 5239
+
+================ NSGAII ================
+Software: OO_JBoss
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 148
+Heap Size: 2324Mb
+
+Iruns: 0	Total time: 20525
+
+================ NSGAII ================
+Software: OO_JHotDraw
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 197
+Heap Size: 2324Mb
+
+Iruns: 0	Total time: 33768
+
+================ NSGAII ================
+Software: OO_MyBatis
+Context: _Comb_4obj
+Params:
+	Pop -> 300
+	MaxEva -> 60000
+	Cross -> 0.95
+	Muta -> 0.02
+Number of elements: 331
+Heap Size: 2294Mb
+
+Iruns: 0	Total time: 84916

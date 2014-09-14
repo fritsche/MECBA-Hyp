@@ -1,0 +1,88 @@
+
+================ PAES ================
+Software: OA_AJHotDraw
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 319
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 49586
+
+================ PAES ================
+Software: OA_AJHsqldb
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 305
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 40687
+
+================ PAES ================
+Software: OA_HealthWatcher
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 117
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 6614
+
+================ PAES ================
+Software: OA_TollSystems
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 73
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 2722
+
+================ PAES ================
+Software: OO_BCEL
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 45
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 1760
+
+================ PAES ================
+Software: OO_JBoss
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 148
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 9831
+
+================ PAES ================
+Software: OO_JHotDraw
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 197
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 18013
+
+================ PAES ================
+Software: OO_MyBatis
+Context: _Comb_2obj
+Params:
+	MaxEva -> 60000
+	Muta -> 1.0
+Number of elements: 331
+Heap Size: 1963Mb
+
+Iruns: 0	Total time: 47835
