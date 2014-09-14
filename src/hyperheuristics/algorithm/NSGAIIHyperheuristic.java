@@ -171,39 +171,39 @@ public class NSGAIIHyperheuristic extends Algorithm {
             // Create the offSpring solutionSet      
             offspringPopulation = new SolutionSet(populationSize);
             Solution[] parents = new Solution[2];
-            for (int i = 0; i < (populationSize / 2); i++) {
-                if (evaluations < maxEvaluations) {
-                    //Get the best hyperheuristics
-                    List<LowLevelHeuristic> applyingHeuristics = getApplyingHeuristics();
+            for (int i = 0; i < (populationSize / 2);) {
+                //Get the best hyperheuristics
+                List<LowLevelHeuristic> applyingHeuristics = getApplyingHeuristics();
 
-                    //Execute best hyperheuristics
-                    for (int j = 0; j < applyingHeuristics.size() && evaluations < maxEvaluations; j++) {
-                        LowLevelHeuristic heuristic = applyingHeuristics.get(j);
+                //Execute best hyperheuristics
+                for (int j = 0; j < applyingHeuristics.size() && evaluations < maxEvaluations && i < (populationSize / 2); j++) {
+                    LowLevelHeuristic heuristic = applyingHeuristics.get(j);
 
-                        //obtain parents
-                        parents[0] = (Solution) selectionOperator.execute(population, problem_);
-                        parents[1] = (Solution) selectionOperator.execute(population, problem_);
+                    //obtain parents
+                    parents[0] = (Solution) selectionOperator.execute(population, problem_);
+                    parents[1] = (Solution) selectionOperator.execute(population, problem_);
 
-                        Solution[] offSpring = (Solution[]) heuristic.execute(parents, problem_);
+                    Solution[] offSpring = (Solution[]) heuristic.execute(parents, problem_);
 
-                        problem_.evaluate(offSpring[0]);
-                        problem_.evaluateConstraints(offSpring[0]);
-                        problem_.evaluate(offSpring[1]);
-                        problem_.evaluateConstraints(offSpring[1]);
+                    problem_.evaluate(offSpring[0]);
+                    problem_.evaluateConstraints(offSpring[0]);
+                    problem_.evaluate(offSpring[1]);
+                    problem_.evaluateConstraints(offSpring[1]);
 
-                        //Update rank
-                        heuristic.updateRank(parents, offSpring);
+                    //Update rank
+                    heuristic.updateRank(parents, offSpring);
 
-                        offspringPopulation.add(offSpring[0]);
-                        offspringPopulation.add(offSpring[1]);
-                        evaluations += 2;
-                    }
+                    offspringPopulation.add(offSpring[0]);
+                    offspringPopulation.add(offSpring[1]);
 
-                    //Update f2 from heuristics not executed
-                    for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
-                        if (!applyingHeuristics.contains(lowLevelHeuristic)) {
-                            lowLevelHeuristic.notExecuted();
-                        }
+                    i++;
+                    evaluations += 2;
+                }
+
+                //Update f2 from heuristics not executed
+                for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
+                    if (!applyingHeuristics.contains(lowLevelHeuristic)) {
+                        lowLevelHeuristic.notExecuted();
                     }
                 }
             } // for
