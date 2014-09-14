@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hyperheuristics;
+package hyperheuristics.lowlevelheuristic;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -138,6 +138,7 @@ public class LowLevelHeuristic extends Operator implements Comparable<LowLevelHe
     public void clearAllValues() {
         this.rank = 0;
         this.elapsedTime = 0;
+        this.numberOfTimesApplied = 0;
     }
 
     /*

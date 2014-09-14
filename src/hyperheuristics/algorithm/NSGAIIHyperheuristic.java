@@ -18,8 +18,9 @@
 // 
 //  You should have received a copy of the GNU Lesser General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-package hyperheuristics;
+package hyperheuristics.algorithm;
 
+import hyperheuristics.lowlevelheuristic.LowLevelHeuristic;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -111,6 +112,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
                 writer.append("\tNumber of Times Applied: " + lowLevelHeuristic.getNumberOfTimesApplied() + "\n");
                 writer.append("\n");
             }
+            writer.append("----------------------\n\n");
         } catch (IOException ex) {
             Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
         }
