@@ -81,11 +81,14 @@ public class NSGAIIHyperheuristicMain {
             };
 
             crossovers = new String[]{
-                "TwoPointsCrossover"
+                "TwoPointsCrossover",
+                "MultiMaskCrossover",
+                "PMXCrossover"
             };
 
             mutations = new String[]{
-                "SwapMutation"
+                "SwapMutation",
+                "SimpleInsertionMutation"
             };
 
             populationSize = 100;
@@ -141,7 +144,7 @@ public class NSGAIIHyperheuristicMain {
                 for (String mutationName : mutations) {
                     HashMap<String, Object> parameters = new HashMap<>();
 
-                    parameters.put("name", "h" + lowLevelHeuristicNumber++);
+                    parameters.put("name", "h" + lowLevelHeuristicNumber++ + " [" + crossoverName + ", " + mutationName + "]");
                     parameters.put("alpha", alpha);
                     parameters.put("beta", beta);
 
@@ -208,7 +211,7 @@ public class NSGAIIHyperheuristicMain {
                 try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt", true)) {
                     for (int i = 0; i < allTimesApplied.length; i++) {
                         int value = allTimesApplied[i];
-                        timesAppliedWriter.append(value + "\n");
+                        timesAppliedWriter.append("h" + i + " " + value + "\n");
                     }
                 }
             }

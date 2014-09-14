@@ -1,6 +1,6 @@
 /**
- * TwoPointsCrossover.java
- * Class representing a two points crossover operator
+ * TwoPointsCrossover.java Class representing a two points crossover operator
+ *
  * @author Antonio J. Nebro
  * @version 1.0
  */
@@ -13,13 +13,9 @@ import jmetal.problems.CITO_CAITO;
 import jmetal.util.Configuration;
 import jmetal.util.JMException;
 import jmetal.util.PseudoRandom;
-import jmetal.util.Configuration.*;
 
 /**
- * This class allows to apply a two points crossover operator using two parent
- * solutions.
- * NOTE: the operator is applied to the first variable of the solutions, and 
- * the type of the solutions must be <code>SolutionType_.Permutation</code>.
+ * This class allows to apply a two points crossover operator using two parent solutions. NOTE: the operator is applied to the first variable of the solutions, and the type of the solutions must be <code>SolutionType_.Permutation</code>.
  */
 public class TwoPointsCrossover extends Crossover {
 
@@ -31,8 +27,7 @@ public class TwoPointsCrossover extends Crossover {
 
     //--------------------------------------------------------------------------
     /**
-     * Constructor
-     * Creates a new intance of the two point crossover operator
+     * Constructor Creates a new intance of the two point crossover operator
      */
     public TwoPointsCrossover() {
         try {
@@ -46,8 +41,8 @@ public class TwoPointsCrossover extends Crossover {
     //--------------------------------------------------------------------------
     /**
      * Constructor
-     * @param A properties containing the Operator parameters
-     * Creates a new intance of the two point crossover operator
+     *
+     * @param A properties containing the Operator parameters Creates a new intance of the two point crossover operator
      */
     public TwoPointsCrossover(Properties properties) {
         this();
@@ -56,6 +51,7 @@ public class TwoPointsCrossover extends Crossover {
     //--------------------------------------------------------------------------
     /**
      * Perform the crossover operation
+     *
      * @param probability Crossover probability
      * @param parent1 The first parent
      * @param parent2 The second parent
@@ -164,6 +160,7 @@ public class TwoPointsCrossover extends Crossover {
     //--------------------------------------------------------------------------
     /**
      * Executes the operation
+     *
      * @param object An object containing an array of two solutions
      * @return An object containing an array with the offSprings
      * @throws JMException
@@ -208,7 +205,6 @@ public class TwoPointsCrossover extends Crossover {
 
 //        System.out.println(offspring[0].getDecisionVariables()[0].toString());
 //        System.out.println(offspring[1].getDecisionVariables()[0].toString());
-
         return offspring;
     } // execute
     //--------------------------------------------------------------------------

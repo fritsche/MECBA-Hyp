@@ -191,4 +191,14 @@ public class LowLevelHeuristic extends Operator implements Comparable<LowLevelHe
         return Objects.equals(this.name, other.name);
     }
 
+    public static Comparator<LowLevelHeuristic> getNameComparator() {
+        return new Comparator<LowLevelHeuristic>() {
+
+            @Override
+            public int compare(LowLevelHeuristic o1, LowLevelHeuristic o2) {
+                return o1.getName().compareToIgnoreCase(o2.getName());
+            }
+        };
+    }
+
 }

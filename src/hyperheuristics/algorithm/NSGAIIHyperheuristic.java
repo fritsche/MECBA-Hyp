@@ -90,6 +90,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
     }
 
     public int[] getLowLevelHeuristicsNumberOfTimesApplied() {
+        Collections.sort(lowLevelHeuristics, LowLevelHeuristic.getNameComparator());
         int[] allTimesApplied = new int[lowLevelHeuristics.size()];
         for (int i = 0; i < lowLevelHeuristics.size(); i++) {
             LowLevelHeuristic lowLevelHeuristic = lowLevelHeuristics.get(i);
@@ -203,7 +204,9 @@ public class NSGAIIHyperheuristic extends Algorithm {
                 //Update f2 from heuristics not executed
                 for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
                     if (!applyingHeuristics.contains(lowLevelHeuristic)) {
-                        lowLevelHeuristic.notExecuted();
+                        for (int j = 0; j < applyingHeuristics.size(); j++) {
+                            lowLevelHeuristic.notExecuted();
+                        }
                     }
                 }
             } // for
