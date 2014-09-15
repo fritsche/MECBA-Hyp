@@ -125,8 +125,8 @@ public class NSGAIIHyperheuristic extends Algorithm {
         generationsOutputDirectory = path;
     }
 
-    public void printLowLevelHeuristicsInformation(String filePath, boolean append) {
-        try (FileWriter writer = new FileWriter(filePath, append)) {
+    public void printLowLevelHeuristicsInformation(String filePath) {
+        try (FileWriter writer = new FileWriter(filePath)) {
             for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
                 writer.append("Name: " + lowLevelHeuristic.getName() + ":\n");
                 writer.append("\tRank: " + lowLevelHeuristic.getRank() + "\n");

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -r experiment > /dev/null
+
 problems="OA_AJHotDraw
 OA_AJHsqldb
 OA_HealthWatcher

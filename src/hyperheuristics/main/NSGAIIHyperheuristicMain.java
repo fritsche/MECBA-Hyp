@@ -2,12 +2,15 @@ package hyperheuristics.main;
 
 import hyperheuristics.algorithm.NSGAIIHyperheuristic;
 import hyperheuristics.comparators.LowLevelHeuristicComparatorFactory;
+import hyperheuristics.hypervolume.HypervolumeHandler;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import jmetal.base.Operator;
 import jmetal.base.SolutionSet;
 import jmetal.base.operator.crossover.Crossover;
@@ -175,6 +178,7 @@ public class NSGAIIHyperheuristicMain {
                 SolutionSet allRuns = new SolutionSet();
                 long allExecutionTime = 0;
                 int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
+                int[] lastTimeChangedHypervolumes = new int[30];
 
                 for (int execution = 0; execution < 30; execution++) {
                     String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
@@ -199,7 +203,7 @@ public class NSGAIIHyperheuristicMain {
                     // Result messages
                     population.printVariablesToFile(executionDirectory + "VAR.txt");
                     population.printObjectivesToFile(executionDirectory + "FUN.txt");
-                    algorithm.printLowLevelHeuristicsInformation(outputDirectory + "LLH.txt", true);
+                    algorithm.printLowLevelHeuristicsInformation(executionDirectory + "LLH.txt");
 
                     timeWriter.append(estimatedTime + "\n");
                     timeWriter.flush();
@@ -211,6 +215,8 @@ public class NSGAIIHyperheuristicMain {
                     for (int i = 0; i < executionTimesApplied.length; i++) {
                         allTimesApplied[i] += executionTimesApplied[i];
                     }
+
+                    lastTimeChangedHypervolumes[execution] = createHypervolumeForGenerations(executionDirectory, problem.getNumberOfObjectives(), populationSize, maxEvaluations);
                 }
 
                 System.out.println();
@@ -227,11 +233,20 @@ public class NSGAIIHyperheuristicMain {
                 timeWriter.append("Total: " + allExecutionTime + "\n");
                 timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) 30) + "\n");
 
-                try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt", true)) {
+                try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
                     for (int i = 0; i < allTimesApplied.length; i++) {
                         int value = allTimesApplied[i];
                         timesAppliedWriter.append("h" + i + 1 + " " + value + "\n");
                     }
+                }
+
+                try (FileWriter hypervolumeWriter = new FileWriter(outputDirectory + "HYPERVOLUME.txt")) {
+                    double meanLastTimeChangedHypervolume = 0D;
+                    for (int lastTimeChanged : lastTimeChangedHypervolumes) {
+                        meanLastTimeChangedHypervolume += lastTimeChanged;
+                    }
+                    meanLastTimeChangedHypervolume /= 30D;
+                    hypervolumeWriter.append("Last change to hypervolume in generation (mean): " + meanLastTimeChangedHypervolume + "\n");
                 }
             }
         }
@@ -245,5 +260,39 @@ public class NSGAIIHyperheuristicMain {
             }
             outputDirectoryFile.mkdir();
         }
+    }
+
+    private static int createHypervolumeForGenerations(String executionDirectory, int numberOfObjectives, int populationSize, int maxEvaluations) {
+        int generations = maxEvaluations / populationSize - 1;
+
+        HypervolumeHandler hypervolumeHandler = new HypervolumeHandler();
+        String generationDirectory = executionDirectory + "GENERATIONS/";
+
+        for (int j = 1; j <= generations; j++) {
+            hypervolumeHandler.addParetoFront(generationDirectory + "GEN_" + j + ".txt");
+        }
+
+        try {
+            try (FileWriter hypervolumeWriter = new FileWriter(executionDirectory + "GENERATIONS_HYPERVOLUME.txt")) {
+                double[] hypervolumes = new double[generations];
+                for (int j = 1; j <= generations; j++) {
+                    double hypervolume = hypervolumeHandler.calculateHypervolume(generationDirectory + "GEN_" + j + ".txt", numberOfObjectives);
+                    hypervolumes[j - 1] = hypervolume;
+                    hypervolumeWriter.append(hypervolume + "\n");
+                }
+                hypervolumeWriter.append("\nLast change to hypervolume in generation: ");
+
+                int lastGeneration = generations;
+                while (hypervolumes[lastGeneration - 1] == hypervolumes[generations - 1] && lastGeneration > 0) {
+                    lastGeneration--;
+                }
+                lastGeneration++;
+                hypervolumeWriter.append(lastGeneration + "\n");
+                return lastGeneration;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(NSGAIIHyperheuristicMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return generations;
     }
 } // NSGAII_main
