@@ -33,8 +33,8 @@ public class Combined_NSGAII_2obj {
         for (String filename : softwares) {
 
             int runsNumber = 1;
-            int populationSize = 300;
-            int maxEvaluations = 60000;
+            int populationSize = 100;
+            int maxEvaluations = 25000;
             double crossoverProbability = 0.95;
             double mutationProbability = 0.02; //0.2;
             String context = "_Comb_2obj";
@@ -68,15 +68,14 @@ public class Combined_NSGAII_2obj {
             algorithm.addOperator("mutation", mutation);
             algorithm.addOperator("selection", selection);
 
-
             System.out.println("\n================ NSGAII ================");
             System.out.println("Software: " + filename);
             System.out.println("Context: " + context);
             System.out.println("Params:");
             System.out.println("\tPop -> " + populationSize);
-            System.out.println("\tMaxEva -> "+maxEvaluations);
-            System.out.println("\tCross -> "+crossoverProbability);
-            System.out.println("\tMuta -> "+mutationProbability);
+            System.out.println("\tMaxEva -> " + maxEvaluations);
+            System.out.println("\tCross -> " + crossoverProbability);
+            System.out.println("\tMuta -> " + mutationProbability);
             System.out.println("Number of elements: " + problem.numberOfElements_);
 
             long heapSize = Runtime.getRuntime().totalMemory();
