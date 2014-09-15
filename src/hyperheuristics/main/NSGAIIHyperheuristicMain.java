@@ -147,6 +147,7 @@ public class NSGAIIHyperheuristicMain {
             // Add the operators to the algorithm
             algorithm.addOperator("selection", selection);
 
+            //Create low level heuristics
             int lowLevelHeuristicNumber = 1;
             for (String crossoverName : crossovers) {
                 for (String mutationName : mutations) {
