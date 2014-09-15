@@ -41,7 +41,7 @@ public class NSGAIIHyperheuristicMain {
         double beta;
         String heuristicFunction;
 
-        if (args.length == 9) {
+        if (args.length == 10) {
             populationSize = Integer.parseInt(args[0]);
             maxEvaluations = Integer.parseInt(args[1]);
             crossoverProbability = Double.parseDouble(args[2]);
