@@ -20,7 +20,7 @@ import jmetal.util.JMException;
  *
  * @author giovaniguizzo
  */
-public class LowLevelHeuristic extends Operator implements Comparable<LowLevelHeuristic> {
+public class LowLevelHeuristic extends Operator {
 
     /**
      * Rank weight.
@@ -150,17 +150,6 @@ public class LowLevelHeuristic extends Operator implements Comparable<LowLevelHe
     }
 
     @Override
-    public int compareTo(LowLevelHeuristic other) {
-        if (this.getChoiceFunctionValue() > other.getChoiceFunctionValue()) {
-            return -1;
-        } else if (this.getChoiceFunctionValue() < other.getChoiceFunctionValue()) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
-
-    @Override
     public Object execute(Object object, CITO_CAITO problem) throws JMException {
         Solution[] parents = (Solution[]) object;
 
@@ -189,16 +178,6 @@ public class LowLevelHeuristic extends Operator implements Comparable<LowLevelHe
         }
         final LowLevelHeuristic other = (LowLevelHeuristic) obj;
         return Objects.equals(this.name, other.name);
-    }
-
-    public static Comparator<LowLevelHeuristic> getNameComparator() {
-        return new Comparator<LowLevelHeuristic>() {
-
-            @Override
-            public int compare(LowLevelHeuristic o1, LowLevelHeuristic o2) {
-                return o1.getName().compareToIgnoreCase(o2.getName());
-            }
-        };
     }
 
 }

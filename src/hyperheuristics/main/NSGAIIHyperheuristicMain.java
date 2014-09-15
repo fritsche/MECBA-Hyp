@@ -1,6 +1,7 @@
 package hyperheuristics.main;
 
 import hyperheuristics.algorithm.NSGAIIHyperheuristic;
+import hyperheuristics.comparators.LowLevelHeuristicComparatorFactory;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class NSGAIIHyperheuristicMain {
         double mutationProbability;
         double alpha;
         double beta;
+        String heuristicFunction;
 
         if (args.length == 9) {
             populationSize = Integer.parseInt(args[0]);
@@ -49,6 +51,7 @@ public class NSGAIIHyperheuristicMain {
             crossovers = args[6].split(",");
             mutations = args[7].split(",");
             problems = args[8].split(",");
+            heuristicFunction = args[9];
         } else {
             System.out.println("Not enough parameters. Inform the following:");
             System.out.println("\t 1 - Population Size (int);");
@@ -60,6 +63,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 7 - Crossover Operators (String[] - comma separated, no spaces);");
             System.out.println("\t 8 - Mutation Operators (String[] - comma separated, no spaces);");
             System.out.println("\t 9 - Problems (String[] - comma separated, no spaces);");
+            System.out.println("\t 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit)");
             System.out.println();
             System.out.println("Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?");
 
@@ -97,6 +101,8 @@ public class NSGAIIHyperheuristicMain {
             mutationProbability = 0.02;
             alpha = 1;
             beta = 4D / ((double) populationSize / 2D);
+
+            heuristicFunction = LowLevelHeuristicComparatorFactory.CHOICE_FUNCTION;
         }
 
         System.out.println("Initializing experiments.");
@@ -110,6 +116,7 @@ public class NSGAIIHyperheuristicMain {
         System.out.println("\tCrossover Operators = " + Arrays.toString(crossovers));
         System.out.println("\tMutation Operators = " + Arrays.toString(mutations));
         System.out.println("\tProblems = " + Arrays.toString(problems));
+        System.out.println("\tHeuristic Function = " + heuristicFunction);
 
         for (String problemName : problems) {
             System.out.println();
@@ -132,6 +139,7 @@ public class NSGAIIHyperheuristicMain {
             // Algorithm parameters
             algorithm.setInputParameter("populationSize", populationSize);
             algorithm.setInputParameter("maxEvaluations", maxEvaluations);
+            algorithm.setInputParameter("heuristicFunction", heuristicFunction);
 
             // Selection Operator 
             selection = SelectionFactory.getSelectionOperator("BinaryTournament2");
@@ -213,7 +221,7 @@ public class NSGAIIHyperheuristicMain {
                 try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt", true)) {
                     for (int i = 0; i < allTimesApplied.length; i++) {
                         int value = allTimesApplied[i];
-                        timesAppliedWriter.append("h" + i + " " + value + "\n");
+                        timesAppliedWriter.append("h" + i + 1 + " " + value + "\n");
                     }
                 }
             }

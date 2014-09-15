@@ -20,11 +20,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package hyperheuristics.algorithm;
 
+import hyperheuristics.comparators.LowLevelHeuristicComparatorFactory;
 import hyperheuristics.lowlevelheuristic.LowLevelHeuristic;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -146,6 +148,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
         int populationSize;
         int maxEvaluations;
         int evaluations;
+        Comparator<LowLevelHeuristic> heuristicFunctionComparator;
 
         QualityIndicator indicators; // QualityIndicator object
         int requiredEvaluations; // Use in the example of use of the
@@ -160,6 +163,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
         //Read the parameters
         populationSize = ((Integer) getInputParameter("populationSize"));
         maxEvaluations = ((Integer) getInputParameter("maxEvaluations"));
+        heuristicFunctionComparator = LowLevelHeuristicComparatorFactory.createComparator((String) getInputParameter("heuristicFunction"));
         indicators = (QualityIndicator) getInputParameter("indicators");
 
         //Get the selection operator
@@ -189,7 +193,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
             Solution[] parents = new Solution[2];
             for (int i = 0; i < (populationSize / 2);) {
                 //Get the best hyperheuristics
-                List<LowLevelHeuristic> applyingHeuristics = getApplyingHeuristics();
+                List<LowLevelHeuristic> applyingHeuristics = getApplyingHeuristics(heuristicFunctionComparator);
 
                 //Execute best hyperheuristics
                 for (int j = 0; j < applyingHeuristics.size() && evaluations < maxEvaluations && i < (populationSize / 2); j++) {
@@ -216,12 +220,10 @@ public class NSGAIIHyperheuristic extends Algorithm {
                     evaluations += 2;
                 }
 
-                //Update f2 from heuristics not executed
+                //Update time elapsed from heuristics not executed
                 for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
                     if (!applyingHeuristics.contains(lowLevelHeuristic)) {
-//                        for (int j = 0; j < applyingHeuristics.size(); j++) {
                         lowLevelHeuristic.notExecuted();
-//                        }
                     }
                 }
 
@@ -313,17 +315,20 @@ public class NSGAIIHyperheuristic extends Algorithm {
         return ranking.getSubfront(0);
     } // execute
 
-    private List<LowLevelHeuristic> getApplyingHeuristics() {
+    private List<LowLevelHeuristic> getApplyingHeuristics(Comparator<LowLevelHeuristic> comparator) {
         List<LowLevelHeuristic> allLowLevelHeuristics = new ArrayList<>(lowLevelHeuristics);
-        Collections.sort(allLowLevelHeuristics);
+        Collections.sort(allLowLevelHeuristics, comparator);
         List<LowLevelHeuristic> applyingHeuristics = new ArrayList<>();
+
+        //Find the best tied heuristics
         Iterator<LowLevelHeuristic> iterator = allLowLevelHeuristics.iterator();
         LowLevelHeuristic heuristic;
         LowLevelHeuristic nextHeuristic = iterator.next();
         do {
             heuristic = nextHeuristic;
             applyingHeuristics.add(heuristic);
-        } while (iterator.hasNext() && heuristic.compareTo(nextHeuristic = iterator.next()) == 0);
+        } while (iterator.hasNext() && comparator.compare(heuristic, nextHeuristic = iterator.next()) == 0);
+
         return applyingHeuristics;
     }
 } // NSGA-II
