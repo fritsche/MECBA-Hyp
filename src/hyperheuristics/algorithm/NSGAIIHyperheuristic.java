@@ -52,6 +52,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
     private final CITO_CAITO problem_;
     private FileWriter lowLevelHeuristicsRankWriter;
     private FileWriter lowLevelHeuristicsTimeWriter;
+    private String generationsOutputDirectory;
 
     /**
      * Constructor
@@ -120,6 +121,10 @@ public class NSGAIIHyperheuristic extends Algorithm {
         lowLevelHeuristicsTimeWriter = new FileWriter(path);
     }
 
+    public void setGenerationsOutputDirectory(String path) throws IOException {
+        generationsOutputDirectory = path;
+    }
+
     public void printLowLevelHeuristicsInformation(String filePath, boolean append) {
         try (FileWriter writer = new FileWriter(filePath, append)) {
             for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
@@ -185,9 +190,10 @@ public class NSGAIIHyperheuristic extends Algorithm {
             population.add(newSolution);
         } //for  
 
+        int generation = 0;
         // Generations 
         while (evaluations < maxEvaluations) {
-
+            generation++;
             // Create the offSpring solutionSet      
             offspringPopulation = new SolutionSet(populationSize);
             Solution[] parents = new Solution[2];
@@ -292,6 +298,10 @@ public class NSGAIIHyperheuristic extends Algorithm {
                 } // for
 
             } // if                               
+
+            if (generationsOutputDirectory != null) {
+                population.printObjectivesToFile(generationsOutputDirectory + "/GEN_" + generation + ".txt");
+            }
 
             // This piece of code shows how to use the indicator object into the code
             // of NSGA-II. In particular, it finds the number of evaluations required

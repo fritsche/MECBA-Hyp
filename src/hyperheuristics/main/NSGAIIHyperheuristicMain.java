@@ -177,10 +177,16 @@ public class NSGAIIHyperheuristicMain {
                 int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
 
                 for (int execution = 0; execution < 30; execution++) {
+                    String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
+                    createDirectory(executionDirectory);
+                    String generationsDirectory = executionDirectory + "GENERATIONS/";
+                    createDirectory(generationsDirectory);
+
                     System.out.println("Execution: " + (execution + 1));
                     algorithm.clearLowLeverHeuristicsValues();
-                    algorithm.setLowLevelHeuristicsRankPath(outputDirectory + "RANK_" + execution + ".txt");
-                    algorithm.setLowLevelHeuristicsTimePath(outputDirectory + "TIME_" + execution + ".txt");
+                    algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
+                    algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
+                    algorithm.setGenerationsOutputDirectory(generationsDirectory);
 
                     // Execute the Algorithm
                     long initTime = System.currentTimeMillis();
@@ -191,14 +197,16 @@ public class NSGAIIHyperheuristicMain {
                     problem.removeRepetidas(population);
 
                     // Result messages
-                    population.printVariablesToFile(outputDirectory + "VAR_" + execution + ".txt");
-                    population.printObjectivesToFile(outputDirectory + "FUN_" + execution + ".txt");
+                    population.printVariablesToFile(executionDirectory + "VAR.txt");
+                    population.printObjectivesToFile(executionDirectory + "FUN.txt");
                     algorithm.printLowLevelHeuristicsInformation(outputDirectory + "LLH.txt", true);
 
                     timeWriter.append(estimatedTime + "\n");
+                    timeWriter.flush();
                     allExecutionTime += estimatedTime;
 
                     allRuns = allRuns.union(population);
+
                     int[] executionTimesApplied = algorithm.getLowLevelHeuristicsNumberOfTimesApplied();
                     for (int i = 0; i < executionTimesApplied.length; i++) {
                         allTimesApplied[i] += executionTimesApplied[i];
@@ -212,8 +220,8 @@ public class NSGAIIHyperheuristicMain {
                 problem.removeDominadas(allRuns);
                 problem.removeRepetidas(allRuns);
 
-                allRuns.printVariablesToFile(outputDirectory + "VAR_All.txt");
-                allRuns.printObjectivesToFile(outputDirectory + "FUN_All.txt");
+                allRuns.printVariablesToFile(outputDirectory + "VAR.txt");
+                allRuns.printObjectivesToFile(outputDirectory + "FUN.txt");
 
                 timeWriter.append("\n");
                 timeWriter.append("Total: " + allExecutionTime + "\n");
