@@ -236,7 +236,7 @@ public class NSGAIIHyperheuristicMain {
                 try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
                     for (int i = 0; i < allTimesApplied.length; i++) {
                         int value = allTimesApplied[i];
-                        timesAppliedWriter.append("h" + i + 1 + " " + value + "\n");
+                        timesAppliedWriter.append("h" + (i + 1) + " " + value + "\n");
                     }
                 }
 
