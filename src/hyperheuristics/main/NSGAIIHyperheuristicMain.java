@@ -161,7 +161,7 @@ public class NSGAIIHyperheuristicMain {
             }
 
             new File(outputDirectory + "LLH.txt").delete();
-            try (FileWriter timeWriter = new FileWriter(outputDirectory + "TIME.txt")) {
+            try (FileWriter timeWriter = new FileWriter(outputDirectory + "TIME_EXECUTION.txt")) {
 
                 SolutionSet allRuns = new SolutionSet();
                 long allExecutionTime = 0;
@@ -170,6 +170,8 @@ public class NSGAIIHyperheuristicMain {
                 for (int execution = 0; execution < 30; execution++) {
                     System.out.println("Execution: " + (execution + 1));
                     algorithm.clearLowLeverHeuristicsValues();
+                    algorithm.setLowLevelHeuristicsRankPath(outputDirectory + "RANK_" + execution + ".txt");
+                    algorithm.setLowLevelHeuristicsTimePath(outputDirectory + "TIME_" + execution + ".txt");
 
                     // Execute the Algorithm
                     long initTime = System.currentTimeMillis();

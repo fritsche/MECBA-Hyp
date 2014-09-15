@@ -48,6 +48,8 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
     private final List<LowLevelHeuristic> lowLevelHeuristics;
     private final CITO_CAITO problem_;
+    private FileWriter lowLevelHeuristicsRankWriter;
+    private FileWriter lowLevelHeuristicsTimeWriter;
 
     /**
      * Constructor
@@ -90,7 +92,6 @@ public class NSGAIIHyperheuristic extends Algorithm {
     }
 
     public int[] getLowLevelHeuristicsNumberOfTimesApplied() {
-        Collections.sort(lowLevelHeuristics, LowLevelHeuristic.getNameComparator());
         int[] allTimesApplied = new int[lowLevelHeuristics.size()];
         for (int i = 0; i < lowLevelHeuristics.size(); i++) {
             LowLevelHeuristic lowLevelHeuristic = lowLevelHeuristics.get(i);
@@ -101,6 +102,20 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
     public int getLowLevelHeuristicsSize() {
         return lowLevelHeuristics.size();
+    }
+
+    public void setLowLevelHeuristicsRankPath(String path) throws IOException {
+        if (lowLevelHeuristicsRankWriter != null) {
+            lowLevelHeuristicsRankWriter.close();
+        }
+        lowLevelHeuristicsRankWriter = new FileWriter(path);
+    }
+
+    public void setLowLevelHeuristicsTimePath(String path) throws IOException {
+        if (lowLevelHeuristicsTimeWriter != null) {
+            lowLevelHeuristicsTimeWriter.close();
+        }
+        lowLevelHeuristicsTimeWriter = new FileWriter(path);
     }
 
     public void printLowLevelHeuristicsInformation(String filePath, boolean append) {
@@ -164,7 +179,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
             problem_.evaluateConstraints(newSolution);
             evaluations++;
             population.add(newSolution);
-        } //for       
+        } //for  
 
         // Generations 
         while (evaluations < maxEvaluations) {
@@ -204,11 +219,34 @@ public class NSGAIIHyperheuristic extends Algorithm {
                 //Update f2 from heuristics not executed
                 for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
                     if (!applyingHeuristics.contains(lowLevelHeuristic)) {
-                        for (int j = 0; j < applyingHeuristics.size(); j++) {
-                            lowLevelHeuristic.notExecuted();
-                        }
+//                        for (int j = 0; j < applyingHeuristics.size(); j++) {
+                        lowLevelHeuristic.notExecuted();
+//                        }
                     }
                 }
+
+                if (lowLevelHeuristicsRankWriter != null) {
+                    try {
+                        for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
+                            lowLevelHeuristicsRankWriter.append(lowLevelHeuristic.getRank() + "\t");
+                        }
+                        lowLevelHeuristicsRankWriter.append("\n");
+                    } catch (IOException ex) {
+                        Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
+                if (lowLevelHeuristicsTimeWriter != null) {
+                    try {
+                        for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
+                            lowLevelHeuristicsTimeWriter.append(lowLevelHeuristic.getElapsedTime() + "\t");
+                        }
+                        lowLevelHeuristicsTimeWriter.append("\n");
+                    } catch (IOException ex) {
+                        Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+
             } // for
 
             // Create the solutionSet union of solutionSet and offSpring
@@ -276,9 +314,10 @@ public class NSGAIIHyperheuristic extends Algorithm {
     } // execute
 
     private List<LowLevelHeuristic> getApplyingHeuristics() {
-        Collections.sort(lowLevelHeuristics);
+        List<LowLevelHeuristic> allLowLevelHeuristics = new ArrayList<>(lowLevelHeuristics);
+        Collections.sort(allLowLevelHeuristics);
         List<LowLevelHeuristic> applyingHeuristics = new ArrayList<>();
-        Iterator<LowLevelHeuristic> iterator = lowLevelHeuristics.iterator();
+        Iterator<LowLevelHeuristic> iterator = allLowLevelHeuristics.iterator();
         LowLevelHeuristic heuristic;
         LowLevelHeuristic nextHeuristic = iterator.next();
         do {
