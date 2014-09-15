@@ -18,7 +18,6 @@ public class HypervolumeHandler {
     private SolutionSet population;
     private final MetricsUtil metricUtil;
     private final Hypervolume hypervolume;
-    private double[][] worstFront;
 
     public HypervolumeHandler() {
         this.population = new SolutionSet();
@@ -28,11 +27,14 @@ public class HypervolumeHandler {
 
     public void addParetoFront(SolutionSet front) {
         population = population.union(front);
-        worstFront = null;
     }
 
     public void addParetoFront(String path) {
         addParetoFront(metricUtil.readNonDominatedSolutionSet(path));
+    }
+
+    public void clear() {
+        this.population = new SolutionSet();
     }
 
     public double calculateHypervolume(String frontPath, int numberOfObjectives) {
@@ -41,29 +43,44 @@ public class HypervolumeHandler {
 
     public double calculateHypervolume(SolutionSet front, int numberOfObjectives) {
         if (population.size() != 0) {
-            return hypervolume.hypervolume(front.writeObjectivesToMatrix(), getWorstFront(numberOfObjectives), numberOfObjectives);
+            double[][] referencePoint = getReferencePoint(numberOfObjectives);
+            double[][] objectives = front.writeObjectivesToMatrix();
+            normalizeObjecties(objectives, numberOfObjectives);
+            return hypervolume.hypervolume(objectives, referencePoint, numberOfObjectives);
         }
         return 0D;
     }
 
-    public double[][] getWorstFront(int numberOfObjectives) {
-        if (worstFront == null) {
-            double[][] populationMatrix = population.writeObjectivesToMatrix();
-            if (populationMatrix.length != 0) {
-                double[] max = metricUtil.getMaximumValues(populationMatrix, numberOfObjectives);
-                worstFront = new double[numberOfObjectives][numberOfObjectives];
-                for (int i = 0; i < numberOfObjectives; i++) {
-                    double objective = max[i];
-                    worstFront[i][i] = objective + 1;
-                    for (int j = 0; j < numberOfObjectives; j++) {
-                        if (i != j) {
-                            worstFront[i][j] = 0;
-                        }
-                    }
+    private double[][] getReferencePoint(int numberOfObjectives) {
+        double[][] referencePoint = new double[numberOfObjectives][numberOfObjectives];
+        for (int i = 0; i < referencePoint.length; i++) {
+            double[] objective = referencePoint[i];
+            objective[i] = 1.01;
+            for (int j = 0; j < objective.length; j++) {
+                if (i != j) {
+                    objective[j] = 0;
                 }
             }
         }
-        return worstFront;
+        return referencePoint;
+    }
+
+    private void normalizeObjecties(double[][] solutionSet, int numberOfObjectives) {
+        double[] maximumValues = metricUtil.getMaximumValues(population.writeObjectivesToMatrix(), numberOfObjectives);
+        double[] minimumValues = metricUtil.getMinimumValues(population.writeObjectivesToMatrix(), numberOfObjectives);
+        for (int solutionIndex = 0; solutionIndex < solutionSet.length; solutionIndex++) {
+            double[] solution = solutionSet[solutionIndex];
+            for (int objectiveIndex = 0; objectiveIndex < solution.length; objectiveIndex++) {
+                double max = maximumValues[objectiveIndex];
+                double min = minimumValues[objectiveIndex];
+
+                if (min != max) {
+                    solution[objectiveIndex] = (solution[objectiveIndex] - min) / (max - min);
+                } else {
+                    solution[objectiveIndex] = 1.0;
+                }
+            }
+        }
     }
 
 }

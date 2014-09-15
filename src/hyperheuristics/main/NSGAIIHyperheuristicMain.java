@@ -242,9 +242,12 @@ public class NSGAIIHyperheuristicMain {
 
                 try (FileWriter hypervolumeWriter = new FileWriter(outputDirectory + "HYPERVOLUME.txt")) {
                     double meanLastTimeChangedHypervolume = 0D;
-                    for (int lastTimeChanged : lastTimeChangedHypervolumes) {
+                    for (int i = 0; i < 30; i++) {
+                        int lastTimeChanged = lastTimeChangedHypervolumes[i];
                         meanLastTimeChangedHypervolume += lastTimeChanged;
+                        hypervolumeWriter.append("Last change to hypervolume for execution " + i + " in generation: " + lastTimeChanged + "\n");
                     }
+                    hypervolumeWriter.append("\n");
                     meanLastTimeChangedHypervolume /= 30D;
                     hypervolumeWriter.append("Last change to hypervolume in generation (mean): " + meanLastTimeChangedHypervolume + "\n");
                 }
