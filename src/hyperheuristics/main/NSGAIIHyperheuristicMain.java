@@ -63,7 +63,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 7 - Crossover Operators (String[] - comma separated, no spaces);");
             System.out.println("\t 8 - Mutation Operators (String[] - comma separated, no spaces);");
             System.out.println("\t 9 - Problems (String[] - comma separated, no spaces);");
-            System.out.println("\t 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit)");
+            System.out.println("\t 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit);");
             System.out.println();
             System.out.println("Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?");
 
