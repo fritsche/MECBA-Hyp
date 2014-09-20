@@ -16,6 +16,7 @@ public class LowLevelHeuristicComparatorFactory {
 
     public static final String NAME = "name";
     public static final String CHOICE_FUNCTION = "ChoiceFunction";
+    public static final String MULTI_ARMED_BANDIT = "MultiArmedBandit";
 
     public static Comparator<LowLevelHeuristic> createComparator(String name) {
         switch (name) {
@@ -23,6 +24,8 @@ public class LowLevelHeuristicComparatorFactory {
                 return new LowLevelHeuristicChoiceFunctionComparator();
             case NAME:
                 return new LowLevelHeuristicNameComparator();
+            case MULTI_ARMED_BANDIT:
+                return new LowLevelHeuristicMultiArmedBanditComparator();
             default:
                 return null;
         }

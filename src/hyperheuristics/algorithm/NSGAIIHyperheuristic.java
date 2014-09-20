@@ -218,7 +218,11 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
                     //Update rank
                     heuristic.updateRank(parents, offSpring);
-
+                    
+                    if("MultiArmedBandit".equals((String) getInputParameter("heuristicFunction"))){
+                        heuristic.creditAssignment();
+                    }
+                    
                     offspringPopulation.add(offSpring[0]);
                     offspringPopulation.add(offSpring[1]);
 
@@ -324,7 +328,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
         return ranking.getSubfront(0);
     } // execute
-
+    
     private List<LowLevelHeuristic> getApplyingHeuristics(Comparator<LowLevelHeuristic> comparator) {
         List<LowLevelHeuristic> allLowLevelHeuristics = new ArrayList<>(lowLevelHeuristics);
         Collections.sort(allLowLevelHeuristics, comparator);

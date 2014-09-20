@@ -31,7 +31,25 @@ public class LowLevelHeuristic extends Operator {
      * Elapsed time weight.
      */
     private double beta = 1;
-
+    
+    /**
+     * Sliding Time Window.
+     */
+    private static int w = 0;
+    private static double c = 0;
+    private static double gamma = 0;
+    private static double delta = 0;
+    private static LowLevelHeuristic slidingWindowHeuristics[];
+    private static double slidingWindowImprovement[];
+    private static int i = 0;
+    private static int it = 0;
+    
+    /**
+     * Empirical Rewards.
+     */
+    private double q=0;
+    private double r=0;
+    
     //Usage
     private final Comparator dominanceComparator;
 
@@ -73,6 +91,24 @@ public class LowLevelHeuristic extends Operator {
         if (parameters.containsKey("beta")) {
             beta = (double) parameters.get("beta");
         }
+        
+        if (parameters.containsKey("w")) {
+            w = (int) parameters.get("w");
+            if(slidingWindowHeuristics == null){
+                slidingWindowHeuristics = new LowLevelHeuristic[w];
+                slidingWindowImprovement = new double[w];
+            }
+        }
+        
+        if (parameters.containsKey("c")) {
+            c = (double) parameters.get("c");
+        }
+        if (parameters.containsKey("gamma")) {
+            gamma = (double) parameters.get("gamma");
+        }
+        if (parameters.containsKey("delta")) {
+            delta = (double) parameters.get("delta");
+        }
     }
 
     /*
@@ -108,6 +144,7 @@ public class LowLevelHeuristic extends Operator {
     public void executed() {
         updateElapsedTime(true);
         this.numberOfTimesApplied++;
+        it++;
     }
 
     public void notExecuted() {
@@ -180,4 +217,29 @@ public class LowLevelHeuristic extends Operator {
         return Objects.equals(this.name, other.name);
     }
 
+    public void creditAssignment() {
+        if(w!=0){
+            slidingWindowHeuristics[i] = this;
+            slidingWindowImprovement[i] = this.rank;
+            i++;
+            i%=w;
+            double max = -Double.MAX_VALUE;
+            int j=0;
+            LowLevelHeuristic h = slidingWindowHeuristics[j];
+            double im = slidingWindowImprovement[j];
+            for(; j<w && h!=null;j++){
+                if(h.equals(this) && im > max){
+                    max = im;
+                }
+                h = slidingWindowHeuristics[j];
+                im = slidingWindowImprovement[j];
+            }
+            r = max;
+            q = (r + q * numberOfTimesApplied) / numberOfTimesApplied;
+        }
+    }
+    
+    public double getMultiArmedBanditValue() {
+       return q + c * Math.sqrt((2 * Math.log(it)) / numberOfTimesApplied);
+    }
 }
