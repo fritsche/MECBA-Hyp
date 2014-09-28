@@ -5,8 +5,10 @@
  */
 package hyperheuristics.lowlevelheuristic;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import jmetal.base.Operator;
 import jmetal.base.Solution;
@@ -43,13 +45,13 @@ public class LowLevelHeuristic extends Operator {
     private static double slidingWindowImprovement[];
     private static int i = 0;
     private static int it = 0;
-    
+    private static List<Integer> reboots = new ArrayList<>();
     /**
      * Empirical Rewards.
      */
     private double q=0;
     private double r=0;
-    
+    private double biggest = 0;
     //Usage
     private final Comparator dominanceComparator;
 
@@ -71,7 +73,7 @@ public class LowLevelHeuristic extends Operator {
         this.rank = 0;
         this.elapsedTime = 0;
         this.numberOfTimesApplied = 0;
-
+        
         if (parameters.containsKey("name")) {
             this.name = (String) parameters.get("name");
         }
@@ -236,6 +238,19 @@ public class LowLevelHeuristic extends Operator {
             }
             r = max;
             q = (r + q * numberOfTimesApplied) / numberOfTimesApplied;
+            double m = r - q + delta;
+            if(m >= biggest){
+                biggest = m;   
+            }
+            if(biggest - m > gamma){ // restart
+                q=0;
+                r=0;
+                biggest = 0;
+                slidingWindowHeuristics = new LowLevelHeuristic[w];
+                slidingWindowImprovement = new double[w];
+                i = 0;
+                reboots.add(it);
+            }
         }
     }
     
