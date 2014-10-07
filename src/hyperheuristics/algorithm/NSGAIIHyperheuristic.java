@@ -168,7 +168,8 @@ public class NSGAIIHyperheuristic extends Algorithm {
         //Read the parameters
         populationSize = ((Integer) getInputParameter("populationSize"));
         maxEvaluations = ((Integer) getInputParameter("maxEvaluations"));
-        heuristicFunctionComparator = LowLevelHeuristicComparatorFactory.createComparator((String) getInputParameter("heuristicFunction"));
+        String heuristicFunction = (String) getInputParameter("heuristicFunction");
+        heuristicFunctionComparator = LowLevelHeuristicComparatorFactory.createComparator(heuristicFunction);
         indicators = (QualityIndicator) getInputParameter("indicators");
 
         //Get the selection operator
@@ -218,11 +219,8 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
                     //Update rank
                     heuristic.updateRank(parents, offSpring);
-                    
-                    if("MultiArmedBandit".equals((String) getInputParameter("heuristicFunction"))){
-                        heuristic.creditAssignment();
-                    }
-                    
+                    heuristic.creditAssignment();
+
                     offspringPopulation.add(offSpring[0]);
                     offspringPopulation.add(offSpring[1]);
 
@@ -328,7 +326,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
         return ranking.getSubfront(0);
     } // execute
-    
+
     private List<LowLevelHeuristic> getApplyingHeuristics(Comparator<LowLevelHeuristic> comparator) {
         List<LowLevelHeuristic> allLowLevelHeuristics = new ArrayList<>(lowLevelHeuristics);
         Collections.sort(allLowLevelHeuristics, comparator);

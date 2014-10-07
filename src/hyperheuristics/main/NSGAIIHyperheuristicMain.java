@@ -1,8 +1,8 @@
 package hyperheuristics.main;
 
 import hyperheuristics.algorithm.NSGAIIHyperheuristic;
-import hyperheuristics.comparators.LowLevelHeuristicComparatorFactory;
 import hyperheuristics.hypervolume.HypervolumeHandler;
+import hyperheuristics.lowlevelheuristic.LowLevelHeuristic;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -117,10 +117,12 @@ public class NSGAIIHyperheuristicMain {
             alpha = 1;
             beta = 4D / ((double) populationSize / 2D);
 
-            heuristicFunction = LowLevelHeuristicComparatorFactory.CHOICE_FUNCTION;
-            
-            w=0;
-            c=gamma=delta=0;
+            heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
+
+            w = 0;
+            c = 0;
+            gamma = 0;
+            delta = 0;
         }
 
         System.out.println("Initializing experiments.");
