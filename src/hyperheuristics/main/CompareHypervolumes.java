@@ -19,17 +19,19 @@ public class CompareHypervolumes {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         String[] problems = new String[]{
-            "OA_AJHotDraw",
+            //            "OA_AJHotDraw",
             "OA_AJHsqldb",
-            "OA_HealthWatcher",
-            "OA_TollSystems",
+            //            "OA_HealthWatcher",
+            //            "OA_TollSystems",
             "OO_BCEL",
-            "OO_JBoss",
-            "OO_JHotDraw",
+            //            "OO_JBoss",
+            //            "OO_JHotDraw",
             "OO_MyBatis"
         };
 
         try (FileWriter fileWriter = new FileWriter("experiment/HYPERVOLUMES.txt")) {
+            int numberOfObjectives = 2;
+
             int hyperheuristicBest = 0;
             int mecbaBest = 0;
             int tied = 0;
@@ -50,8 +52,8 @@ public class CompareHypervolumes {
                 hypervolumeHandler.addParetoFront(hyperheuristicDirectory + "FUN.txt");
                 hypervolumeHandler.addParetoFront(mecbaDirectory + "All_FUN_nsgaii-" + problem);
 
-                double mecbaHypervolume = hypervolumeHandler.calculateHypervolume(mecbaDirectory + "All_FUN_nsgaii-" + problem, 2);
-                double hyperheuristicHypervolume = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "FUN.txt", 2);
+                double mecbaHypervolume = hypervolumeHandler.calculateHypervolume(mecbaDirectory + "All_FUN_nsgaii-" + problem, numberOfObjectives);
+                double hyperheuristicHypervolume = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "FUN.txt", numberOfObjectives);
                 fileWriter.append("MECBA (PFknown): " + mecbaHypervolume + "\n");
                 fileWriter.append("MECBA-Hyp (PFknown): " + hyperheuristicHypervolume + "\n");
                 if (mecbaHypervolume == hyperheuristicHypervolume) {
@@ -84,9 +86,9 @@ public class CompareHypervolumes {
                 hyperheuristicHypervolume = 0;
 
                 for (int i = 0; i < 30; i++) {
-                    mecbaHypervolumes[i] = hypervolumeHandler.calculateHypervolume(mecbaDirectory + "FUN_nsgaii-" + problem + "-" + i + ".NaoDominadas", 2);
+                    mecbaHypervolumes[i] = hypervolumeHandler.calculateHypervolume(mecbaDirectory + "FUN_nsgaii-" + problem + "-" + i + ".NaoDominadas", numberOfObjectives);
                     mecbaHypervolume += mecbaHypervolumes[i];
-                    hyperheuristicHypervolumes[i] = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "EXECUTION_" + i + "/FUN.txt", 2);
+                    hyperheuristicHypervolumes[i] = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "EXECUTION_" + i + "/FUN.txt", numberOfObjectives);
                     hyperheuristicHypervolume += hyperheuristicHypervolumes[i];
                 }
 

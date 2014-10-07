@@ -20,6 +20,7 @@ import jmetal.base.operator.mutation.MutationFactory;
 import jmetal.base.operator.selection.SelectionFactory;
 import jmetal.problems.CITO_CAITO;
 import jmetal.problems.Combined2Objetives;
+import jmetal.problems.Combined4Objectives;
 import jmetal.util.JMException;
 
 public class NSGAIIHyperheuristicMain {
@@ -38,6 +39,7 @@ public class NSGAIIHyperheuristicMain {
 
         int populationSize;
         int maxEvaluations;
+        int numberOfObjectives = 0;
         double crossoverProbability;
         double mutationProbability;
         double alpha;
@@ -48,7 +50,7 @@ public class NSGAIIHyperheuristicMain {
         double gamma;
         double delta;
 
-        if (args.length == 14) {
+        if (args.length == 15) {
             populationSize = Integer.parseInt(args[0]);
             maxEvaluations = Integer.parseInt(args[1]);
             crossoverProbability = Double.parseDouble(args[2]);
@@ -63,6 +65,7 @@ public class NSGAIIHyperheuristicMain {
             c = Double.parseDouble(args[11]);
             gamma = Double.parseDouble(args[12]);
             delta = Double.parseDouble(args[13]);
+            numberOfObjectives = Integer.parseInt(args[14]);
         } else {
             System.out.println("Not enough parameters. Inform the following:");
             System.out.println("\t 1 - Population Size (int);");
@@ -79,6 +82,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 12 - Scaling factor C (double);");
             System.out.println("\t 13 - Gamma in the PH test (double);");
             System.out.println("\t 14 - Tolerance parameter Delta (double);");
+            System.out.println("\t 15 - Number of objectives (int - 2 or 4);");
             System.out.println();
             System.out.println("Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?");
 
@@ -110,6 +114,7 @@ public class NSGAIIHyperheuristicMain {
                 "SimpleInsertionMutation"
             };
 
+            numberOfObjectives = 2;
             populationSize = 100;
             maxEvaluations = 25000;
             crossoverProbability = 0.95;
@@ -156,7 +161,15 @@ public class NSGAIIHyperheuristicMain {
             NSGAIIHyperheuristic algorithm; // The algorithm to use
             Operator selection; // Selection operator
 
-            problem = new Combined2Objetives("problemas/" + problemName + ".txt");
+            if (numberOfObjectives == 2) {
+                problem = new Combined2Objetives("problemas/" + problemName + ".txt");
+            } else if (numberOfObjectives == 4) {
+                problem = new Combined4Objectives("problemas/" + problemName + ".txt");
+            } else {
+                problem = null;
+                System.err.println("Wrong number of objectives (" + numberOfObjectives + "). Available values: 2 or 4.");
+                System.exit(1);
+            }
             algorithm = new NSGAIIHyperheuristic(problem);
 
             //algorithm = new ssNSGAII(problem);
