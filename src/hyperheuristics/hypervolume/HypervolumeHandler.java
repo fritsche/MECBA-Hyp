@@ -45,7 +45,9 @@ public class HypervolumeHandler {
         if (population.size() != 0) {
             double[][] referencePoint = getReferencePoint(numberOfObjectives);
             double[][] objectives = front.writeObjectivesToMatrix();
-            normalizeObjecties(objectives, numberOfObjectives);
+            double[] maximumValues = metricUtil.getMaximumValues(population.writeObjectivesToMatrix(), numberOfObjectives);
+            double[] minimumValues = metricUtil.getMinimumValues(population.writeObjectivesToMatrix(), numberOfObjectives);
+            normalizeObjecties(objectives, minimumValues, maximumValues);
             return hypervolume.hypervolume(objectives, referencePoint, numberOfObjectives);
         }
         return 0D;
@@ -65,9 +67,7 @@ public class HypervolumeHandler {
         return referencePoint;
     }
 
-    private void normalizeObjecties(double[][] solutionSet, int numberOfObjectives) {
-        double[] maximumValues = metricUtil.getMaximumValues(population.writeObjectivesToMatrix(), numberOfObjectives);
-        double[] minimumValues = metricUtil.getMinimumValues(population.writeObjectivesToMatrix(), numberOfObjectives);
+    private void normalizeObjecties(double[][] solutionSet, double[] minimumValues, double[] maximumValues) {
         for (int solutionIndex = 0; solutionIndex < solutionSet.length; solutionIndex++) {
             double[] solution = solutionSet[solutionIndex];
             for (int objectiveIndex = 0; objectiveIndex < solution.length; objectiveIndex++) {

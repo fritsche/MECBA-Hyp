@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rm -r experiment > /dev/null
-
 problems="OA_AJHotDraw
 OA_AJHsqldb
 OA_HealthWatcher
@@ -11,7 +9,8 @@ OO_JBoss
 OO_JHotDraw
 OO_MyBatis"
 
-algorithm="MultiArmedBandit" # MultiArmedBandit or ChoiceFunction
+#algorithm="MultiArmedBandit"
+algorithm="ChoiceFunction"
 w=20
 c=7.0
 gamma=14.0

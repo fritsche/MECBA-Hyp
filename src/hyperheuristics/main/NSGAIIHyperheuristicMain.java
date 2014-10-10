@@ -1,7 +1,6 @@
 package hyperheuristics.main;
 
 import hyperheuristics.algorithm.NSGAIIHyperheuristic;
-import hyperheuristics.hypervolume.HypervolumeHandler;
 import hyperheuristics.lowlevelheuristic.LowLevelHeuristic;
 import java.io.File;
 import java.io.FileWriter;
@@ -9,8 +8,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import jmetal.base.Operator;
 import jmetal.base.SolutionSet;
 import jmetal.base.operator.crossover.Crossover;
@@ -154,7 +151,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("Problem: " + problemName);
             System.out.println();
 
-            String outputDirectory = "experiment/" + problemName + "/";
+            String outputDirectory = "experiment/" + heuristicFunction + "/" + problemName + "/";
             createDirectory(outputDirectory);
 
             CITO_CAITO problem; // The problem to solve
@@ -186,11 +183,15 @@ public class NSGAIIHyperheuristicMain {
 
             //Create low level heuristics
             int lowLevelHeuristicNumber = 1;
+            String[] lowLevelHeuristicNames = new String[crossovers.length * mutations.length];
             for (String crossoverName : crossovers) {
                 for (String mutationName : mutations) {
                     HashMap<String, Object> parameters = new HashMap<>();
 
-                    parameters.put("name", "h" + lowLevelHeuristicNumber++ + " [" + crossoverName + ", " + mutationName + "]");
+                    String name = "h" + lowLevelHeuristicNumber + " [" + crossoverName + ", " + mutationName + "]";
+                    lowLevelHeuristicNames[lowLevelHeuristicNumber - 1] = name;
+
+                    parameters.put("name", name);
                     parameters.put("alpha", alpha);
                     parameters.put("beta", beta);
                     parameters.put("w", w);
@@ -207,6 +208,8 @@ public class NSGAIIHyperheuristicMain {
                     parameters.put("mutation", mutation);
 
                     algorithm.addLowLevelHeuristic(parameters);
+
+                    lowLevelHeuristicNumber++;
                 }
             }
 
@@ -216,7 +219,6 @@ public class NSGAIIHyperheuristicMain {
                 SolutionSet allRuns = new SolutionSet();
                 long allExecutionTime = 0;
                 int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
-                int[] lastTimeChangedHypervolumes = new int[30];
 
                 for (int execution = 0; execution < 30; execution++) {
                     String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
@@ -253,8 +255,6 @@ public class NSGAIIHyperheuristicMain {
                     for (int i = 0; i < executionTimesApplied.length; i++) {
                         allTimesApplied[i] += executionTimesApplied[i];
                     }
-
-                    lastTimeChangedHypervolumes[execution] = createHypervolumeForGenerations(executionDirectory, problem.getNumberOfObjectives(), populationSize, maxEvaluations);
                 }
 
                 System.out.println();
@@ -273,21 +273,8 @@ public class NSGAIIHyperheuristicMain {
 
                 try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
                     for (int i = 0; i < allTimesApplied.length; i++) {
-                        int value = allTimesApplied[i];
-                        timesAppliedWriter.append("h" + (i + 1) + " " + value + "\n");
+                        timesAppliedWriter.append(lowLevelHeuristicNames[i] + " " + allTimesApplied[i] + "\n");
                     }
-                }
-
-                try (FileWriter hypervolumeWriter = new FileWriter(outputDirectory + "HYPERVOLUME.txt")) {
-                    double meanLastTimeChangedHypervolume = 0D;
-                    for (int i = 0; i < 30; i++) {
-                        int lastTimeChanged = lastTimeChangedHypervolumes[i];
-                        meanLastTimeChangedHypervolume += lastTimeChanged;
-                        hypervolumeWriter.append("Last change to hypervolume for execution " + i + " in generation: " + lastTimeChanged + "\n");
-                    }
-                    hypervolumeWriter.append("\n");
-                    meanLastTimeChangedHypervolume /= 30D;
-                    hypervolumeWriter.append("Last change to hypervolume in generation (mean): " + meanLastTimeChangedHypervolume + "\n");
                 }
             }
         }
@@ -303,37 +290,4 @@ public class NSGAIIHyperheuristicMain {
         }
     }
 
-    private static int createHypervolumeForGenerations(String executionDirectory, int numberOfObjectives, int populationSize, int maxEvaluations) {
-        int generations = maxEvaluations / populationSize - 1;
-
-        HypervolumeHandler hypervolumeHandler = new HypervolumeHandler();
-        String generationDirectory = executionDirectory + "GENERATIONS/";
-
-        for (int j = 1; j <= generations; j++) {
-            hypervolumeHandler.addParetoFront(generationDirectory + "GEN_" + j + ".txt");
-        }
-
-        try {
-            try (FileWriter hypervolumeWriter = new FileWriter(executionDirectory + "GENERATIONS_HYPERVOLUME.txt")) {
-                double[] hypervolumes = new double[generations];
-                for (int j = 1; j <= generations; j++) {
-                    double hypervolume = hypervolumeHandler.calculateHypervolume(generationDirectory + "GEN_" + j + ".txt", numberOfObjectives);
-                    hypervolumes[j - 1] = hypervolume;
-                    hypervolumeWriter.append(hypervolume + "\n");
-                }
-                hypervolumeWriter.append("\nLast change to hypervolume in generation: ");
-
-                int lastGeneration = generations;
-                while (hypervolumes[lastGeneration - 1] == hypervolumes[generations - 1] && lastGeneration > 0) {
-                    lastGeneration--;
-                }
-                lastGeneration++;
-                hypervolumeWriter.append(lastGeneration + "\n");
-                return lastGeneration;
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(NSGAIIHyperheuristicMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return generations;
-    }
 } // NSGAII_main

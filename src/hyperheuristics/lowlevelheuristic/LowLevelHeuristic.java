@@ -221,13 +221,13 @@ public class LowLevelHeuristic extends Operator {
         return Objects.equals(this.name, other.name);
     }
 
-    public void updateReward(){
+    public void updateReward() {
         double max = -Double.MAX_VALUE;
-        int j=0;
+        int j = 0;
         LowLevelHeuristic h = slidingWindowHeuristics[j];
         double im = slidingWindowImprovement[j];
-        for(; j<w && h!=null;j++){
-            if(h.equals(this) && im > max){
+        for (; j < w && h != null; j++) {
+            if (h.equals(this) && im > max) {
                 max = im;
             }
             h = slidingWindowHeuristics[j];
@@ -235,17 +235,19 @@ public class LowLevelHeuristic extends Operator {
         }
         r = max;
     }
-    
+
     public void creditAssignment() {
-        if(w!=0){
+        if (w != 0) {
             LowLevelHeuristic temp = slidingWindowHeuristics[i];
             slidingWindowHeuristics[i] = this;
             slidingWindowImprovement[i] = this.rank;
-            temp.updateReward();
+            if (temp != null) {
+                temp.updateReward();
+            }
             this.updateReward();
             i++;
-            i%=w;
-            
+            i %= w;
+
             q = (r + q * numberOfTimesApplied) / numberOfTimesApplied;
             double m = r - q + delta;
             if (m >= biggest) {
