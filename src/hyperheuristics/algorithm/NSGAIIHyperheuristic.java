@@ -89,6 +89,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
     }
 
     public void clearLowLeverHeuristicsValues() {
+        LowLevelHeuristic.clearAllStaticValues();
         for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
             lowLevelHeuristic.clearAllValues();
         }
@@ -219,7 +220,9 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
                     //Update rank
                     heuristic.updateRank(parents, offSpring);
-                    heuristic.creditAssignment();
+                    if (LowLevelHeuristic.MULTI_ARMED_BANDIT.equals(heuristicFunction)) {
+                        heuristic.creditAssignment(lowLevelHeuristics);
+                    }
 
                     offspringPopulation.add(offSpring[0]);
                     offspringPopulation.add(offSpring[1]);

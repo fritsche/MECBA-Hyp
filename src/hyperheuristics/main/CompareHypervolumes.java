@@ -42,7 +42,7 @@ public class CompareHypervolumes {
 
         hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
         hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
-        hypervolumeByGeneration(problems, heuristicFunctions, numberOfObjectives);
+//        hypervolumeByGeneration(problems, heuristicFunctions, numberOfObjectives);
     }
 
     private static void hypervolumeComparison(String[] problems, String[] heuristicFunctions, int numberOfObjectives) throws InterruptedException, IOException {

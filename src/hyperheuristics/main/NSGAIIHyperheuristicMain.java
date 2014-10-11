@@ -121,10 +121,10 @@ public class NSGAIIHyperheuristicMain {
 
             heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
 
-            w = 0;
-            c = 0;
-            gamma = 0;
-            delta = 0;
+            w = 20;
+            c = 7;
+            gamma = 14;
+            delta = 0.15;
         }
 
         System.out.println("Initializing experiments.");

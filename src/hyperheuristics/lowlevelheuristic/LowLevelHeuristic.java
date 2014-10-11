@@ -38,16 +38,34 @@ public class LowLevelHeuristic extends Operator {
      */
     private double beta = 1;
 
-    //Sliding Time Window.
-    private static int w = 0;
+    /**
+     * Sliding window size.
+     */
+    private static int W = 0;
     private static double c = 0;
     private static double gamma = 0;
     private static double delta = 0;
-    private static LowLevelHeuristic slidingWindowHeuristics[];
-    private static double slidingWindowImprovement[];
-    private static int i = 0;
-    private static int it = 0;
-    private static List<Integer> reboots = new ArrayList<>();
+
+    /**
+     * Sliding window.
+     */
+    private static LowLevelHeuristic SLIDING_WINDOW_HEURISTIC[];
+
+    /**
+     * Sliding window improvement.
+     */
+    private static double SLIDING_WINDOW_IMPROVEMENT[];
+
+    /**
+     * Sliding window index.
+     */
+    private static int I = 0;
+
+    /**
+     * Total number of low level heuristics executions.
+     */
+    private static int IT = 0;
+    private static List<Integer> REBOOTS = new ArrayList<>();
 
     //Empirical Rewards.
     private double q = 0;
@@ -97,10 +115,10 @@ public class LowLevelHeuristic extends Operator {
         }
 
         if (parameters.containsKey("w")) {
-            w = (int) parameters.get("w");
-            if (slidingWindowHeuristics == null) {
-                slidingWindowHeuristics = new LowLevelHeuristic[w];
-                slidingWindowImprovement = new double[w];
+            W = (int) parameters.get("w");
+            if (SLIDING_WINDOW_HEURISTIC == null) {
+                SLIDING_WINDOW_HEURISTIC = new LowLevelHeuristic[W];
+                SLIDING_WINDOW_IMPROVEMENT = new double[W];
             }
         }
 
@@ -148,7 +166,7 @@ public class LowLevelHeuristic extends Operator {
     public void executed() {
         updateElapsedTime(true);
         this.numberOfTimesApplied++;
-        it++;
+        IT++;
     }
 
     public void notExecuted() {
@@ -176,10 +194,14 @@ public class LowLevelHeuristic extends Operator {
         return (alpha * rank) + (beta * elapsedTime);
     }
 
+    public static void clearAllStaticValues() {
+        reinitializeStatic();
+        IT = 0;
+        REBOOTS.clear();
+    }
+
     public void clearAllValues() {
-        this.rank = 0;
-        this.elapsedTime = 0;
-        this.numberOfTimesApplied = 0;
+        reinitialize();
     }
 
     /*
@@ -224,48 +246,61 @@ public class LowLevelHeuristic extends Operator {
     public void updateReward() {
         double max = -Double.MAX_VALUE;
         int j = 0;
-        LowLevelHeuristic h = slidingWindowHeuristics[j];
-        double im = slidingWindowImprovement[j];
-        for (; j < w && h != null; j++) {
+        LowLevelHeuristic h = SLIDING_WINDOW_HEURISTIC[j];
+        double im = SLIDING_WINDOW_IMPROVEMENT[j];
+        for (; j < W && h != null; j++) {
             if (h.equals(this) && im > max) {
                 max = im;
             }
-            h = slidingWindowHeuristics[j];
-            im = slidingWindowImprovement[j];
+            h = SLIDING_WINDOW_HEURISTIC[j];
+            im = SLIDING_WINDOW_IMPROVEMENT[j];
         }
         r = max;
     }
 
-    public void creditAssignment() {
-        if (w != 0) {
-            LowLevelHeuristic temp = slidingWindowHeuristics[i];
-            slidingWindowHeuristics[i] = this;
-            slidingWindowImprovement[i] = this.rank;
+    public void creditAssignment(List<LowLevelHeuristic> heuristicsForReinitialization) {
+        if (W != 0) {
+            LowLevelHeuristic temp = SLIDING_WINDOW_HEURISTIC[I];
+            SLIDING_WINDOW_HEURISTIC[I] = this;
+            SLIDING_WINDOW_IMPROVEMENT[I] = this.rank;
             if (temp != null) {
                 temp.updateReward();
             }
             this.updateReward();
-            i++;
-            i %= w;
+            I++;
+            I %= W;
 
             q = (r + q * numberOfTimesApplied) / numberOfTimesApplied;
             double m = r - q + delta;
             if (m >= biggest) {
                 biggest = m;
             }
-            if (biggest - m > gamma) { // restart
-                q = 0;
-                r = 0;
-                biggest = 0;
-                slidingWindowHeuristics = new LowLevelHeuristic[w];
-                slidingWindowImprovement = new double[w];
-                i = 0;
-                reboots.add(it);
+            if (biggest - m > gamma) {
+                reinitializeStatic();
+                for (LowLevelHeuristic heuristic : heuristicsForReinitialization) {
+                    heuristic.reinitialize();
+                }
             }
         }
     }
 
+    private void reinitialize() {
+        this.rank = 0;
+        this.elapsedTime = 0;
+        this.numberOfTimesApplied = 0;
+        this.q = 0;
+        this.r = 0;
+        this.biggest = 0;
+    }
+
+    private static void reinitializeStatic() {
+        SLIDING_WINDOW_HEURISTIC = new LowLevelHeuristic[W];
+        SLIDING_WINDOW_IMPROVEMENT = new double[W];
+        I = 0;
+        REBOOTS.add(IT);
+    }
+
     public double getMultiArmedBanditValue() {
-        return q + c * Math.sqrt((2 * Math.log(it)) / numberOfTimesApplied);
+        return q + c * Math.sqrt((2 * Math.log(IT)) / numberOfTimesApplied);
     }
 }
