@@ -121,7 +121,7 @@ public class NSGAIIHyperheuristicMain {
 
             heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
 
-            w = 20;
+            w = maxEvaluations/5; // 5000
             c = 7;
             gamma = 14;
             delta = 0.15;

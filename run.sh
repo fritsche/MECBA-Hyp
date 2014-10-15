@@ -11,7 +11,7 @@ OO_MyBatis"
 
 #algorithm="MultiArmedBandit"
 algorithm="ChoiceFunction"
-w=20
+w=5000
 c=7.0
 gamma=14.0
 delta=0.15
