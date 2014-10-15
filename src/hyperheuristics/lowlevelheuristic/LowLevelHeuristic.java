@@ -65,7 +65,7 @@ public class LowLevelHeuristic extends Operator {
      * Total number of low level heuristics executions.
      */
     private static int IT = 0;
-    private static List<Integer> REBOOTS = new ArrayList<>();
+    private static int REBOOTS = 0;
 
     //Empirical Rewards.
     private double q = 0;
@@ -166,7 +166,7 @@ public class LowLevelHeuristic extends Operator {
     public void executed() {
         updateElapsedTime(true);
         this.numberOfTimesApplied++;
-        IT++;
+        if(IT<W) IT++;
     }
 
     public void notExecuted() {
@@ -197,7 +197,7 @@ public class LowLevelHeuristic extends Operator {
     public static void clearAllStaticValues() {
         reinitializeStatic();
         IT = 0;
-        REBOOTS.clear();
+        REBOOTS = 0;
     }
 
     public void clearAllValues() {
@@ -264,13 +264,14 @@ public class LowLevelHeuristic extends Operator {
             SLIDING_WINDOW_HEURISTIC[I] = this;
             SLIDING_WINDOW_IMPROVEMENT[I] = this.rank;
             if (temp != null) {
+                temp.numberOfTimesApplied --;
                 temp.updateReward();
             }
             this.updateReward();
             I++;
             I %= W;
 
-            q = (r + q * numberOfTimesApplied) / numberOfTimesApplied;
+            q = (r + q * numberOfTimesApplied-1) / numberOfTimesApplied;
             double m = r - q + delta;
             if (m >= biggest) {
                 biggest = m;
@@ -297,7 +298,8 @@ public class LowLevelHeuristic extends Operator {
         SLIDING_WINDOW_HEURISTIC = new LowLevelHeuristic[W];
         SLIDING_WINDOW_IMPROVEMENT = new double[W];
         I = 0;
-        REBOOTS.add(IT);
+        IT=0;
+        REBOOTS++;
     }
 
     public double getMultiArmedBanditValue() {
