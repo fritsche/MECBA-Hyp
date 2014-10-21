@@ -9,8 +9,8 @@ OO_JBoss
 OO_JHotDraw
 OO_MyBatis"
 
-algorithm="MultiArmedBandit"
-#algorithm="ChoiceFunction"
+#algorithm="MultiArmedBandit"
+algorithm="ChoiceFunction"
 w=5000
 c=7.0
 gamma=14.0

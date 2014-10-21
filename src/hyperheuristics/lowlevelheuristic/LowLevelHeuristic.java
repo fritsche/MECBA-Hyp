@@ -5,7 +5,6 @@
  */
 package hyperheuristics.lowlevelheuristic;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -70,6 +69,7 @@ public class LowLevelHeuristic extends Operator {
     //Empirical Rewards.
     private double q = 0;
     private double r = 0;
+    private double aux = 0;
     private double biggest = 0;
 
     //Usage
@@ -136,6 +136,18 @@ public class LowLevelHeuristic extends Operator {
     /*
      Getters and setters.
      */
+    public double getQ(){
+        return q;
+    }
+
+    public double getAux(){
+        return aux;
+    }
+    
+    public static int getREBOOTS(){
+        return REBOOTS;
+    }
+
     public double getRank() {
         return rank;
     }
@@ -303,6 +315,7 @@ public class LowLevelHeuristic extends Operator {
     }
 
     public double getMultiArmedBanditValue() {
-        return q + c * Math.sqrt((2 * Math.log(IT)) / numberOfTimesApplied);
+        aux = Math.sqrt((2 * Math.log(IT)) / numberOfTimesApplied);
+        return q + c * aux;
     }
 }
