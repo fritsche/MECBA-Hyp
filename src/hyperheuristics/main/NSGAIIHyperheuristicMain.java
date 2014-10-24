@@ -36,7 +36,7 @@ public class NSGAIIHyperheuristicMain {
 
         int populationSize;
         int maxEvaluations;
-        int numberOfObjectives = 0;
+        int numberOfObjectives;
         double crossoverProbability;
         double mutationProbability;
         double alpha;
@@ -121,7 +121,7 @@ public class NSGAIIHyperheuristicMain {
 
             heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
 
-            w = maxEvaluations/5; // 5000
+            w = maxEvaluations / 5; // 5000
             c = 7;
             gamma = 14;
             delta = 0.15;
@@ -247,9 +247,9 @@ public class NSGAIIHyperheuristicMain {
                         population.printObjectivesToFile(executionDirectory + "FUN.txt");
                         algorithm.printLowLevelHeuristicsInformation(executionDirectory + "LLH.txt");
 
-                        rebootWriter.append(LowLevelHeuristic.getREBOOTS()+"\n");
+                        rebootWriter.append(LowLevelHeuristic.getREBOOTS() + "\n");
                         rebootWriter.flush();
-                        
+
                         timeWriter.append(estimatedTime + "\n");
                         timeWriter.flush();
                         allExecutionTime += estimatedTime;
