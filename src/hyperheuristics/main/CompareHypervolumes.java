@@ -38,7 +38,7 @@ public class CompareHypervolumes {
             LowLevelHeuristic.MULTI_ARMED_BANDIT
         };
 
-        int numberOfObjectives = 2;
+        int numberOfObjectives = 4;
 
         hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
         hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
@@ -67,7 +67,7 @@ public class CompareHypervolumes {
 
                     String hyperheuristicDirectory = outputDirectory + problem + "/";
 
-                    String mecbaDirectory = "resultado/nsgaii/" + problem + "_Comb_2obj/";
+                    String mecbaDirectory = "resultado/nsgaii/" + problem + "_Comb_" + numberOfObjectives + "obj/";
 
                     //Best hypervolume for PFknown
                     hypervolumeHandler.addParetoFront(hyperheuristicDirectory + "FUN.txt");
