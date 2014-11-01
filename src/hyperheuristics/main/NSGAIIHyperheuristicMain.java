@@ -34,6 +34,7 @@ public class NSGAIIHyperheuristicMain {
 
         String[] mutations;
 
+        int MAX_EXECUTIONS = 31;
         int populationSize;
         int maxEvaluations;
         int numberOfObjectives = 0;
@@ -221,7 +222,7 @@ public class NSGAIIHyperheuristicMain {
                     long allExecutionTime = 0;
                     int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
 
-                    for (int execution = 0; execution < 30; execution++) {
+                    for (int execution = 0; execution < MAX_EXECUTIONS; execution++) {
                         String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
                         createDirectory(executionDirectory);
                         String generationsDirectory = executionDirectory + "GENERATIONS/";
@@ -274,7 +275,7 @@ public class NSGAIIHyperheuristicMain {
 
                     timeWriter.append("\n");
                     timeWriter.append("Total: " + allExecutionTime + "\n");
-                    timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) 30) + "\n");
+                    timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) MAX_EXECUTIONS) + "\n");
 
                     try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
                         for (int i = 0; i < allTimesApplied.length; i++) {
