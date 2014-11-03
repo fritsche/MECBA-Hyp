@@ -34,7 +34,7 @@ public class NSGAIIHyperheuristicMain {
 
         String[] mutations;
 
-        int MAX_EXECUTIONS = 31;
+        int executions = 30;
         int populationSize;
         int maxEvaluations;
         int numberOfObjectives;
@@ -176,7 +176,7 @@ public class NSGAIIHyperheuristicMain {
             algorithm.setInputParameter("maxEvaluations", maxEvaluations);
             algorithm.setInputParameter("heuristicFunction", heuristicFunction);
 
-            // Selection Operator 
+            // Selection Operator
             selection = SelectionFactory.getSelectionOperator("BinaryTournament2");
 
             // Add the operators to the algorithm
@@ -222,7 +222,7 @@ public class NSGAIIHyperheuristicMain {
                     long allExecutionTime = 0;
                     int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
 
-                    for (int execution = 0; execution < MAX_EXECUTIONS; execution++) {
+                    for (int execution = 0; execution < executions; execution++) {
                         String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
                         createDirectory(executionDirectory);
                         String generationsDirectory = executionDirectory + "GENERATIONS/";
@@ -275,7 +275,7 @@ public class NSGAIIHyperheuristicMain {
 
                     timeWriter.append("\n");
                     timeWriter.append("Total: " + allExecutionTime + "\n");
-                    timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) MAX_EXECUTIONS) + "\n");
+                    timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) executions) + "\n");
 
                     try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
                         for (int i = 0; i < allTimesApplied.length; i++) {
