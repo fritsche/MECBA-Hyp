@@ -283,7 +283,7 @@ public class LowLevelHeuristic extends Operator {
             I++;
             I %= W;
 
-            q = (r + q * numberOfTimesApplied-1) / numberOfTimesApplied;
+            q = (double) (r + q * (double) (numberOfTimesApplied-1)) / (double) numberOfTimesApplied;
             double m = r - q + delta;
             if (m >= biggest) {
                 biggest = m;
@@ -315,7 +315,7 @@ public class LowLevelHeuristic extends Operator {
     }
 
     public double getMultiArmedBanditValue() {
-        aux = Math.sqrt((2 * Math.log(IT)) / numberOfTimesApplied);
-        return q + c * aux;
+        aux = (double) Math.sqrt((2.0 * Math.log(IT)) / (double) numberOfTimesApplied);
+        return (double) q + c * aux;
     }
 }
