@@ -48,7 +48,7 @@ public class CompareHypervolumes {
     private static void hypervolumeComparison(String[] problems, String[] heuristicFunctions, int numberOfObjectives) throws InterruptedException, IOException {
         for (String heuristicFunction : heuristicFunctions) {
 
-            String outputDirectory = "experiment/" + heuristicFunction + "/";
+            String outputDirectory = "experiment/" + numberOfObjectives + "objectives/" + heuristicFunction + "/";
 
             try (FileWriter fileWriter = new FileWriter(outputDirectory + "HYPERVOLUMES.txt")) {
 
@@ -203,7 +203,7 @@ public class CompareHypervolumes {
     }
 
     private static void hypervolumeHyperheuristicsComparison(String[] problems, String[] heuristicFunctions, int numberOfObjectives) throws InterruptedException, IOException {
-        String outputDirectory = "experiment/";
+        String outputDirectory = "experiment/" + numberOfObjectives + "objectives/";
 
         int mecbaBestCount = 0;
         int[] hyperheuristicBestCount = new int[heuristicFunctions.length];
@@ -366,7 +366,7 @@ public class CompareHypervolumes {
     private static void hypervolumeByGeneration(String[] problems, String[] heuristicFunctions, int numberOfObjectives) {
         for (String heuristicFunction : heuristicFunctions) {
 
-            String outputDirectory = "experiment/" + heuristicFunction + "/";
+            String outputDirectory = "experiment/" + numberOfObjectives + "objectives/" + heuristicFunction + "/";
             for (String problem : problems) {
                 HypervolumeHandler hypervolumeHandler = new HypervolumeHandler();
                 String problemDirectory = outputDirectory + problem + "/";

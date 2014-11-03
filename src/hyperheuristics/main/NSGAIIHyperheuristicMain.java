@@ -47,8 +47,9 @@ public class NSGAIIHyperheuristicMain {
         double c;
         double gamma;
         double delta;
+        boolean saveGenerations;
 
-        if (args.length == 15) {
+        if (args.length == 16) {
             populationSize = Integer.parseInt(args[0]);
             maxEvaluations = Integer.parseInt(args[1]);
             crossoverProbability = Double.parseDouble(args[2]);
@@ -64,6 +65,7 @@ public class NSGAIIHyperheuristicMain {
             gamma = Double.parseDouble(args[12]);
             delta = Double.parseDouble(args[13]);
             numberOfObjectives = Integer.parseInt(args[14]);
+            saveGenerations = Boolean.parseBoolean(args[15]);
         } else {
             System.out.println("Not enough parameters. Inform the following:");
             System.out.println("\t 1 - Population Size (int);");
@@ -81,6 +83,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 13 - Gamma in the PH test (double);");
             System.out.println("\t 14 - Tolerance parameter Delta (double);");
             System.out.println("\t 15 - Number of objectives (int - 2 or 4);");
+            System.out.println("\t 16 - Save generations? (boolean);");
             System.out.println();
             System.out.println("Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?");
 
@@ -126,6 +129,7 @@ public class NSGAIIHyperheuristicMain {
             c = 7;
             gamma = 14;
             delta = 0.15;
+            saveGenerations = false;
         }
 
         System.out.println("Initializing experiments.");
@@ -152,7 +156,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("Problem: " + problemName);
             System.out.println();
 
-            String outputDirectory = "experiment/" + heuristicFunction + "/" + problemName + "/";
+            String outputDirectory = "experiment/" + numberOfObjectives + "objectives/" + heuristicFunction + "/" + problemName + "/";
             createDirectory(outputDirectory);
 
             CITO_CAITO problem; // The problem to solve
@@ -225,15 +229,18 @@ public class NSGAIIHyperheuristicMain {
                     for (int execution = 0; execution < executions; execution++) {
                         String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
                         createDirectory(executionDirectory);
-                        String generationsDirectory = executionDirectory + "GENERATIONS/";
-                        createDirectory(generationsDirectory);
 
                         System.out.println("Execution: " + (execution + 1));
                         algorithm.clearLowLeverHeuristicsValues();
                         algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
                         algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
                         algorithm.setDebugPath(executionDirectory + "DEBUG");
-                        algorithm.setGenerationsOutputDirectory(generationsDirectory);
+
+                        if (saveGenerations) {
+                            String generationsDirectory = executionDirectory + "GENERATIONS/";
+                            createDirectory(generationsDirectory);
+                            algorithm.setGenerationsOutputDirectory(generationsDirectory);
+                        }
 
                         // Execute the Algorithm
                         long initTime = System.currentTimeMillis();
