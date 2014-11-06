@@ -1,0 +1,30 @@
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.08
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 55525
+	Scaling factor C = 59.33
+	Gamma in the PH test = 719.04
+	Tolerance parameter Delta = 0.11
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
