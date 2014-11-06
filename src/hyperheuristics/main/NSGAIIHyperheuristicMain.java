@@ -34,7 +34,7 @@ public class NSGAIIHyperheuristicMain {
 
         String[] mutations;
 
-        int executions = 2;
+        int executions = 1;
         int populationSize;
         int maxEvaluations;
         int numberOfObjectives;
