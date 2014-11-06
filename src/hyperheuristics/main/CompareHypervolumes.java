@@ -22,23 +22,29 @@ import java.util.logging.Logger;
 public class CompareHypervolumes {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String[] problems = new String[]{
-            "OA_AJHotDraw",
-            "OA_AJHsqldb",
-            "OA_HealthWatcher",
-            "OA_TollSystems",
-            "OO_BCEL",
-            "OO_JBoss",
-            "OO_JHotDraw",
-            "OO_MyBatis"
-        };
+  
+        String[] problems;
+        if(args.length == 0){
+            problems = new String[]{
+                "OA_AJHotDraw",
+                "OA_AJHsqldb",
+                "OA_HealthWatcher",
+                "OA_TollSystems",
+                "OO_BCEL",
+                "OO_JBoss",
+                "OO_JHotDraw",
+                "OO_MyBatis"
+            };
+        }else {
+            problems = args;
+        }
 
         String[] heuristicFunctions = new String[]{
             LowLevelHeuristic.CHOICE_FUNCTION,
             LowLevelHeuristic.MULTI_ARMED_BANDIT
         };
 
-        int numberOfObjectives = 4;
+        int numberOfObjectives = 2;
 
         hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
         hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
@@ -75,17 +81,17 @@ public class CompareHypervolumes {
 
                     double mecbaHypervolume = hypervolumeHandler.calculateHypervolume(mecbaDirectory + "All_FUN_nsgaii-" + problem, numberOfObjectives);
                     double hyperheuristicHypervolume = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "FUN.txt", numberOfObjectives);
-                    fileWriter.append("MECBA (PFknown): " + mecbaHypervolume + "\n");
-                    fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicHypervolume + "\n");
+                    fileWriter.append("MECBA PFknown: " + mecbaHypervolume + "\n");
+                    fileWriter.append(heuristicFunction + " PFknown: " + hyperheuristicHypervolume + "\n");
                     if (mecbaHypervolume == hyperheuristicHypervolume) {
-                        fileWriter.append("Best (PFknown): Tied!\n");
+                        fileWriter.append("Best PFknown: Tied!\n");
                         tied++;
                     } else {
                         if (mecbaHypervolume > hyperheuristicHypervolume) {
-                            fileWriter.append("Best (PFknown): MECBA\n");
+                            fileWriter.append("Best PFknown: MECBA\n");
                             mecbaBest++;
                         } else {
-                            fileWriter.append("Best (PFknown): " + heuristicFunction + "\n");
+                            fileWriter.append("Best PFknown: " + heuristicFunction + "\n");
                             hyperheuristicBest++;
                         }
                     }
@@ -190,9 +196,9 @@ public class CompareHypervolumes {
                 }
                 fileWriter.append("Problems: " + problems.length + "\n");
                 fileWriter.append("\n");
-                fileWriter.append("Tied (PFknown): " + tied + "\n");
-                fileWriter.append("MECBA (PFknown): " + mecbaBest + "\n");
-                fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicBest + "\n");
+                fileWriter.append("Tied PFknown: " + tied + "\n");
+                fileWriter.append("MECBA PFknown: " + mecbaBest + "\n");
+                fileWriter.append(heuristicFunction + " PFknown: " + hyperheuristicBest + "\n");
                 fileWriter.append("\n");
                 fileWriter.append("Tied (Mean): " + tiedMean + "\n");
                 fileWriter.append("MECBA (Mean): " + mecbaBestMean + "\n");
@@ -244,19 +250,19 @@ public class CompareHypervolumes {
                     }
 
                     //Write PFknown results
-                    fileWriter.append("MECBA (PFknown): " + mecbaHypervolume + "\n");
+                    fileWriter.append("MECBA PFknown: " + mecbaHypervolume + "\n");
                     double maxHypervolume = mecbaHypervolume;
 
                     for (int i = 0; i < heuristicFunctions.length; i++) {
                         String heuristicFunction = heuristicFunctions[i];
 
-                        fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicHypervolumes[i] + "\n");
+                        fileWriter.append(heuristicFunction + " PFknown: " + hyperheuristicHypervolumes[i] + "\n");
                         if (hyperheuristicHypervolumes[i] > maxHypervolume) {
                             maxHypervolume = hyperheuristicHypervolumes[i];
                         }
                     }
 
-                    fileWriter.append("Best (PFknown):");
+                    fileWriter.append("Best PFknown:");
 
                     if (mecbaHypervolume == maxHypervolume) {
                         fileWriter.append(" MECBA");
@@ -349,10 +355,10 @@ public class CompareHypervolumes {
             }
             fileWriter.append("Problems: " + problems.length + "\n");
             fileWriter.append("\n");
-            fileWriter.append("MECBA (PFknown): " + mecbaBestCount + "\n");
+            fileWriter.append("Problems MECBA PFknown problems: " + mecbaBestCount + "\n");
             for (int i = 0; i < heuristicFunctions.length; i++) {
                 String heuristicFunction = heuristicFunctions[i];
-                fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicBestCount[i] + "\n");
+                fileWriter.append(heuristicFunction + " PFknown problems: " + hyperheuristicBestCount[i] + "\n");
             }
             fileWriter.append("\n");
             fileWriter.append("MECBA (Mean): " + mecbaBestMeanCount + "\n");

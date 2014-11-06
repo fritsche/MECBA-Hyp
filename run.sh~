@@ -20,5 +20,5 @@ objectives=2
 
 for problem in $problems
 do
-    java -cp MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain 100 25000 0.95 0.02 1.0 0.08 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $algorithm $w $c $gamma $delta $objectives > /dev/null &
+    java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain 100 25000 0.95 0.02 1.0 0.08 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $algorithm $w $c $gamma $delta $objectives > /dev/null &
 done
