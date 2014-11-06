@@ -1,11 +1,11 @@
-Hypervolume comparison for OA_AJHotDraw:
+Hypervolume comparison for OO_JHotDraw:
 
-MECBA PFknown: 0.3208127882753584
-ChoiceFunction PFknown: 0.8257530040056752
+MECBA PFknown: 0.5310917230336895
+ChoiceFunction PFknown: 1.0
 Best PFknown: ChoiceFunction
 
-MECBA (Mean): 0.34445135932735194
-ChoiceFunction (Mean): 0.4754050487557007
+MECBA (Mean): 0.3643010699984084
+ChoiceFunction (Mean): 0.46406727466103365
 Best (Mean): ChoiceFunction
 
 ----------

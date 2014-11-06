@@ -46,7 +46,7 @@ public class CompareHypervolumes {
 
         int numberOfObjectives = 2;
 
-        hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
+//        hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
         hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
 //        hypervolumeByGeneration(problems, heuristicFunctions, numberOfObjectives);
     }
@@ -280,7 +280,7 @@ public class CompareHypervolumes {
                 }
 
                 //Best mean hypervolume
-                mean:
+                /*mean:
                 {
                     fileWriter.append("\n");
 
@@ -348,7 +348,7 @@ public class CompareHypervolumes {
                         }
                     }
                     fileWriter.append("\n");
-                }
+                }*/
                 fileWriter.append("\n");
                 fileWriter.append("----------\n");
                 fileWriter.append("\n");
