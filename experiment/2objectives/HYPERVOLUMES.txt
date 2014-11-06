@@ -1,8 +1,8 @@
 Hypervolume comparison for OO_MyBatis:
 
-MECBA PFknown: 0.6488126862304356
-ChoiceFunction PFknown: 0.7259732724834513
-MultiArmedBandit PFknown: 0.7150113275434601
+MECBA PFknown: 0.6587374710710889
+ChoiceFunction PFknown: 0.7373612795302055
+MultiArmedBandit PFknown: 0.66558652533206
 Best PFknown: ChoiceFunction
 
 ----------

@@ -19,7 +19,7 @@ crossover=0.95
 mutation=0.02
 
 
-#java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation 1.0 0.08 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function $w $c $gamma $delta $objectives false 1> teste.out 2> teste.out
+java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation 1.0 0.08 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function $w $c $gamma $delta $objectives false 1> teste.out 2> teste.out
 java -cp build/classes/ hyperheuristics.main.CompareHypervolumes $problem
 
 best=$(cat experiment/2objectives/HYPERVOLUMES.txt | grep -oP "MultiArmedBandit PFknown: \K.*")

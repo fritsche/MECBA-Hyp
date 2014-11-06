@@ -10,10 +10,10 @@ Parameters:
 	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
 	Problems = [OO_MyBatis]
 	Heuristic Function = MultiArmedBandit
-	Sliding window size W = 17283
-	Scaling factor C = 48.03
-	Gamma in the PH test = 89.26
-	Tolerance parameter Delta = 0.09
+	Sliding window size W = 51529
+	Scaling factor C = 11.11
+	Gamma in the PH test = 538.22
+	Tolerance parameter Delta = 0.08
 
 -------------------
 

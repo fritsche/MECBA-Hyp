@@ -24,4 +24,4 @@ java -cp build/classes/ hyperheuristics.main.CompareHypervolumes $problem
 
 best=$(cat experiment/2objectives/HYPERVOLUMES.txt | grep -oP "MultiArmedBandit PFknown: \K.*")
 
-echo Best $best
+echo Best -$best
