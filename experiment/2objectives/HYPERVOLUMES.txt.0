@@ -1,8 +1,8 @@
-Hypervolume comparison for OO_MyBatis:
+Hypervolume comparison for OO_JHotDraw:
 
-MECBA PFknown: 0.6587374710710889
-ChoiceFunction PFknown: 0.7373612795302055
-MultiArmedBandit PFknown: 0.66558652533206
+MECBA PFknown: 0.47876258630106294
+ChoiceFunction PFknown: 0.900990099009901
+MultiArmedBandit PFknown: 0.8872659543182041
 Best PFknown: ChoiceFunction
 
 ----------

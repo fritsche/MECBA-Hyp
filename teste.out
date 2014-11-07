@@ -8,15 +8,19 @@ Parameters:
 	Beta = 0.08
 	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
 	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
-	Problems = [OO_MyBatis]
+	Problems = [OO_JHotDraw]
 	Heuristic Function = MultiArmedBandit
-	Sliding window size W = 51529
-	Scaling factor C = 11.11
-	Gamma in the PH test = 538.22
-	Tolerance parameter Delta = 0.08
+	Sliding window size W = 22675
+	Scaling factor C = 19.66
+	Gamma in the PH test = 45.55
+	Tolerance parameter Delta = 0.03
 
 -------------------
 
-Problem: OO_MyBatis
+Problem: OO_JHotDraw
 
 Execution: 1
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 27
+Writing results.
