@@ -36,6 +36,7 @@ do
   ((i++))
   echo $i
   mv experiment/2objectives/MultiArmedBandit/HYPERVOLUMES.txt experiment/2objectives/MultiArmedBandit/HYPERVOLUMES.txt.$i
+  mv experiment/2objectives/ChoiceFunction/HYPERVOLUMES.txt experiment/2objectives/ChoiceFunction/HYPERVOLUMES.txt.$i
   mv experiment/2objectives/HYPERVOLUMES.txt experiment/2objectives/HYPERVOLUMES.txt.$i
 done
 

@@ -2,7 +2,7 @@
 
 cd ../..
 
-problem=$(echo $1 | grep -oP "/home/gian/Documents/MECBA-Hyp/irace/Instances//\K.*")
+problem=$(echo $1 | grep -oP "/home/gian/MECBA-Hyp/irace/Instances//\K.*")
 
 function="MultiArmedBandit"
 #function="ChoiceFunction"
