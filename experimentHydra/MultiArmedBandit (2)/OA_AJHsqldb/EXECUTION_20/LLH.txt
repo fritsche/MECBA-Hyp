@@ -1,0 +1,38 @@
+Name: h1 [TwoPointsCrossover, SwapMutation]:
+	Rank: 0.0
+	Elapsed Time: 1.0
+	Choice Value: 0.08
+	Number of Times Applied: 916
+
+Name: h2 [TwoPointsCrossover, SimpleInsertionMutation]:
+	Rank: 1.0
+	Elapsed Time: 2.0
+	Choice Value: 1.16
+	Number of Times Applied: 3114
+
+Name: h3 [MultiMaskCrossover, SwapMutation]:
+	Rank: -2.0
+	Elapsed Time: 13.0
+	Choice Value: -0.96
+	Number of Times Applied: 80
+
+Name: h4 [MultiMaskCrossover, SimpleInsertionMutation]:
+	Rank: -1.0
+	Elapsed Time: 0.0
+	Choice Value: -1.0
+	Number of Times Applied: 85
+
+Name: h5 [PMXCrossover, SwapMutation]:
+	Rank: -2.0
+	Elapsed Time: 15.0
+	Choice Value: -0.8
+	Number of Times Applied: 351
+
+Name: h6 [PMXCrossover, SimpleInsertionMutation]:
+	Rank: -2.0
+	Elapsed Time: 6.0
+	Choice Value: -1.52
+	Number of Times Applied: 460
+
+----------------------
+

@@ -1,0 +1,6 @@
+h1 [TwoPointsCrossover, SwapMutation] 115657
+h2 [TwoPointsCrossover, SimpleInsertionMutation] 119884
+h3 [MultiMaskCrossover, SwapMutation] 27528
+h4 [MultiMaskCrossover, SimpleInsertionMutation] 27967
+h5 [PMXCrossover, SwapMutation] 47025
+h6 [PMXCrossover, SimpleInsertionMutation] 47889
