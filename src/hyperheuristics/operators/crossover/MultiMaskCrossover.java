@@ -65,8 +65,8 @@ public class MultiMaskCrossover extends Crossover {
                         }
                     }
 
-                    fullFillArray(offspring1Vector, parent1Vector);
-                    fullFillArray(offspring2Vector, parent2Vector);
+                    fulfilArray(offspring1Vector, parent1Vector);
+                    fulfilArray(offspring2Vector, parent2Vector);
 
                 } // if
             } else {
@@ -139,7 +139,7 @@ public class MultiMaskCrossover extends Crossover {
         return false;
     }
 
-    private void fullFillArray(int[] offspring, int[] parent) {
+    private void fulfilArray(int[] offspring, int[] parent) {
         int parentIndex = 0;
         for (int i = 0; i < parent.length; i++) {
             int value = offspring[i];
