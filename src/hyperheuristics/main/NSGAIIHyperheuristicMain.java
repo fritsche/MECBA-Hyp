@@ -45,11 +45,9 @@ public class NSGAIIHyperheuristicMain {
         String heuristicFunction;
         int w;
         double c;
-        double gamma;
-        double delta;
         boolean saveGenerations;
 
-        if (args.length == 16) {
+        if (args.length == 14) {
             populationSize = Integer.parseInt(args[0]);
             maxEvaluations = Integer.parseInt(args[1]);
             crossoverProbability = Double.parseDouble(args[2]);
@@ -62,10 +60,8 @@ public class NSGAIIHyperheuristicMain {
             heuristicFunction = args[9];
             w = Integer.parseInt(args[10]);
             c = Double.parseDouble(args[11]);
-            gamma = Double.parseDouble(args[12]);
-            delta = Double.parseDouble(args[13]);
-            numberOfObjectives = Integer.parseInt(args[14]);
-            saveGenerations = Boolean.parseBoolean(args[15]);
+            numberOfObjectives = Integer.parseInt(args[12]);
+            saveGenerations = Boolean.parseBoolean(args[13]);
         } else {
             System.out.println("Not enough parameters. Inform the following:");
             System.out.println("\t 1 - Population Size (int);");
@@ -80,8 +76,6 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit);");
             System.out.println("\t 11 - Sliding window size W (int);");
             System.out.println("\t 12 - Scaling factor C (double);");
-            System.out.println("\t 13 - Gamma in the PH test (double);");
-            System.out.println("\t 14 - Tolerance parameter Delta (double);");
             System.out.println("\t 15 - Number of objectives (int - 2 or 4);");
             System.out.println("\t 16 - Save generations? (boolean);");
             System.out.println();
@@ -127,8 +121,6 @@ public class NSGAIIHyperheuristicMain {
 
             w = maxEvaluations / 5; // 5000
             c = 7;
-            gamma = 14;
-            delta = 0.15;
             saveGenerations = false;
         }
 
@@ -146,8 +138,6 @@ public class NSGAIIHyperheuristicMain {
         System.out.println("\tHeuristic Function = " + heuristicFunction);
         System.out.println("\tSliding window size W = " + w);
         System.out.println("\tScaling factor C = " + c);
-        System.out.println("\tGamma in the PH test = " + gamma);
-        System.out.println("\tTolerance parameter Delta = " + delta);
 
         for (String problemName : problems) {
             System.out.println();
@@ -201,8 +191,6 @@ public class NSGAIIHyperheuristicMain {
                     parameters.put("beta", beta);
                     parameters.put("w", w);
                     parameters.put("c", c);
-                    parameters.put("gamma", gamma);
-                    parameters.put("delta", delta);
 
                     Crossover crossover = CrossoverFactory.getCrossoverOperator(crossoverName);
                     crossover.setParameter("probability", crossoverProbability);
