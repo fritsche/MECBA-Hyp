@@ -207,75 +207,70 @@ public class NSGAIIHyperheuristicMain {
             }
 
             new File(outputDirectory + "LLH.txt").delete();
-            try (FileWriter rebootWriter = new FileWriter(outputDirectory + "REBOOTS.txt")) {
-                try (FileWriter timeWriter = new FileWriter(outputDirectory + "TIME_EXECUTION.txt")) {
+            try (FileWriter timeWriter = new FileWriter(outputDirectory + "TIME_EXECUTION.txt")) {
 
-                    SolutionSet allRuns = new SolutionSet();
-                    long allExecutionTime = 0;
-                    int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
+                SolutionSet allRuns = new SolutionSet();
+                long allExecutionTime = 0;
+                int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
 
-                    for (int execution = 0; execution < executions; execution++) {
-                        String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
-                        createDirectory(executionDirectory);
+                for (int execution = 0; execution < executions; execution++) {
+                    String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
+                    createDirectory(executionDirectory);
 
-                        System.out.println("Execution: " + (execution + 1));
-                        algorithm.clearLowLeverHeuristicsValues();
-                        algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
-                        algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
-                        algorithm.setDebugPath(executionDirectory + "DEBUG");
+                    System.out.println("Execution: " + (execution + 1));
+                    algorithm.clearLowLeverHeuristicsValues();
+                    algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
+                    algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
+                    algorithm.setDebugPath(executionDirectory + "DEBUG");
 
-                        if (saveGenerations) {
-                            String generationsDirectory = executionDirectory + "GENERATIONS/";
-                            createDirectory(generationsDirectory);
-                            algorithm.setGenerationsOutputDirectory(generationsDirectory);
-                        }
-
-                        // Execute the Algorithm
-                        long initTime = System.currentTimeMillis();
-                        SolutionSet population = algorithm.execute();
-                        long estimatedTime = System.currentTimeMillis() - initTime;
-
-                        problem.removeDominadas(population);
-                        problem.removeRepetidas(population);
-
-                        // Result messages
-                        population.printVariablesToFile(executionDirectory + "VAR.txt");
-                        population.printObjectivesToFile(executionDirectory + "FUN.txt");
-                        algorithm.printLowLevelHeuristicsInformation(executionDirectory + "LLH.txt");
-
-                        rebootWriter.append(LowLevelHeuristic.getREBOOTS() + "\n");
-                        rebootWriter.flush();
-
-                        timeWriter.append(estimatedTime + "\n");
-                        timeWriter.flush();
-                        allExecutionTime += estimatedTime;
-
-                        allRuns = allRuns.union(population);
-
-                        int[] executionTimesApplied = algorithm.getLowLevelHeuristicsNumberOfTimesApplied();
-                        for (int i = 0; i < executionTimesApplied.length; i++) {
-                            allTimesApplied[i] += executionTimesApplied[i];
-                        }
+                    if (saveGenerations) {
+                        String generationsDirectory = executionDirectory + "GENERATIONS/";
+                        createDirectory(generationsDirectory);
+                        algorithm.setGenerationsOutputDirectory(generationsDirectory);
                     }
 
-                    System.out.println();
-                    System.out.println("End of execution for problem " + problemName + ".");
-                    System.out.println("Total time (seconds): " + allExecutionTime / 1000);
-                    System.out.println("Writing results.");
-                    problem.removeDominadas(allRuns);
-                    problem.removeRepetidas(allRuns);
+                    // Execute the Algorithm
+                    long initTime = System.currentTimeMillis();
+                    SolutionSet population = algorithm.execute();
+                    long estimatedTime = System.currentTimeMillis() - initTime;
 
-                    allRuns.printVariablesToFile(outputDirectory + "VAR.txt");
-                    allRuns.printObjectivesToFile(outputDirectory + "FUN.txt");
+                    problem.removeDominadas(population);
+                    problem.removeRepetidas(population);
 
-                    timeWriter.append("\n");
-                    timeWriter.append("Total: " + allExecutionTime + "\n");
-                    timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) executions) + "\n");
+                    // Result messages
+                    population.printVariablesToFile(executionDirectory + "VAR.txt");
+                    population.printObjectivesToFile(executionDirectory + "FUN.txt");
+                    algorithm.printLowLevelHeuristicsInformation(executionDirectory + "LLH.txt");
 
-                    try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
-                        for (int i = 0; i < allTimesApplied.length; i++) {
-                            timesAppliedWriter.append(lowLevelHeuristicNames[i] + " " + allTimesApplied[i] + "\n");
-                        }
+                    timeWriter.append(estimatedTime + "\n");
+                    timeWriter.flush();
+                    allExecutionTime += estimatedTime;
+
+                    allRuns = allRuns.union(population);
+
+                    int[] executionTimesApplied = algorithm.getLowLevelHeuristicsNumberOfTimesApplied();
+                    for (int i = 0; i < executionTimesApplied.length; i++) {
+                        allTimesApplied[i] += executionTimesApplied[i];
+                    }
+                }
+
+                System.out.println();
+                System.out.println("End of execution for problem " + problemName + ".");
+                System.out.println("Total time (seconds): " + allExecutionTime / 1000);
+                System.out.println("Writing results.");
+                problem.removeDominadas(allRuns);
+                problem.removeRepetidas(allRuns);
+
+                allRuns.printVariablesToFile(outputDirectory + "VAR.txt");
+                allRuns.printObjectivesToFile(outputDirectory + "FUN.txt");
+
+                timeWriter.append("\n");
+                timeWriter.append("Total: " + allExecutionTime + "\n");
+                timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) executions) + "\n");
+
+                try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
+                    for (int i = 0; i < allTimesApplied.length; i++) {
+                        timesAppliedWriter.append(lowLevelHeuristicNames[i] + " " + allTimesApplied[i] + "\n");
                     }
                 }
             }
