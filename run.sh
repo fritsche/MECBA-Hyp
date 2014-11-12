@@ -1,50 +1,53 @@
 #!/bin/bash
 
-problems="OA_AJHotDraw
-OA_AJHsqldb
-OA_HealthWatcher
-OA_TollSystems
-OO_BCEL
-OO_JBoss
-OO_JHotDraw
-OO_MyBatis"
+problems="OA_AJHotDraw"
+#OA_AJHsqldb
+#OA_HealthWatcher
+#OA_TollSystems
+#OO_BCEL
+#OO_JBoss
+#OO_JHotDraw
+#OO_MyBatis"
 
-functions="ChoiceFunction"
-#MultiArmedBandit"
+# functions="ChoiceFunction
+# MultiArmedBandit"
 
-alpha=1.0
-beta=0.021
+# alpha=1.0
+# beta=0.021
 
-w=12000
-c=7.0
+# w=12000
+# c=7.0
 
-objectivesArray="2
-4"
+# objectivesArray="2
+# 4"
 
-evaluations=60000
-population=300
-crossover=0.95
-mutation=0.02
+# evaluations=60000
+# population=300
+# crossover=0.95
+# mutation=0.02
 
-rm -f run.txt
+executions=1
+path="experiment/"
 
-for objectives in $objectivesArray
-do
-    #echo "java -cp dist/MECBA-Hyp.jar jmetal.experiments.Combined_NSGAII_"$objectives"obj" >> run.txt
-    for function in $functions
-    do
-        for problem in $problems
-        do
-            echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation $alpha $beta TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function $w $c $gamma $delta $objectives false" >> run.txt
-        done
-    done
-done
+# rm -f run.txt
 
-cat run.txt | xargs -I CMD -P 2 bash -c CMD > /dev/null &
-wait
+# for objectives in $objectivesArray
+# do
+#     #echo "java -cp dist/MECBA-Hyp.jar jmetal.experiments.Combined_NSGAII_"$objectives"obj" >> run.txt
+#     for function in $functions
+#     do
+#         for problem in $problems
+#         do
+#             echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation $alpha $beta TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function $w $c $objectives false $executions $path" >> run.txt
+#         done
+#     done
+# done
 
-rm -f run.txt
+# cat run.txt | xargs -I CMD -P 2 bash -c CMD >> output.log &
+# wait
 
-java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes
+# rm -f run.txt
+
+echo java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $path $path ${problems}
 
 zenity --info --text="Execuções finalizadas!"

@@ -21,12 +21,12 @@ import java.util.logging.Logger;
  */
 public class CompareHypervolumes {
 
-    public static int EXECUTIONS = 10;
+    public static int EXECUTIONS = 30;
     public static String cfpath = "experiment/";
     public static String mabpath = "experiment/";
 
     public static void main(String[] args) throws IOException, InterruptedException {
-  
+        
         String[] problems;
         if(args.length == 0){
             problems = new String[]{
@@ -40,9 +40,10 @@ public class CompareHypervolumes {
                 "OO_MyBatis"
             };
         }else {
-            cfpath = args[0];
-            mabpath = args[1];
-            problems = Arrays.copyOfRange(args, 2, args.length-1);
+            EXECUTIONS = Integer.parseInt(args[0]);
+            cfpath = args[1];
+            mabpath = args[2];
+            problems = Arrays.copyOfRange(args, 3, args.length);
         }
 
         String[] heuristicFunctions = new String[]{
