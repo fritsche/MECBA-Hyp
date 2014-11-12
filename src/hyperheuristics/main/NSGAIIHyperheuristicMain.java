@@ -34,7 +34,7 @@ public class NSGAIIHyperheuristicMain {
 
         String[] mutations;
 
-        int executions = 30;
+        int executions;
         int populationSize;
         int maxEvaluations;
         int numberOfObjectives;
@@ -46,8 +46,9 @@ public class NSGAIIHyperheuristicMain {
         int w;
         double c;
         boolean saveGenerations;
+        String path;
 
-        if (args.length == 14) {
+        if (args.length == 16) {
             populationSize = Integer.parseInt(args[0]);
             maxEvaluations = Integer.parseInt(args[1]);
             crossoverProbability = Double.parseDouble(args[2]);
@@ -62,6 +63,8 @@ public class NSGAIIHyperheuristicMain {
             c = Double.parseDouble(args[11]);
             numberOfObjectives = Integer.parseInt(args[12]);
             saveGenerations = Boolean.parseBoolean(args[13]);
+            executions = Integer.parseInt(args[14]);
+            path = args[15];
         } else {
             System.out.println("Not enough parameters. Inform the following:");
             System.out.println("\t 1 - Population Size (int);");
@@ -76,8 +79,10 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit);");
             System.out.println("\t 11 - Sliding window size W (int);");
             System.out.println("\t 12 - Scaling factor C (double);");
-            System.out.println("\t 15 - Number of objectives (int - 2 or 4);");
-            System.out.println("\t 16 - Save generations? (boolean);");
+            System.out.println("\t 13 - Number of objectives (int - 2 or 4);");
+            System.out.println("\t 14 - Save generations? (boolean);");
+            System.out.println("\t 15 - Executions (int);");
+            System.out.println("\t 16 - Output Path (String);");
             System.out.println();
             System.out.println("Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?");
 
@@ -119,9 +124,11 @@ public class NSGAIIHyperheuristicMain {
 
             heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
 
-            w = maxEvaluations / 5; // 5000
+            w = maxEvaluations / 5;
             c = 7;
             saveGenerations = false;
+            executions = 30;
+            path = "experiment/";
         }
 
         System.out.println("Initializing experiments.");
@@ -146,7 +153,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("Problem: " + problemName);
             System.out.println();
 
-            String outputDirectory = "experiment/" + numberOfObjectives + "objectives/" + heuristicFunction + "/" + problemName + "/";
+            String outputDirectory =  path + numberOfObjectives + "objectives/" + heuristicFunction + "/" + problemName + "/";
             createDirectory(outputDirectory);
 
             CITO_CAITO problem; // The problem to solve
