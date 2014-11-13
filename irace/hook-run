@@ -31,7 +31,7 @@ STDOUT="c${CANDIDATE}.stdout"
 STDERR="c${CANDIDATE}.stderr"
 
 # Now we can call ACOTSP by building a command line with all parameters for it
-$EXE $INSTANCE ${CAND_PARAMS} 1> $STDOUT 2> $STDERR
+$EXE $INSTANCE $CANDIDATE ${CAND_PARAMS} 1> $STDOUT 2> $STDERR
 
 # In case of error, we print the current time:
 error() {

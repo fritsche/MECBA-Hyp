@@ -1,1 +1,0 @@
-java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain 300 60000 0.95 0.02 1.0 0.08 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation OA_AJHotDraw MultiArmedBandit 1 2 3 4 2 false

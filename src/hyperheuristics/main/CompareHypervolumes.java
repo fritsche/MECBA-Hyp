@@ -24,6 +24,7 @@ public class CompareHypervolumes {
     public static int EXECUTIONS = 30;
     public static String cfpath = "experiment/";
     public static String mabpath = "experiment/";
+    public static String outpath = "experiment/";
 
     public static void main(String[] args) throws IOException, InterruptedException {
         
@@ -43,7 +44,8 @@ public class CompareHypervolumes {
             EXECUTIONS = Integer.parseInt(args[0]);
             cfpath = args[1];
             mabpath = args[2];
-            problems = Arrays.copyOfRange(args, 3, args.length);
+            outpath = args[3];
+            problems = Arrays.copyOfRange(args, 4, args.length);
         }
 
         String[] heuristicFunctions = new String[]{
@@ -218,7 +220,7 @@ public class CompareHypervolumes {
     }
 
     private static void hypervolumeHyperheuristicsComparison(String[] problems, String[] heuristicFunctions, int numberOfObjectives) throws InterruptedException, IOException {
-        String outputDirectory = cfpath + numberOfObjectives + "objectives/";
+        String outputDirectory = outpath + numberOfObjectives + "objectives/";
 
         int mecbaBestCount = 0;
         int[] hyperheuristicBestCount = new int[heuristicFunctions.length];
