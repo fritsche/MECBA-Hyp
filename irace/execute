@@ -37,7 +37,11 @@ mecba=$(cat $output | grep -oP "MECBA PFknown: \K.*")
 mab=$(cat $output | grep -oP "MultiArmedBandit PFknown: \K.*")
 cf=$(cat $output | grep -oP "ChoiceFunction PFknown: \K.*")
 
+mecba=${mecba/[eE]+*/*10^}
+mab=${mab/[eE]+*/*10^}
+cf=${cf/[eE]+*/*10^}
+
 # EH MINIMIZACAO
-echo $mecba $mab $cf >> execute.log
-best=$(echo - | awk '{print $mecba - $cf}')
+best=$(echo "$mecba - $cf" | bc)
 echo Best $best
+
