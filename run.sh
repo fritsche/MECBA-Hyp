@@ -26,7 +26,7 @@ population=300
 crossover=0.95
 mutation=0.02
 
-executions=1
+executions=10
 path="experiment/"
 
 rm -f run.txt
@@ -48,6 +48,8 @@ wait
 
 rm -f run.txt
 
-echo java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $path $path $path ${problems}
+java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $path $path $path 2 ${problems}
+
+java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $path $path $path 4 ${problems}
 
 zenity --info --text="Execuções finalizadas!"

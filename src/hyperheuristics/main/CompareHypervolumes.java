@@ -28,6 +28,7 @@ public class CompareHypervolumes {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         
+        int[] numberOfObjectivesArray = new int[]{2, 4};
         String[] problems;
         if(args.length == 0){
             problems = new String[]{
@@ -45,15 +46,14 @@ public class CompareHypervolumes {
             cfpath = args[1];
             mabpath = args[2];
             outpath = args[3];
-            problems = Arrays.copyOfRange(args, 4, args.length);
+            numberOfObjectivesArray = new int[]{Integer.parseInt(args[4])};
+            problems = Arrays.copyOfRange(args, 5, args.length);
         }
 
         String[] heuristicFunctions = new String[]{
             LowLevelHeuristic.CHOICE_FUNCTION,
             LowLevelHeuristic.MULTI_ARMED_BANDIT
         };
-
-        int[] numberOfObjectivesArray = new int[]{2, 4};
 
         for (int numberOfObjectives : numberOfObjectivesArray) {
 //            hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);

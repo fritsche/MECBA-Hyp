@@ -1,26 +1,19 @@
-Initializing experiments.
-Parameters:
-	PopulationSize = 300
-	Max Evaluations = 60000
-	Crossover Probability = 0.95
-	Mutation Probability = 0.02
-	Alpha = 1.0
-	Beta = 0.08
-	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
-	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
-	Problems = [OO_JHotDraw]
-	Heuristic Function = MultiArmedBandit
-	Sliding window size W = 22675
-	Scaling factor C = 19.66
-	Gamma in the PH test = 45.55
-	Tolerance parameter Delta = 0.03
+Not enough parameters. Inform the following:
+	 1 - Population Size (int);
+	 2 - Max Evaluations (int);
+	 3 - Crossover Probability (double);
+	 4 - Mutation Probability (double);
+	 5 - Alpha (double);
+	 6 - Beta (double);
+	 7 - Crossover Operators (String[] - comma separated, no spaces);
+	 8 - Mutation Operators (String[] - comma separated, no spaces);
+	 9 - Problems (String[] - comma separated, no spaces);
+	 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit);
+	 11 - Sliding window size W (int);
+	 12 - Scaling factor C (double);
+	 13 - Number of objectives (int - 2 or 4);
+	 14 - Save generations? (boolean);
+	 15 - Executions (int);
+	 16 - Output Path (String);
 
--------------------
-
-Problem: OO_JHotDraw
-
-Execution: 1
-
-End of execution for problem OO_JHotDraw.
-Total time (seconds): 27
-Writing results.
+Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?
