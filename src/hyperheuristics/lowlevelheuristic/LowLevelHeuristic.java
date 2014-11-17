@@ -198,6 +198,8 @@ public class LowLevelHeuristic extends Operator {
                 rank += dominanceComparator.compare(parent, offspring);
             }
         }
+        rank += 4;
+        rank *= 0.125;
     }
 
     public double getChoiceFunctionValue() {
