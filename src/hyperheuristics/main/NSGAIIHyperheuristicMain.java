@@ -34,7 +34,7 @@ public class NSGAIIHyperheuristicMain {
 
         String[] mutations;
 
-        int executions = 30;
+        int executions;
         int populationSize;
         int maxEvaluations;
         int numberOfObjectives;
@@ -45,9 +45,8 @@ public class NSGAIIHyperheuristicMain {
         String heuristicFunction;
         int w;
         double c;
-        double gamma;
-        double delta;
         boolean saveGenerations;
+        String path;
 
         if (args.length == 16) {
             populationSize = Integer.parseInt(args[0]);
@@ -62,10 +61,10 @@ public class NSGAIIHyperheuristicMain {
             heuristicFunction = args[9];
             w = Integer.parseInt(args[10]);
             c = Double.parseDouble(args[11]);
-            gamma = Double.parseDouble(args[12]);
-            delta = Double.parseDouble(args[13]);
-            numberOfObjectives = Integer.parseInt(args[14]);
-            saveGenerations = Boolean.parseBoolean(args[15]);
+            numberOfObjectives = Integer.parseInt(args[12]);
+            saveGenerations = Boolean.parseBoolean(args[13]);
+            executions = Integer.parseInt(args[14]);
+            path = args[15];
         } else {
             System.out.println("Not enough parameters. Inform the following:");
             System.out.println("\t 1 - Population Size (int);");
@@ -80,10 +79,10 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit);");
             System.out.println("\t 11 - Sliding window size W (int);");
             System.out.println("\t 12 - Scaling factor C (double);");
-            System.out.println("\t 13 - Gamma in the PH test (double);");
-            System.out.println("\t 14 - Tolerance parameter Delta (double);");
-            System.out.println("\t 15 - Number of objectives (int - 2 or 4);");
-            System.out.println("\t 16 - Save generations? (boolean);");
+            System.out.println("\t 13 - Number of objectives (int - 2 or 4);");
+            System.out.println("\t 14 - Save generations? (boolean);");
+            System.out.println("\t 15 - Executions (int);");
+            System.out.println("\t 16 - Output Path (String);");
             System.out.println();
             System.out.println("Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?");
 
@@ -125,11 +124,11 @@ public class NSGAIIHyperheuristicMain {
 
             heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
 
-            w = maxEvaluations / 5; // 5000
+            w = maxEvaluations / 5;
             c = 7;
-            gamma = 14;
-            delta = 0.15;
             saveGenerations = false;
+            executions = 30;
+            path = "experiment/";
         }
 
         System.out.println("Initializing experiments.");
@@ -146,8 +145,6 @@ public class NSGAIIHyperheuristicMain {
         System.out.println("\tHeuristic Function = " + heuristicFunction);
         System.out.println("\tSliding window size W = " + w);
         System.out.println("\tScaling factor C = " + c);
-        System.out.println("\tGamma in the PH test = " + gamma);
-        System.out.println("\tTolerance parameter Delta = " + delta);
 
         for (String problemName : problems) {
             System.out.println();
@@ -156,7 +153,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("Problem: " + problemName);
             System.out.println();
 
-            String outputDirectory = "experiment/" + numberOfObjectives + "objectives/" + heuristicFunction + "/" + problemName + "/";
+            String outputDirectory =  path + numberOfObjectives + "objectives/" + heuristicFunction + "/" + problemName + "/";
             createDirectory(outputDirectory);
 
             CITO_CAITO problem; // The problem to solve
@@ -201,8 +198,6 @@ public class NSGAIIHyperheuristicMain {
                     parameters.put("beta", beta);
                     parameters.put("w", w);
                     parameters.put("c", c);
-                    parameters.put("gamma", gamma);
-                    parameters.put("delta", delta);
 
                     Crossover crossover = CrossoverFactory.getCrossoverOperator(crossoverName);
                     crossover.setParameter("probability", crossoverProbability);
@@ -219,75 +214,70 @@ public class NSGAIIHyperheuristicMain {
             }
 
             new File(outputDirectory + "LLH.txt").delete();
-            try (FileWriter rebootWriter = new FileWriter(outputDirectory + "REBOOTS.txt")) {
-                try (FileWriter timeWriter = new FileWriter(outputDirectory + "TIME_EXECUTION.txt")) {
+            try (FileWriter timeWriter = new FileWriter(outputDirectory + "TIME_EXECUTION.txt")) {
 
-                    SolutionSet allRuns = new SolutionSet();
-                    long allExecutionTime = 0;
-                    int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
+                SolutionSet allRuns = new SolutionSet();
+                long allExecutionTime = 0;
+                int[] allTimesApplied = new int[algorithm.getLowLevelHeuristicsSize()];
 
-                    for (int execution = 0; execution < executions; execution++) {
-                        String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
-                        createDirectory(executionDirectory);
+                for (int execution = 0; execution < executions; execution++) {
+                    String executionDirectory = outputDirectory + "EXECUTION_" + execution + "/";
+                    createDirectory(executionDirectory);
 
-                        System.out.println("Execution: " + (execution + 1));
-                        algorithm.clearLowLeverHeuristicsValues();
-                        algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
-                        algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
-                        algorithm.setDebugPath(executionDirectory + "DEBUG");
+                    System.out.println("Execution: " + (execution + 1));
+                    algorithm.clearLowLeverHeuristicsValues();
+                    algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
+                    algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
+                    algorithm.setDebugPath(executionDirectory + "DEBUG");
 
-                        if (saveGenerations) {
-                            String generationsDirectory = executionDirectory + "GENERATIONS/";
-                            createDirectory(generationsDirectory);
-                            algorithm.setGenerationsOutputDirectory(generationsDirectory);
-                        }
-
-                        // Execute the Algorithm
-                        long initTime = System.currentTimeMillis();
-                        SolutionSet population = algorithm.execute();
-                        long estimatedTime = System.currentTimeMillis() - initTime;
-
-                        problem.removeDominadas(population);
-                        problem.removeRepetidas(population);
-
-                        // Result messages
-                        population.printVariablesToFile(executionDirectory + "VAR.txt");
-                        population.printObjectivesToFile(executionDirectory + "FUN.txt");
-                        algorithm.printLowLevelHeuristicsInformation(executionDirectory + "LLH.txt");
-
-                        rebootWriter.append(LowLevelHeuristic.getREBOOTS() + "\n");
-                        rebootWriter.flush();
-
-                        timeWriter.append(estimatedTime + "\n");
-                        timeWriter.flush();
-                        allExecutionTime += estimatedTime;
-
-                        allRuns = allRuns.union(population);
-
-                        int[] executionTimesApplied = algorithm.getLowLevelHeuristicsNumberOfTimesApplied();
-                        for (int i = 0; i < executionTimesApplied.length; i++) {
-                            allTimesApplied[i] += executionTimesApplied[i];
-                        }
+                    if (saveGenerations) {
+                        String generationsDirectory = executionDirectory + "GENERATIONS/";
+                        createDirectory(generationsDirectory);
+                        algorithm.setGenerationsOutputDirectory(generationsDirectory);
                     }
 
-                    System.out.println();
-                    System.out.println("End of execution for problem " + problemName + ".");
-                    System.out.println("Total time (seconds): " + allExecutionTime / 1000);
-                    System.out.println("Writing results.");
-                    problem.removeDominadas(allRuns);
-                    problem.removeRepetidas(allRuns);
+                    // Execute the Algorithm
+                    long initTime = System.currentTimeMillis();
+                    SolutionSet population = algorithm.execute();
+                    long estimatedTime = System.currentTimeMillis() - initTime;
 
-                    allRuns.printVariablesToFile(outputDirectory + "VAR.txt");
-                    allRuns.printObjectivesToFile(outputDirectory + "FUN.txt");
+                    problem.removeDominadas(population);
+                    problem.removeRepetidas(population);
 
-                    timeWriter.append("\n");
-                    timeWriter.append("Total: " + allExecutionTime + "\n");
-                    timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) executions) + "\n");
+                    // Result messages
+                    population.printVariablesToFile(executionDirectory + "VAR.txt");
+                    population.printObjectivesToFile(executionDirectory + "FUN.txt");
+                    algorithm.printLowLevelHeuristicsInformation(executionDirectory + "LLH.txt");
 
-                    try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
-                        for (int i = 0; i < allTimesApplied.length; i++) {
-                            timesAppliedWriter.append(lowLevelHeuristicNames[i] + " " + allTimesApplied[i] + "\n");
-                        }
+                    timeWriter.append(estimatedTime + "\n");
+                    timeWriter.flush();
+                    allExecutionTime += estimatedTime;
+
+                    allRuns = allRuns.union(population);
+
+                    int[] executionTimesApplied = algorithm.getLowLevelHeuristicsNumberOfTimesApplied();
+                    for (int i = 0; i < executionTimesApplied.length; i++) {
+                        allTimesApplied[i] += executionTimesApplied[i];
+                    }
+                }
+
+                System.out.println();
+                System.out.println("End of execution for problem " + problemName + ".");
+                System.out.println("Total time (seconds): " + allExecutionTime / 1000);
+                System.out.println("Writing results.");
+                problem.removeDominadas(allRuns);
+                problem.removeRepetidas(allRuns);
+
+                allRuns.printVariablesToFile(outputDirectory + "VAR.txt");
+                allRuns.printObjectivesToFile(outputDirectory + "FUN.txt");
+
+                timeWriter.append("\n");
+                timeWriter.append("Total: " + allExecutionTime + "\n");
+                timeWriter.append("Average: " + (double) ((double) allExecutionTime / (double) executions) + "\n");
+
+                try (FileWriter timesAppliedWriter = new FileWriter(outputDirectory + "LLH.txt")) {
+                    for (int i = 0; i < allTimesApplied.length; i++) {
+                        timesAppliedWriter.append(lowLevelHeuristicNames[i] + " " + allTimesApplied[i] + "\n");
                     }
                 }
             }

@@ -7,6 +7,7 @@ package hyperheuristics.lowlevelheuristic;
 
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import jmetal.base.Operator;
@@ -42,8 +43,6 @@ public class LowLevelHeuristic extends Operator {
      */
     private static int W = 0;
     private static double c = 0;
-    private static double gamma = 0;
-    private static double delta = 0;
 
     /**
      * Sliding window.
@@ -65,6 +64,7 @@ public class LowLevelHeuristic extends Operator {
      */
     private static int IT = 0;
     private static int REBOOTS = 0;
+    private static double SUM_N = 0;
 
     //Empirical Rewards.
     private double q = 0;
@@ -80,6 +80,8 @@ public class LowLevelHeuristic extends Operator {
     private double rank;
     private double elapsedTime;
     private int numberOfTimesApplied;
+    private int lastTimeApplied;
+    private double n;
 
     //Aggregation
     private Crossover crossoverOperator;
@@ -93,6 +95,8 @@ public class LowLevelHeuristic extends Operator {
         this.rank = 0;
         this.elapsedTime = 0;
         this.numberOfTimesApplied = 0;
+        this.lastTimeApplied = 0;
+        this.n = 1;
 
         if (parameters.containsKey("name")) {
             this.name = (String) parameters.get("name");
@@ -124,12 +128,6 @@ public class LowLevelHeuristic extends Operator {
 
         if (parameters.containsKey("c")) {
             c = (double) parameters.get("c");
-        }
-        if (parameters.containsKey("gamma")) {
-            gamma = (double) parameters.get("gamma");
-        }
-        if (parameters.containsKey("delta")) {
-            delta = (double) parameters.get("delta");
         }
     }
 
@@ -178,7 +176,7 @@ public class LowLevelHeuristic extends Operator {
     public void executed() {
         updateElapsedTime(true);
         this.numberOfTimesApplied++;
-        if(IT<W) IT++;
+        IT++;
     }
 
     public void notExecuted() {
@@ -270,29 +268,24 @@ public class LowLevelHeuristic extends Operator {
         r = max;
     }
 
-    public void creditAssignment(List<LowLevelHeuristic> heuristicsForReinitialization) {
+    public void creditAssignment(List<LowLevelHeuristic> heuristics) {
         if (W != 0) {
             LowLevelHeuristic temp = SLIDING_WINDOW_HEURISTIC[I];
             SLIDING_WINDOW_HEURISTIC[I] = this;
             SLIDING_WINDOW_IMPROVEMENT[I] = this.rank;
             if (temp != null) {
-                temp.numberOfTimesApplied --;
                 temp.updateReward();
             }
             this.updateReward();
             I++;
             I %= W;
 
-            q = (double) (r + q * (double) (numberOfTimesApplied-1)) / (double) numberOfTimesApplied;
-            double m = r - q + delta;
-            if (m >= biggest) {
-                biggest = m;
-            }
-            if (biggest - m > gamma) {
-                reinitializeStatic();
-                for (LowLevelHeuristic heuristic : heuristicsForReinitialization) {
-                    heuristic.reinitialize();
-                }
+            q = (double) q * (W /(double) W + (IT - lastTimeApplied)) + r * (1.0/(double)(n+1));
+            n = (double) n * (W/((double)W + (IT - lastTimeApplied)) + (1.0/(double)(n+1)));
+            
+            SUM_N = 0;
+            for (LowLevelHeuristic heuristic : heuristics) {
+                SUM_N += heuristic.n;
             }
         }
     }
@@ -315,7 +308,7 @@ public class LowLevelHeuristic extends Operator {
     }
 
     public double getMultiArmedBanditValue() {
-        aux = (double) Math.sqrt((2.0 * Math.log(IT)) / (double) numberOfTimesApplied);
+        aux = (double) Math.sqrt((2.0 * Math.log(SUM_N)) / (double) n);
         return (double) q + c * aux;
     }
 }

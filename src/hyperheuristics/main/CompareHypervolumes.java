@@ -22,28 +22,41 @@ import java.util.logging.Logger;
 public class CompareHypervolumes {
 
     public static int EXECUTIONS = 30;
+    public static String cfpath = "experiment/";
+    public static String mabpath = "experiment/";
+    public static String outpath = "experiment/";
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String[] problems = new String[]{
-            "OA_AJHotDraw",
-            "OA_AJHsqldb",
-            "OA_HealthWatcher",
-            "OA_TollSystems",
-            "OO_BCEL",
-            "OO_JBoss",
-            "OO_JHotDraw",
-            "OO_MyBatis"
-        };
+        
+        int[] numberOfObjectivesArray = new int[]{2, 4};
+        String[] problems;
+        if(args.length == 0){
+            problems = new String[]{
+                "OA_AJHotDraw",
+                "OA_AJHsqldb",
+                "OA_HealthWatcher",
+                "OA_TollSystems",
+                "OO_BCEL",
+                "OO_JBoss",
+                "OO_JHotDraw",
+                "OO_MyBatis"
+            };
+        }else {
+            EXECUTIONS = Integer.parseInt(args[0]);
+            cfpath = args[1];
+            mabpath = args[2];
+            outpath = args[3];
+            numberOfObjectivesArray = new int[]{Integer.parseInt(args[4])};
+            problems = Arrays.copyOfRange(args, 5, args.length);
+        }
 
         String[] heuristicFunctions = new String[]{
             LowLevelHeuristic.CHOICE_FUNCTION,
             LowLevelHeuristic.MULTI_ARMED_BANDIT
         };
 
-        int[] numberOfObjectivesArray = new int[]{2, 4};
-
         for (int numberOfObjectives : numberOfObjectivesArray) {
-            hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
+//            hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
             hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
 //        hypervolumeByGeneration(problems, heuristicFunctions, numberOfObjectives);
         }
@@ -51,8 +64,8 @@ public class CompareHypervolumes {
 
     private static void hypervolumeComparison(String[] problems, String[] heuristicFunctions, int numberOfObjectives) throws InterruptedException, IOException {
         for (String heuristicFunction : heuristicFunctions) {
-
-            String outputDirectory = "experiment/" + numberOfObjectives + "objectives/" + heuristicFunction + "/";
+            String path = (heuristicFunction.equals(LowLevelHeuristic.CHOICE_FUNCTION))?(cfpath):(mabpath);
+            String outputDirectory = path + numberOfObjectives + "objectives/" + heuristicFunction + "/";
 
             try (FileWriter fileWriter = new FileWriter(outputDirectory + "HYPERVOLUMES.txt")) {
 
@@ -79,17 +92,17 @@ public class CompareHypervolumes {
 
                     double mecbaHypervolume = hypervolumeHandler.calculateHypervolume(mecbaDirectory + "All_FUN_nsgaii-" + problem, numberOfObjectives);
                     double hyperheuristicHypervolume = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "FUN.txt", numberOfObjectives);
-                    fileWriter.append("MECBA (PFknown): " + mecbaHypervolume + "\n");
-                    fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicHypervolume + "\n");
+                    fileWriter.append("MECBA PFknown: " + mecbaHypervolume + "\n");
+                    fileWriter.append(heuristicFunction + " PFknown: " + hyperheuristicHypervolume + "\n");
                     if (mecbaHypervolume == hyperheuristicHypervolume) {
-                        fileWriter.append("Best (PFknown): Tied!\n");
+                        fileWriter.append("Best PFknown: Tied!\n");
                         tied++;
                     } else {
                         if (mecbaHypervolume > hyperheuristicHypervolume) {
-                            fileWriter.append("Best (PFknown): MECBA\n");
+                            fileWriter.append("Best PFknown: MECBA\n");
                             mecbaBest++;
                         } else {
-                            fileWriter.append("Best (PFknown): " + heuristicFunction + "\n");
+                            fileWriter.append("Best PFknown: " + heuristicFunction + "\n");
                             hyperheuristicBest++;
                         }
                     }
@@ -194,9 +207,9 @@ public class CompareHypervolumes {
                 }
                 fileWriter.append("Problems: " + problems.length + "\n");
                 fileWriter.append("\n");
-                fileWriter.append("Tied (PFknown): " + tied + "\n");
-                fileWriter.append("MECBA (PFknown): " + mecbaBest + "\n");
-                fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicBest + "\n");
+                fileWriter.append("Tied PFknown: " + tied + "\n");
+                fileWriter.append("MECBA PFknown: " + mecbaBest + "\n");
+                fileWriter.append(heuristicFunction + " PFknown: " + hyperheuristicBest + "\n");
                 fileWriter.append("\n");
                 fileWriter.append("Tied (Mean): " + tiedMean + "\n");
                 fileWriter.append("MECBA (Mean): " + mecbaBestMean + "\n");
@@ -207,7 +220,7 @@ public class CompareHypervolumes {
     }
 
     private static void hypervolumeHyperheuristicsComparison(String[] problems, String[] heuristicFunctions, int numberOfObjectives) throws InterruptedException, IOException {
-        String outputDirectory = "experiment/" + numberOfObjectives + "objectives/";
+        String outputDirectory = outpath + numberOfObjectives + "objectives/";
 
         int mecbaBestCount = 0;
         int[] hyperheuristicBestCount = new int[heuristicFunctions.length];
@@ -232,7 +245,9 @@ public class CompareHypervolumes {
                     hypervolumeHandler.addParetoFront(mecbaDirectory + "All_FUN_nsgaii-" + problem);
 
                     for (String heuristicFunction : heuristicFunctions) {
-                        String hyperheuristicDirectory = outputDirectory + heuristicFunction + "/" + problem + "/";
+                        String path = (heuristicFunction.equals(LowLevelHeuristic.CHOICE_FUNCTION))?(cfpath):(mabpath);
+                        path += numberOfObjectives + "objectives/";
+                        String hyperheuristicDirectory = path + heuristicFunction + "/" + problem + "/";
                         hypervolumeHandler.addParetoFront(hyperheuristicDirectory + "FUN.txt");
                     }
 
@@ -243,24 +258,26 @@ public class CompareHypervolumes {
                     Arrays.fill(hyperheuristicHypervolumes, 0D);
                     for (int i = 0; i < heuristicFunctions.length; i++) {
                         String heuristicFunction = heuristicFunctions[i];
-                        String hyperheuristicDirectory = outputDirectory + heuristicFunction + "/" + problem + "/";
+                        String path = (heuristicFunction.equals(LowLevelHeuristic.CHOICE_FUNCTION))?(cfpath):(mabpath);
+                        path += numberOfObjectives + "objectives/";
+                        String hyperheuristicDirectory = path + heuristicFunction + "/" + problem + "/";
                         hyperheuristicHypervolumes[i] = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "FUN.txt", numberOfObjectives);
                     }
 
                     //Write PFknown results
-                    fileWriter.append("MECBA (PFknown): " + mecbaHypervolume + "\n");
+                    fileWriter.append("MECBA PFknown: " + mecbaHypervolume + "\n");
                     double maxHypervolume = mecbaHypervolume;
 
                     for (int i = 0; i < heuristicFunctions.length; i++) {
                         String heuristicFunction = heuristicFunctions[i];
 
-                        fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicHypervolumes[i] + "\n");
+                        fileWriter.append(heuristicFunction + " PFknown: " + hyperheuristicHypervolumes[i] + "\n");
                         if (hyperheuristicHypervolumes[i] > maxHypervolume) {
                             maxHypervolume = hyperheuristicHypervolumes[i];
                         }
                     }
 
-                    fileWriter.append("Best (PFknown):");
+                    fileWriter.append("Best PFknown:");
 
                     if (mecbaHypervolume == maxHypervolume) {
                         fileWriter.append(" MECBA");
@@ -289,7 +306,9 @@ public class CompareHypervolumes {
                     }
 
                     for (String heuristicFunction : heuristicFunctions) {
-                        String hyperheuristicDirectory = outputDirectory + heuristicFunction + "/" + problem + "/";
+                        String path = (heuristicFunction.equals(LowLevelHeuristic.CHOICE_FUNCTION))?(cfpath):(mabpath);
+                        path += numberOfObjectives + "objectives/";
+                        String hyperheuristicDirectory = path + heuristicFunction + "/" + problem + "/";
                         for (int j = 0; j < EXECUTIONS; j++) {
                             hypervolumeHandler.addParetoFront(hyperheuristicDirectory + "EXECUTION_" + j + "/FUN.txt");
                         }
@@ -310,7 +329,9 @@ public class CompareHypervolumes {
                         mecbaHypervolumes[i] = hypervolumeHandler.calculateHypervolume(mecbaDirectory + "FUN_nsgaii-" + problem + "-" + i + ".NaoDominadas", numberOfObjectives);
                         mecbaHypervolume += mecbaHypervolumes[i];
                         for (int j = 0; j < heuristicFunctions.length; j++) {
-                            String hyperheuristicDirectory = outputDirectory + heuristicFunctions[j] + "/" + problem + "/";
+                            String path = (heuristicFunctions[j].equals(LowLevelHeuristic.CHOICE_FUNCTION))?(cfpath):(mabpath);
+                            path += numberOfObjectives + "objectives/";
+                            String hyperheuristicDirectory = path + heuristicFunctions[j] + "/" + problem + "/";
                             hyperheuristicHypervolumes[j][i] = hypervolumeHandler.calculateHypervolume(hyperheuristicDirectory + "EXECUTION_" + i + "/FUN.txt", numberOfObjectives);
                             hyperheuristicMeanHypervolumes[j] += hyperheuristicHypervolumes[j][i];
                         }
@@ -353,10 +374,10 @@ public class CompareHypervolumes {
             }
             fileWriter.append("Problems: " + problems.length + "\n");
             fileWriter.append("\n");
-            fileWriter.append("MECBA (PFknown): " + mecbaBestCount + "\n");
+            fileWriter.append("Problems MECBA PFknown problems: " + mecbaBestCount + "\n");
             for (int i = 0; i < heuristicFunctions.length; i++) {
                 String heuristicFunction = heuristicFunctions[i];
-                fileWriter.append(heuristicFunction + " (PFknown): " + hyperheuristicBestCount[i] + "\n");
+                fileWriter.append(heuristicFunction + " PFknown problems: " + hyperheuristicBestCount[i] + "\n");
             }
             fileWriter.append("\n");
             fileWriter.append("MECBA (Mean): " + mecbaBestMeanCount + "\n");
@@ -370,7 +391,8 @@ public class CompareHypervolumes {
     private static void hypervolumeByGeneration(String[] problems, String[] heuristicFunctions, int numberOfObjectives) {
         for (String heuristicFunction : heuristicFunctions) {
 
-            String outputDirectory = "experiment/" + numberOfObjectives + "objectives/" + heuristicFunction + "/";
+            String path = (heuristicFunction.equals(LowLevelHeuristic.CHOICE_FUNCTION))?(cfpath):(mabpath);
+            String outputDirectory = path + numberOfObjectives + "objectives/" + heuristicFunction + "/";
             for (String problem : problems) {
                 HypervolumeHandler hypervolumeHandler = new HypervolumeHandler();
                 String problemDirectory = outputDirectory + problem + "/";

@@ -1,0 +1,3189 @@
+Initializing experiments.
+Parameters:
+	PopulationSize = 300Initializing experiments.
+	Max Evaluations = 60000
+
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000	Crossover Probability = 0.95
+
+	Scaling factor C = 7.0
+	Mutation Probability = 0.02
+
+-------------------
+
+	Alpha = 1.0Problem: OA_AJHsqldb
+
+
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 1
+Execution: 2
+Execution: 2
+Execution: 3
+Execution: 3
+Execution: 4
+Execution: 4
+Execution: 5
+Execution: 5
+Execution: 6
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 7
+Execution: 9
+Execution: 8
+Execution: 10
+Execution: 9
+Execution: 11
+Execution: 10
+Execution: 12
+Execution: 13
+Execution: 11
+Execution: 14
+Execution: 12
+Execution: 15
+Execution: 13
+Execution: 16
+Execution: 14
+Execution: 17
+Execution: 15
+Execution: 18
+Execution: 19
+Execution: 16
+Execution: 20
+Execution: 17
+Execution: 21
+Execution: 18
+Execution: 22
+Execution: 19
+Execution: 23
+Execution: 20
+Execution: 24
+Execution: 25
+Execution: 21
+Execution: 26
+Execution: 22
+Execution: 27
+Execution: 23
+Execution: 28
+Execution: 24
+Execution: 29
+Execution: 30
+Execution: 25
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 1203
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 2
+Execution: 26
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 27
+Execution: 8
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 12
+Execution: 28
+Execution: 13
+Execution: 14
+Execution: 15
+Execution: 16
+Execution: 17
+Execution: 29
+Execution: 18
+Execution: 19
+Execution: 20
+Execution: 21
+Execution: 22
+Execution: 30
+Execution: 23
+Execution: 24
+Execution: 25
+Execution: 26
+Execution: 27
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 1430
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 28
+Execution: 1
+Execution: 2
+Execution: 29
+Execution: 3
+Execution: 4
+Execution: 30
+Execution: 5
+Execution: 6
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 255
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 7
+Execution: 2
+Execution: 8
+Execution: 3
+Execution: 4
+Execution: 9
+Execution: 5
+Execution: 10
+Execution: 6
+Execution: 11
+Execution: 7
+Execution: 8
+Execution: 12
+Execution: 9
+Execution: 13
+Execution: 10
+Execution: 14
+Execution: 11
+Execution: 12
+Execution: 15
+Execution: 13
+Execution: 16
+Execution: 14
+Execution: 17
+Execution: 15
+Execution: 18
+Execution: 16
+Execution: 17
+Execution: 19
+Execution: 18
+Execution: 20
+Execution: 19
+Execution: 21
+Execution: 20
+Execution: 21
+Execution: 22
+Execution: 22
+Execution: 23
+Execution: 23
+Execution: 24
+Execution: 24
+Execution: 25
+Execution: 25
+Execution: 26
+Execution: 26
+Execution: 27
+Execution: 27
+Execution: 28
+Execution: 29
+Execution: 28
+Execution: 30
+Execution: 29
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 112
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 30
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 152
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 2
+Execution: 4
+Execution: 3
+Execution: 5
+Execution: 6
+Execution: 4
+Execution: 7
+Execution: 8
+Execution: 5
+Execution: 9
+Execution: 6
+Execution: 10
+Execution: 11
+Execution: 7
+Execution: 12
+Execution: 13
+Execution: 8
+Execution: 14
+Execution: 9
+Execution: 15
+Execution: 16
+Execution: 10
+Execution: 17
+Execution: 18
+Execution: 11
+Execution: 19
+Execution: 12
+Execution: 20
+Execution: 21
+Execution: 13
+Execution: 22
+Execution: 23
+Execution: 14
+Execution: 24
+Execution: 25
+Execution: 15
+Execution: 26
+Execution: 16
+Execution: 27
+Execution: 28
+Execution: 17
+Execution: 29
+Execution: 30
+Execution: 18
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 329
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 19
+Execution: 20
+Execution: 2
+Execution: 21
+Execution: 22
+Execution: 23
+Execution: 3
+Execution: 24
+Execution: 25
+Execution: 4
+Execution: 26
+Execution: 27
+Execution: 5
+Execution: 28
+Execution: 29
+Execution: 30
+Execution: 6
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 537
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 7
+Execution: 2
+Execution: 8
+Execution: 3
+Execution: 9
+Execution: 4
+Execution: 10
+Execution: 11
+Execution: 5
+Execution: 12
+Execution: 6
+Execution: 13
+Execution: 7
+Execution: 14
+Execution: 8
+Execution: 15
+Execution: 9
+Execution: 16
+Execution: 10
+Execution: 17
+Execution: 11
+Execution: 18
+Execution: 12
+Execution: 19
+Execution: 13
+Execution: 20
+Execution: 21
+Execution: 14
+Execution: 22
+Execution: 15
+Execution: 23
+Execution: 16
+Execution: 24
+Execution: 17
+Execution: 18
+Execution: 25
+Execution: 26
+Execution: 19
+Execution: 27
+Execution: 20
+Execution: 28
+Execution: 21
+Execution: 29
+Execution: 22
+Execution: 30
+Execution: 23
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 1295
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 24
+Execution: 2
+Execution: 25
+Execution: 3
+Execution: 26
+Execution: 4
+Execution: 5
+Execution: 27
+Execution: 6
+Execution: 28
+Execution: 7
+Execution: 29
+Execution: 8
+Execution: 30
+Execution: 9
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 1459
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 10
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 11
+Execution: 8
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 12
+Execution: 12
+Execution: 13
+Execution: 14
+Execution: 15
+Execution: 16
+Execution: 13
+Execution: 17
+Execution: 18
+Execution: 19
+Execution: 14
+Execution: 20
+Execution: 21
+Execution: 22
+Execution: 15
+Execution: 23
+Execution: 24
+Execution: 25
+Execution: 16
+Execution: 26
+Execution: 27
+Execution: 28
+Execution: 29
+Execution: 30
+Execution: 17
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 304
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 18
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 19
+Execution: 12
+Execution: 13
+Execution: 14
+Execution: 15
+Execution: 16
+Execution: 20
+Execution: 17
+Execution: 18
+Execution: 19
+Execution: 20
+Execution: 21
+Execution: 21
+Execution: 22
+Execution: 23
+Execution: 24
+Execution: 25
+Execution: 26
+Execution: 22
+Execution: 27
+Execution: 28
+Execution: 29
+Execution: 30
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 173
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 23
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 24
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 12
+Execution: 13
+Execution: 14
+Execution: 15
+Execution: 16
+Execution: 17
+Execution: 25
+Execution: 18
+Execution: 19
+Execution: 20
+Execution: 21
+Execution: 22
+Execution: 23
+Execution: 24
+Execution: 25
+Execution: 26
+Execution: 26
+Execution: 27
+Execution: 28
+Execution: 29
+Execution: 30
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 136
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 2
+Execution: 27
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 28
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 29
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 12
+Execution: 30
+Execution: 13
+Execution: 14
+Execution: 15
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 1173
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 16
+Execution: 2
+Execution: 17
+Execution: 18
+Execution: 3
+Execution: 19
+Execution: 4
+Execution: 20
+Execution: 21
+Execution: 5
+Execution: 22
+Execution: 6
+Execution: 23
+Execution: 24
+Execution: 7
+Execution: 25
+Execution: 8
+Execution: 26
+Execution: 27
+Execution: 9
+Execution: 28
+Execution: 10
+Execution: 29
+Execution: 30
+Execution: 11
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 385
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 12
+Execution: 13
+Execution: 2
+Execution: 14
+Execution: 15
+Execution: 3
+Execution: 16
+Execution: 17
+Execution: 4
+Execution: 18
+Execution: 19
+Execution: 5
+Execution: 20
+Execution: 21
+Execution: 22
+Execution: 6
+Execution: 23
+Execution: 24
+Execution: 7
+Execution: 25
+Execution: 26
+Execution: 8
+Execution: 27
+Execution: 28
+Execution: 9
+Execution: 29
+Execution: 30
+Execution: 10
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 631
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 11
+Execution: 2
+Execution: 12
+Execution: 3
+Execution: 13
+Execution: 4
+Execution: 14
+Execution: 15
+Execution: 5
+Execution: 16
+Execution: 6
+Execution: 17
+Execution: 7
+Execution: 18
+Execution: 19
+Execution: 8
+Execution: 20
+Execution: 9
+Execution: 21
+Execution: 22
+Execution: 10
+Execution: 23
+Execution: 11
+Execution: 24
+Execution: 12
+Execution: 25
+Execution: 13
+Execution: 26
+Execution: 27
+Execution: 14
+Execution: 28
+Execution: 15
+Execution: 29
+Execution: 16
+Execution: 30
+Execution: 17
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 1216
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 18
+Execution: 2
+Execution: 19
+Execution: 3
+Execution: 20
+Execution: 4
+Execution: 5
+Execution: 21
+Execution: 6
+Execution: 22
+Execution: 7
+Execution: 23
+Execution: 8
+Execution: 24
+Execution: 9
+Execution: 25
+Execution: 10
+Execution: 11
+Execution: 26
+Execution: 12
+Execution: 27
+Execution: 13
+Execution: 28
+Execution: 14
+Execution: 29
+Execution: 15
+Execution: 30
+Execution: 16
+Execution: 17
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 1499
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 18
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 19
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 12
+Execution: 20
+Execution: 13
+Execution: 14
+Execution: 15
+Execution: 16
+Execution: 21
+Execution: 17
+Execution: 18
+Execution: 19
+Execution: 20
+Execution: 22
+Execution: 21
+Execution: 22
+Execution: 23
+Execution: 24
+Execution: 25
+Execution: 23
+Execution: 26
+Execution: 27
+Execution: 28
+Execution: 29
+Execution: 24
+Execution: 30
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 263
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 25
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 12
+Execution: 26
+Execution: 13
+Execution: 14
+Execution: 15
+Execution: 16
+Execution: 17
+Execution: 18
+Execution: 19
+Execution: 20
+Execution: 27
+Execution: 21
+Execution: 22
+Execution: 23
+Execution: 24
+Execution: 25
+Execution: 26
+Execution: 27
+Execution: 28
+Execution: 28
+Execution: 29
+Execution: 30
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 163
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 29
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+Execution: 11
+Execution: 12
+Execution: 13
+Execution: 14
+Execution: 15
+Execution: 30
+Execution: 16
+Execution: 17
+Execution: 18
+Execution: 19
+Execution: 20
+Execution: 21
+Execution: 22
+Execution: 23
+Execution: 24
+Execution: 25
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 1227
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 26
+Execution: 27
+Execution: 28
+Execution: 2
+Execution: 29
+Execution: 30
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 129
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 3
+Execution: 4
+Execution: 2
+Execution: 5
+Execution: 6
+Execution: 3
+Execution: 7
+Execution: 4
+Execution: 8
+Execution: 9
+Execution: 5
+Execution: 10
+Execution: 11
+Execution: 6
+Execution: 12
+Execution: 7
+Execution: 13
+Execution: 14
+Execution: 8
+Execution: 15
+Execution: 16
+Execution: 9
+Execution: 17
+Execution: 10
+Execution: 18
+Execution: 19
+Execution: 11
+Execution: 20
+Execution: 21
+Execution: 12
+Execution: 22
+Execution: 13
+Execution: 23
+Execution: 24
+Execution: 14
+Execution: 25
+Execution: 26
+Execution: 15
+Execution: 27
+Execution: 16
+Execution: 28
+Execution: 29
+Execution: 17
+Execution: 30
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 342
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 18
+Execution: 19
+Execution: 20
+Execution: 2
+Execution: 21
+Execution: 22
+Execution: 3
+Execution: 23
+Execution: 24
+Execution: 25
+Execution: 4
+Execution: 26
+Execution: 27
+Execution: 5
+Execution: 28
+Execution: 29
+Execution: 6
+Execution: 30
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 588
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 7
+Execution: 2
+Execution: 8
+Execution: 9
+Execution: 3
+Execution: 4
+Execution: 10
+Execution: 5
+Execution: 11
+Execution: 6
+Execution: 12
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Crossover Probability = 0.95
+	Problems = [OA_AJHsqldb]
+	Mutation Probability = 0.02
+	Heuristic Function = ChoiceFunction
+	Alpha = 1.0
+	Sliding window size W = 12000	Beta = 0.021
+
+	Scaling factor C = 7.0
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]-------------------
+
+	Problems = [OA_AJHotDraw]
+
+	Heuristic Function = ChoiceFunction
+Problem: OA_AJHsqldb	Sliding window size W = 12000
+
+
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 1
+Execution: 13
+Execution: 2
+Execution: 7
+Execution: 2
+Execution: 3
+Execution: 14
+Execution: 8
+Execution: 3
+Execution: 4
+Execution: 15
+Execution: 4
+Execution: 9
+Execution: 5
+Execution: 16
+Execution: 5
+Execution: 6
+Execution: 10
+Execution: 6
+Execution: 17
+Execution: 7
+Execution: 11
+Execution: 7
+Execution: 8
+Execution: 18
+Execution: 12
+Execution: 9
+Execution: 8
+Execution: 19
+Execution: 9
+Execution: 13
+Execution: 10
+Execution: 20
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 539
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 10
+Execution: 2
+Execution: 14
+Execution: 3
+Execution: 21
+Execution: 4
+Execution: 5
+Execution: 6
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 605
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 7
+Execution: 2
+Execution: 3
+Execution: 15
+Execution: 8
+Execution: 4
+Execution: 22
+Execution: 5
+Execution: 9
+Execution: 6
+Execution: 7
+Execution: 10
+Execution: 8
+Execution: 9
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 125
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 10
+Execution: 3
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 73
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 23
+Execution: 2
+Execution: 7
+Execution: 16
+Execution: 8
+Execution: 9
+Execution: 3
+Execution: 10
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 53
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 4
+Execution: 5
+Execution: 24
+Execution: 2
+Execution: 17
+Execution: 6
+Execution: 3
+Execution: 7
+Execution: 8
+Execution: 4
+Execution: 25
+Execution: 9
+Execution: 18
+Execution: 10
+Execution: 5
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 163
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 6
+Execution: 26
+Execution: 7
+Execution: 19
+Execution: 2
+Execution: 8
+Execution: 27
+Execution: 9
+Execution: 10
+Execution: 20
+Execution: 3
+Execution: 28
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 269
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 21
+Execution: 4
+Execution: 29
+Execution: 2
+Execution: 22
+Execution: 5
+Execution: 30
+Execution: 3
+Execution: 6
+Execution: 23
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 1667
+Writing results.
+Initializing experiments.Initializing experiments.
+
+Parameters:Parameters:
+
+	PopulationSize = 300	PopulationSize = 300
+
+	Max Evaluations = 60000	Max Evaluations = 60000
+
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Crossover Probability = 0.95	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = ChoiceFunction	Mutation Probability = 0.02
+
+	Sliding window size W = 12000
+	Alpha = 1.0	Scaling factor C = 7.0
+
+
+-------------------	Beta = 0.021
+
+
+Problem: OA_AJHotDraw
+
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 1
+Execution: 2
+Execution: 2
+Execution: 3
+Execution: 3
+Execution: 4
+Execution: 4
+Execution: 5
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 6
+Execution: 8
+Execution: 7
+Execution: 9
+Execution: 8
+Execution: 10
+Execution: 9
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 355
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 10
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 544
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 2
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 232
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 3
+Execution: 4
+Execution: 4
+Execution: 5
+Execution: 5
+Execution: 6
+Execution: 6
+Execution: 7
+Execution: 7
+Execution: 8
+Execution: 8
+Execution: 9
+Execution: 10
+Execution: 9
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 155
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 10
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 206
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 2
+Execution: 4
+Execution: 3
+Execution: 5
+Execution: 6
+Execution: 4
+Execution: 7
+Execution: 8
+Execution: 5
+Execution: 9
+Execution: 6
+Execution: 10
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 138
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 2
+Execution: 10
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 211
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 3
+Execution: 4
+Execution: 2
+Execution: 5
+Execution: 3
+Execution: 6
+Execution: 4
+Execution: 7
+Execution: 5
+Execution: 6
+Execution: 8
+Execution: 7
+Execution: 9
+Execution: 8
+Execution: 10
+Execution: 9
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 609
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 2
+Execution: 10
+Execution: 3
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 811
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 4
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 6
+Execution: 8
+Execution: 9
+Execution: 10
+Execution: 7
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 384
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 167
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 9
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 136
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 10
+Execution: 4
+Execution: 5
+Execution: 6
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 1157
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 2
+Execution: 10
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 251
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 3
+Execution: 4
+Execution: 2
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 3
+Execution: 8
+Execution: 9
+Execution: 4
+Execution: 10
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 580
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 5
+Execution: 2
+Execution: 6
+Initializing experiments.
+Initializing experiments.Parameters:
+
+Parameters:
+	PopulationSize = 300
+	PopulationSize = 300	Max Evaluations = 60000
+
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Crossover Probability = 0.95
+	Alpha = 1.0
+	Mutation Probability = 0.02	Beta = 0.021
+
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]	Problems = [OA_AJHotDraw]
+
+	Heuristic Function = ChoiceFunction	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+
+	Sliding window size W = 12000	Problems = [OA_AJHsqldb]
+
+	Scaling factor C = 7.0	Heuristic Function = ChoiceFunction
+
+
+	Sliding window size W = 12000-------------------
+
+
+	Scaling factor C = 7.0Problem: OA_AJHotDraw
+
+
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 1
+Execution: 2
+Execution: 2
+Execution: 3
+Execution: 3
+Execution: 4
+Execution: 4
+Execution: 5
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 6
+Execution: 8
+Execution: 7
+Execution: 9
+Execution: 8
+Execution: 10
+Execution: 9
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 352
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 10
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 431
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 80
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 2
+Execution: 3
+Execution: 3
+Execution: 4
+Execution: 4
+Execution: 5
+Execution: 5
+Execution: 6
+Execution: 6
+Execution: 7
+Execution: 7
+Execution: 8
+Execution: 8
+Execution: 9
+Execution: 9
+Execution: 10
+Execution: 10
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 26
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 31
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 2
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 3
+Execution: 5
+Execution: 6
+Execution: 4
+Execution: 7
+Execution: 5
+Execution: 8
+Execution: 9
+Execution: 6
+Execution: 10
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 133
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 7
+Execution: 8
+Execution: 2
+Execution: 9
+Execution: 10
+Execution: 3
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 205
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 4
+Execution: 2
+Execution: 5
+Execution: 3
+Execution: 6
+Execution: 4
+Execution: 7
+Execution: 5
+Execution: 8
+Execution: 6
+Execution: 9
+Execution: 7
+Execution: 10
+Execution: 8
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 436
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 9
+Execution: 2
+Execution: 3
+Execution: 10
+Execution: 4
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 478
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 5
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 6
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 7
+Execution: 10
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 97
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 8
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 39
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 9
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 32
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 2
+Execution: 10
+Execution: 3
+Execution: 4
+Execution: 5
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 337
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 6
+Execution: 7
+Execution: 2
+Execution: 8
+Execution: 9
+Execution: 3
+Execution: 10
+Execution: 4
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 106
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 5
+Execution: 6
+Execution: 2
+Execution: 7
+Execution: 8
+Execution: 3
+Execution: 9
+Execution: 10
+Execution: 4
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 173
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 5
+Execution: 2
+Execution: 6
+Execution: 3
+Execution: 7
+Execution: 4
+Execution: 8
+Execution: 5
+Execution: 9
+Execution: 6
+Execution: 10
+Execution: 7
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 514
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 2
+Execution: 8
+Execution: 3
+Execution: 9
+Execution: 4
+Execution: 10
+Execution: 5
+Execution: 6
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 565
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 7
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 67
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 9
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 33
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 10
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 30
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 2
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 318
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 3
+Execution: 4
+Execution: 2
+Execution: 5
+Execution: 6
+Execution: 3
+Execution: 7
+Execution: 4
+Execution: 8
+Execution: 9
+Execution: 5
+Execution: 10
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 111
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = ChoiceFunction
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 2
+Execution: 9
+Execution: 10
+Execution: 3
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 182
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHotDraw
+
+Execution: 1
+Execution: 2
+Execution: 4
+Execution: 3
+Execution: 5
+Execution: 4
+Execution: 6
+Execution: 5
+Execution: 7
+Execution: 6
+Execution: 8
+Execution: 7
+Execution: 9
+Execution: 8
+Execution: 10
+Execution: 9
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 429
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_AJHsqldb]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_AJHsqldb
+
+Execution: 1
+Execution: 10
+
+End of execution for problem OA_AJHotDraw.
+Total time (seconds): 407
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_HealthWatcher]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_HealthWatcher
+
+Execution: 1
+Execution: 2
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 3
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_HealthWatcher.
+Total time (seconds): 87
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OA_TollSystems]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OA_TollSystems
+
+Execution: 1
+Execution: 2
+Execution: 4
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OA_TollSystems.
+Total time (seconds): 39
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_BCEL]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_BCEL
+
+Execution: 1
+Execution: 2
+Execution: 5
+Execution: 3
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OO_BCEL.
+Total time (seconds): 34
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JBoss]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JBoss
+
+Execution: 1
+Execution: 6
+Execution: 2
+Execution: 3
+Execution: 4
+Execution: 7
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OO_JBoss.
+Total time (seconds): 150
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_JHotDraw]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_JHotDraw
+
+Execution: 1
+Execution: 9
+Execution: 2
+Execution: 3
+Execution: 10
+Execution: 4
+Execution: 5
+
+End of execution for problem OA_AJHsqldb.
+Total time (seconds): 428
+Writing results.
+Initializing experiments.
+Parameters:
+	PopulationSize = 300
+	Max Evaluations = 60000
+	Crossover Probability = 0.95
+	Mutation Probability = 0.02
+	Alpha = 1.0
+	Beta = 0.021
+	Crossover Operators = [TwoPointsCrossover, MultiMaskCrossover, PMXCrossover]
+	Mutation Operators = [SwapMutation, SimpleInsertionMutation]
+	Problems = [OO_MyBatis]
+	Heuristic Function = MultiArmedBandit
+	Sliding window size W = 12000
+	Scaling factor C = 7.0
+
+-------------------
+
+Problem: OO_MyBatis
+
+Execution: 1
+Execution: 6
+Execution: 7
+Execution: 2
+Execution: 8
+Execution: 9
+Execution: 3
+Execution: 10
+
+End of execution for problem OO_JHotDraw.
+Total time (seconds): 184
+Writing results.
+Execution: 4
+Execution: 5
+Execution: 6
+Execution: 7
+Execution: 8
+Execution: 9
+Execution: 10
+
+End of execution for problem OO_MyBatis.
+Total time (seconds): 411
+Writing results.

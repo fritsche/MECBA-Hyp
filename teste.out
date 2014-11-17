@@ -1,0 +1,19 @@
+Not enough parameters. Inform the following:
+	 1 - Population Size (int);
+	 2 - Max Evaluations (int);
+	 3 - Crossover Probability (double);
+	 4 - Mutation Probability (double);
+	 5 - Alpha (double);
+	 6 - Beta (double);
+	 7 - Crossover Operators (String[] - comma separated, no spaces);
+	 8 - Mutation Operators (String[] - comma separated, no spaces);
+	 9 - Problems (String[] - comma separated, no spaces);
+	 10 - Heuristic Function (ChoiceFunction or MultiArmedBandit);
+	 11 - Sliding window size W (int);
+	 12 - Scaling factor C (double);
+	 13 - Number of objectives (int - 2 or 4);
+	 14 - Save generations? (boolean);
+	 15 - Executions (int);
+	 16 - Output Path (String);
+
+Would you like to execute the default parameters ('y' for 'yes' or anything for 'no')?

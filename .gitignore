@@ -1,6 +1,4 @@
-/nbproject/
 /build.xml
-/build/
+/build*
 /experiment*
-/dist/
-/resultado/
+/*experiment*
