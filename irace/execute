@@ -3,9 +3,9 @@
 cd ../..
 
 instance=$(echo $1 | grep -oP "/home/tux/MECBA-Hyp/irace/Instances//\K.*")
-IFS='@' read -a array <<< "$instance"
-problem=${array[0]}
-objectives=${array[1]}
+#IFS='@' read -a array <<< "$instance"
+problem=$instance
+objectives=2
 
 #function="MultiArmedBandit"
 function="ChoiceFunction"
