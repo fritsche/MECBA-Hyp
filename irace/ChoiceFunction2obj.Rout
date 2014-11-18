@@ -1,0 +1,143 @@
+
+R version 3.0.2 (2013-09-25) -- "Frisbee Sailing"
+Copyright (C) 2013 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R é um software livre e vem sem GARANTIA ALGUMA.
+Você pode redistribuí-lo sob certas circunstâncias.
+Digite 'license()' ou 'licence()' para detalhes de distribuição.
+
+R é um projeto colaborativo com muitos contribuidores.
+Digite 'contributors()' para obter mais informações e
+'citation()' para saber como citar o R ou pacotes do R em publicações.
+
+Digite 'demo()' para demonstrações, 'help()' para o sistema on-line de ajuda,
+ou 'help.start()' para abrir o sistema de ajuda em HTML no seu navegador.
+Digite 'q()' para sair do R.
+
+> library("irace")
+> irace.cmdline()
+irace	version: 1.05.951
+********************************************************************************
+* irace: An implementation in R of Iterated Race                               *
+* Copyright (C) 2010-2014                                                      *
+* Manuel Lopez-Ibanez     <manuel.lopez-ibanez@ulb.ac.be>                      *
+* Jeremie Dubois-Lacoste  <jeremie.dubois-lacoste@ulb.ac.be>                   *
+*                                                                              *
+* This is free software, and you are welcome to redistribute it under certain  *
+* conditions.  See the GNU General Public License for details. There is NO     *
+* warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  *
+*                                                                              *
+* irace builds upon previous code from the race package                        *
+* Copyright (C) 2003 Mauro Birattari                                           *
+********************************************************************************
+Warning: A default configuration file './tune-conf' has been found and will be read
+# 2014-11-18 08:32:28 BRST: Initialization
+# nbIterations: 2
+# minNbSurvival: 2
+# nbParameters: 1
+# seed: 1984213171.65206
+# confidence level: 0.95
+# remainingBudget: 1000
+# mu: 5
+
+# 2014-11-18 08:32:31 BRST: Iteration 1 of 2
+# experimentsUsedSoFar: 0
+# timeUsedSoFar: 0
+# timeEstimate: 0
+# remainingBudget: 1000
+# currentBudget: 500
+# nbCandidates: 83
+                            Markers:                           
+                               x No test is performed.         
+                               - The test is performed and     
+                                 some candidates are discarded.
+                               = The test is performed but     
+                                 no candidate is discarded.    
+                                                               
+                                                               
++-+-----------+-----------+-----------+-----------+-----------+
+| |       Task|      Alive|       Best|  Mean best| Exp so far|
++-+-----------+-----------+-----------+-----------+-----------+
+|x|          1|         83|         56|    0.07795|         83|
+|x|          2|         83|          8|      0.242|        166|
+|x|          3|         83|          2|     0.2161|        249|
+|x|          4|         83|          2|     0.0582|        332|
+|-|          5|         50|          2|      0.079|        415|
+|=|          6|         50|          8|      0.129|        465|
++-+-----------+-----------+-----------+-----------+-----------+
+
+Selected candidate:           8	mean value:      0.129
+
+Description of the selected candidate:
+    beta
+8 0.0266
+
+
+# Elite candidates:
+     beta
+8  0.0266
+41 0.0976
+# 2014-11-18 09:38:30 BRST: Iteration 2 of 2
+# experimentsUsedSoFar: 465
+# timeUsedSoFar: 0
+# timeEstimate: 0
+# remainingBudget: 535
+# currentBudget: 535
+# nbCandidates: 76
+                            Markers:                           
+                               x No test is performed.         
+                               - The test is performed and     
+                                 some candidates are discarded.
+                               = The test is performed but     
+                                 no candidate is discarded.    
+                                                               
+                                                               
++-+-----------+-----------+-----------+-----------+-----------+
+| |       Task|      Alive|       Best|  Mean best| Exp so far|
++-+-----------+-----------+-----------+-----------+-----------+
+|x|          1|         76|         22|  -0.009443|         76|
+|x|          2|         76|         67|     0.1769|        152|
+|x|          3|         76|         15|    0.03653|        228|
+|x|          4|         76|         54|    0.09141|        304|
+|=|          5|         76|         54|     0.1795|        380|
+|=|          6|         76|         72|      0.208|        456|
+|=|          7|         76|         15|     0.1387|        532|
++-+-----------+-----------+-----------+-----------+-----------+
+
+Selected candidate:          15	mean value:     0.1387
+
+Description of the selected candidate:
+     beta
+96 0.1027
+
+
+# Elite candidates:
+      beta
+96  0.1027
+134 0.0186
+# 2014-11-18 10:57:36 BRST: Limit of iterations reached
+# 2014-11-18 10:57:36 BRST: Stopped because there is no enough budget left to race newly sampled configurations
+# Iteration: 3
+# nbIterations: 3
+# experimentsUsedSoFar: 997
+# timeUsedSoFar: 0
+# timeEstimate: 0
+# remainingBudget: 3
+# currentBudget: 3
+# number of elites: 2
+# nbCandidates: 0
+# mu: 5
+# Best candidates
+      beta
+96  0.1027
+134 0.0186
+# Best candidates (as commandlines)
+    command
+96   0.1027
+134  0.0186
+> 
+> proc.time()
+  usuário   sistema decorrido 
+ 7358.440  1312.474  8707.491 
+[1] "Detaching Rmpi. Rmpi cannot be used unless relaunching R."
