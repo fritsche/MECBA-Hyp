@@ -56,7 +56,7 @@ public class CompareHypervolumes {
         };
 
         for (int numberOfObjectives : numberOfObjectivesArray) {
-            hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
+       //     hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
             hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
 //        hypervolumeByGeneration(problems, heuristicFunctions, numberOfObjectives);
         }
