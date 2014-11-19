@@ -1,0 +1,7 @@
+Hypervolume comparison for OA_AJHotDraw:
+
+MECBA PFknown: 0.827760496398045
+ChoiceFunction PFknown: 0.8673795908823563
+MultiArmedBandit PFknown: 0.2581438697323067
+Best PFknown: ChoiceFunction
+
