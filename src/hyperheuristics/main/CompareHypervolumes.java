@@ -32,14 +32,14 @@ public class CompareHypervolumes {
         String[] problems;
         if(args.length == 0){
             problems = new String[]{
-                "OA_AJHotDraw",
+                "OO_MyBatis",
                 "OA_AJHsqldb",
+                "OA_AJHotDraw",
+                "OO_BCEL",
+                "OO_JHotDraw",
                 "OA_HealthWatcher",
                 "OA_TollSystems",
-                "OO_BCEL",
-                "OO_JBoss",
-                "OO_JHotDraw",
-                "OO_MyBatis"
+                "OO_JBoss"
             };
         }else {
             EXECUTIONS = Integer.parseInt(args[0]);
@@ -57,7 +57,7 @@ public class CompareHypervolumes {
 
         for (int numberOfObjectives : numberOfObjectivesArray) {
             hypervolumeComparison(problems, heuristicFunctions, numberOfObjectives);
-            hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
+//            hypervolumeHyperheuristicsComparison(problems, heuristicFunctions, numberOfObjectives);
 //        hypervolumeByGeneration(problems, heuristicFunctions, numberOfObjectives);
         }
     }

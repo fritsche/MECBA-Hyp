@@ -45,7 +45,7 @@ public class NSGAIIHyperheuristicMain {
         String heuristicFunction;
         int w;
         double c;
-        boolean saveGenerations;
+        boolean debug;
         String path;
 
         if (args.length == 16) {
@@ -62,7 +62,7 @@ public class NSGAIIHyperheuristicMain {
             w = Integer.parseInt(args[10]);
             c = Double.parseDouble(args[11]);
             numberOfObjectives = Integer.parseInt(args[12]);
-            saveGenerations = Boolean.parseBoolean(args[13]);
+            debug = Boolean.parseBoolean(args[13]);
             executions = Integer.parseInt(args[14]);
             path = args[15];
         } else {
@@ -80,7 +80,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("\t 11 - Sliding window size W (int);");
             System.out.println("\t 12 - Scaling factor C (double);");
             System.out.println("\t 13 - Number of objectives (int - 2 or 4);");
-            System.out.println("\t 14 - Save generations? (boolean);");
+            System.out.println("\t 14 - Save debugging information (rank changes, generation, etc)? (boolean);");
             System.out.println("\t 15 - Executions (int);");
             System.out.println("\t 16 - Output Path (String);");
             System.out.println();
@@ -93,14 +93,14 @@ public class NSGAIIHyperheuristicMain {
             System.out.println();
 
             problems = new String[]{
-                "OA_AJHotDraw",
+                "OO_MyBatis",
                 "OA_AJHsqldb",
+                "OA_AJHotDraw",
+                "OO_BCEL",
+                "OO_JHotDraw",
                 "OA_HealthWatcher",
                 "OA_TollSystems",
-                "OO_BCEL",
-                "OO_JBoss",
-                "OO_JHotDraw",
-                "OO_MyBatis"
+                "OO_JBoss"
             };
 
             crossovers = new String[]{
@@ -126,7 +126,7 @@ public class NSGAIIHyperheuristicMain {
 
             w = maxEvaluations / 5;
             c = 7;
-            saveGenerations = false;
+            debug = false;
             executions = 30;
             path = "experiment/";
         }
@@ -153,7 +153,7 @@ public class NSGAIIHyperheuristicMain {
             System.out.println("Problem: " + problemName);
             System.out.println();
 
-            String outputDirectory =  path + numberOfObjectives + "objectives/" + heuristicFunction + "/" + problemName + "/";
+            String outputDirectory = path + numberOfObjectives + "objectives/" + heuristicFunction + "/" + problemName + "/";
             createDirectory(outputDirectory);
 
             CITO_CAITO problem; // The problem to solve
@@ -226,11 +226,12 @@ public class NSGAIIHyperheuristicMain {
 
                     System.out.println("Execution: " + (execution + 1));
                     algorithm.clearLowLeverHeuristicsValues();
-                    algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
-                    algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
-                    algorithm.setDebugPath(executionDirectory + "DEBUG");
 
-                    if (saveGenerations) {
+                    if (debug) {
+                        algorithm.setLowLevelHeuristicsRankPath(executionDirectory + "RANK.txt");
+                        algorithm.setLowLevelHeuristicsTimePath(executionDirectory + "TIME.txt");
+                        algorithm.setDebugPath(executionDirectory + "DEBUG");
+
                         String generationsDirectory = executionDirectory + "GENERATIONS/";
                         createDirectory(generationsDirectory);
                         algorithm.setGenerationsOutputDirectory(generationsDirectory);
