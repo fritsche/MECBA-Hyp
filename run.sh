@@ -39,9 +39,9 @@ rm -f run.txt
         for problem in $problems
         do
         	# 2 objectives
-            echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation 1.0 0.1027 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function 150 3.1043 $objectives false $executions $path" >> run.txt
+            echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation 1.0 0.1027 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function 150 3.1043 2 false $executions $path" >> run.txt
             # 4 objectives
-            echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation 1.0 0.0223 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function 150 2.2274 $objectives false $executions $path" >> run.txt
+            echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation 1.0 0.0223 TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function 150 2.2274 4 false $executions $path" >> run.txt
         done
     done
 # done
