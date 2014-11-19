@@ -3,5 +3,5 @@
 # name		switch		     type	values			[conditions (using R syntax)]
 
 #w		""			i  	(0, 60000)
-#c		""			r	(0.00, 100.00)
-beta		""			r	(0.00, 1.00)
+c		""			r	(0.00, 10.00)
+#beta		""			r	(0.00, 1.00)

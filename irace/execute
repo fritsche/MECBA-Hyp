@@ -2,23 +2,21 @@
 
 cd ../..
 
-instance=$(echo $1 | grep -oP "/home/tux/MECBA-Hyp/irace/Instances//\K.*")
+instance=$(echo $1 | grep -oP "/home/gian/MECBA-Hyp/irace/Instances//\K.*")
 #IFS='@' read -a array <<< "$instance"
 problem=$instance
-objectives=2
+objectives=4
 
-#function="MultiArmedBandit"
-function="ChoiceFunction"
+function="MultiArmedBandit"
+#function="ChoiceFunction"
 
 candidate=$2
 
 alpha=1.0
-beta=$3
+beta=0.012
 
-w=12000
-c=7
-
-echo $problem $1 >> problem.log
+w=150
+c=$3
 
 evaluations=60000
 population=300
@@ -29,7 +27,7 @@ path="experiment/"
 cfpath=$candidate$path
 
 java -cp dist/MECBA-Hyp.jar hyperheuristics.main.NSGAIIHyperheuristicMain $population $evaluations $crossover $mutation $alpha $beta TwoPointsCrossover,MultiMaskCrossover,PMXCrossover SwapMutation,SimpleInsertionMutation $problem $function $w $c $objectives false $executions $cfpath
-java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $cfpath $path $cfpath $objectives $problem
+java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $path $cfpath $cfpath $objectives $problem
 
 aux="objectives/HYPERVOLUMES.txt"
 output=$cfpath$objectives$aux
@@ -42,6 +40,7 @@ mab=${mab/[eE]+*/*10^}
 cf=${cf/[eE]+*/*10^}
 
 # EH MINIMIZACAO
-best=$(echo "$mecba - $cf" | bc)
+best=$(echo "$mecba - $mab" | bc)
 echo Best $best
 
+rm -rf $cfpath
