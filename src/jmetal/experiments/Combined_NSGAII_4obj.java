@@ -32,7 +32,7 @@ public class Combined_NSGAII_4obj {
 
         for (String filename : softwares) {
 
-            int runsNumber = 30;
+            int runsNumber = 10;
             int populationSize = 300;
             int maxEvaluations = 60000;
             double crossoverProbability = 0.95;
