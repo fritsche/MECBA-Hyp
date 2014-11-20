@@ -6,7 +6,7 @@ functions="ChoiceFunction"
 #MultiArmedBandit"
 
 alpha=1.0
-betas="0.01"
+betas="0 0.001 0.0033333333 0.005 0.0001 0.00033333333 0.0005 0.00001 0.000033333333 0.00005"
 
 w=150
 c=5.0
@@ -15,10 +15,10 @@ objectivesArray="2"
 
 evaluations=60000
 population=300
-crossover=0.95
-mutation=0.02
+crossover=1
+mutation=1
 
-executions=30
+executions=10
 
 rm -f run.txt
 
@@ -38,7 +38,7 @@ do
 	done
 done
 
-cat run.txt | xargs -I CMD -P 8 bash -c CMD &
+cat run.txt | xargs -I CMD -P 7 bash -c CMD &
 wait
 
 rm -f run.txt
@@ -52,9 +52,9 @@ do
 	done
 done
 
-cat run.txt | xargs -I CMD -P 8 bash -c CMD &
+cat run.txt | xargs -I CMD -P 7 bash -c CMD &
 wait
 
 rm -f run.txt
 
-zenity --info --text="Execuções finalizadas!"
+#zenity --info --text="Execuções finalizadas!"

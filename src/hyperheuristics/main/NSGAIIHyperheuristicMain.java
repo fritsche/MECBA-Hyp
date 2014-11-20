@@ -115,12 +115,12 @@ public class NSGAIIHyperheuristicMain {
             };
 
             numberOfObjectives = 2;
-            populationSize = 100;
-            maxEvaluations = 25000;
-            crossoverProbability = 0.95;
-            mutationProbability = 0.02;
+            populationSize = 300;
+            maxEvaluations = 60000;
+            crossoverProbability = 1;
+            mutationProbability = 1;
             alpha = 1;
-            beta = 4D / ((double) populationSize / 2D);
+            beta = 8D / populationSize * 0.125;
 
             heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
 
@@ -130,6 +130,11 @@ public class NSGAIIHyperheuristicMain {
             executions = 30;
             path = "experiment/";
         }
+
+        String[] temp = new String[mutations.length + 1];
+        temp[0] = null;
+        System.arraycopy(mutations, 0, temp, 1, mutations.length);
+        mutations = temp;
 
         System.out.println("Initializing experiments.");
         System.out.println("Parameters:");
@@ -185,12 +190,20 @@ public class NSGAIIHyperheuristicMain {
 
             //Create low level heuristics
             int lowLevelHeuristicNumber = 1;
-            String[] lowLevelHeuristicNames = new String[crossovers.length * mutations.length];
+            String[] lowLevelHeuristicNames = new String[crossovers.length * mutations.length + crossovers.length];
             for (String crossoverName : crossovers) {
                 for (String mutationName : mutations) {
                     HashMap<String, Object> parameters = new HashMap<>();
 
-                    String name = "h" + lowLevelHeuristicNumber + " [" + crossoverName + ", " + mutationName + "]";
+                    String name = "h" + lowLevelHeuristicNumber + " [" + crossoverName;
+                    if (mutationName != null) {
+                        Mutation mutation = MutationFactory.getMutationOperator(mutationName);
+                        mutation.setParameter("probability", mutationProbability);
+                        parameters.put("mutation", mutation);
+
+                        name += ", " + mutationName;
+                    }
+                    name += "]";
                     lowLevelHeuristicNames[lowLevelHeuristicNumber - 1] = name;
 
                     parameters.put("name", name);
@@ -202,10 +215,6 @@ public class NSGAIIHyperheuristicMain {
                     Crossover crossover = CrossoverFactory.getCrossoverOperator(crossoverName);
                     crossover.setParameter("probability", crossoverProbability);
                     parameters.put("crossover", crossover);
-
-                    Mutation mutation = MutationFactory.getMutationOperator(mutationName);
-                    mutation.setParameter("probability", mutationProbability);
-                    parameters.put("mutation", mutation);
 
                     algorithm.addLowLevelHeuristic(parameters);
 
