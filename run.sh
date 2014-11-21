@@ -1,24 +1,24 @@
 #!/bin/bash
 
-problems="OO_MyBatis OA_AJHsqldb OA_AJHotDraw OO_BCEL OO_JHotDraw OA_HealthWatcher OA_TollSystems OO_JBoss"
+problems="OO_MyBatis OA_AJHsqldb OA_AJHotDraw OO_BCEL OO_JHotDraw OA_HealthWatcher OO_JBoss"
 
 functions="ChoiceFunction"
 #MultiArmedBandit"
 
 alpha=1.0
-betas="0 0.001 0.0033333333 0.005 0.0001 0.00033333333 0.0005 0.00001 0.000033333333 0.00005"
+betas="0 0.001 0.0033333333 0.005 0.0001 0.00033333333 0.0005 0.00001 0.000033333333 0.00005 0.00004 0.00003 0.00002"
 
 w=150
 c=5.0
 
-objectivesArray="2"
+objectivesArray="2 4"
 
 evaluations=60000
 population=300
 crossover=1
 mutation=1
 
-executions=10
+executions=30
 
 rm -f run.txt
 
@@ -38,7 +38,7 @@ do
 	done
 done
 
-cat run.txt | xargs -I CMD -P 7 bash -c CMD &
+cat run.txt | xargs -I CMD -P 8 bash -c CMD &
 wait
 
 rm -f run.txt
@@ -52,7 +52,7 @@ do
 	done
 done
 
-cat run.txt | xargs -I CMD -P 7 bash -c CMD &
+cat run.txt | xargs -I CMD -P 8 bash -c CMD &
 wait
 
 rm -f run.txt
