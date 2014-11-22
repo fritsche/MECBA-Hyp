@@ -9,16 +9,16 @@ functions="ChoiceFunction"
 alpha=1.0
 betas="0.01"
 
-
 w=150
 c=5.0
 
-objectivesArray="2"
+objectivesArray="2 4"
+
 
 evaluations=60000
 population=300
-crossover=0.95
-mutation=0.02
+crossover=1
+mutation=1
 
 executions=30
 
@@ -61,4 +61,4 @@ wait
 
 rm -f run.txt
 
-zenity --info --text="Execuções finalizadas!"
+#zenity --info --text="Execuções finalizadas!"

@@ -7,7 +7,6 @@ package hyperheuristics.lowlevelheuristic;
 
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 import jmetal.base.Operator;
@@ -70,7 +69,6 @@ public class LowLevelHeuristic extends Operator {
     private double q = 0;
     private double r = 0;
     private double aux = 0;
-    private double biggest = 0;
 
     //Usage
     private final Comparator dominanceComparator;
@@ -134,15 +132,15 @@ public class LowLevelHeuristic extends Operator {
     /*
      Getters and setters.
      */
-    public double getQ(){
+    public double getQ() {
         return q;
     }
 
-    public double getAux(){
+    public double getAux() {
         return aux;
     }
-    
-    public static int getREBOOTS(){
+
+    public static int getREBOOTS() {
         return REBOOTS;
     }
 
@@ -229,8 +227,10 @@ public class LowLevelHeuristic extends Operator {
         Solution[] parents = (Solution[]) object;
 
         Solution[] offSpring = (Solution[]) crossoverOperator.execute(parents, problem);
-        mutationOperator.execute(offSpring[0], problem);
-        mutationOperator.execute(offSpring[1], problem);
+        if (mutationOperator != null) {
+            mutationOperator.execute(offSpring[0], problem);
+            mutationOperator.execute(offSpring[1], problem);
+        }
 
         executed();
 
@@ -282,9 +282,9 @@ public class LowLevelHeuristic extends Operator {
             I++;
             I %= W;
 
-            q = (double) q * (W /(double) W + (IT - lastTimeApplied)) + r * (1.0/(double)(n+1));
-            n = (double) n * (W/((double)W + (IT - lastTimeApplied)) + (1.0/(double)(n+1)));
-            
+            q = (double) q * (W / (double) W + (IT - lastTimeApplied)) + r * (1.0 / (double) (n + 1));
+            n = (double) n * (W / ((double) W + (IT - lastTimeApplied)) + (1.0 / (double) (n + 1)));
+
             SUM_N = 0;
             for (LowLevelHeuristic heuristic : heuristics) {
                 SUM_N += heuristic.n;
@@ -298,14 +298,13 @@ public class LowLevelHeuristic extends Operator {
         this.numberOfTimesApplied = 0;
         this.q = 0;
         this.r = 0;
-        this.biggest = 0;
     }
 
     private static void reinitializeStatic() {
         SLIDING_WINDOW_HEURISTIC = new LowLevelHeuristic[W];
         SLIDING_WINDOW_IMPROVEMENT = new double[W];
         I = 0;
-        IT=0;
+        IT = 0;
         REBOOTS++;
     }
 
