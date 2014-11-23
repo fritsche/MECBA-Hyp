@@ -122,12 +122,12 @@ public class NSGAIIHyperheuristicMain {
             alpha = 1;
             beta = 8D / populationSize * 0.125;
 
-            heuristicFunction = LowLevelHeuristic.CHOICE_FUNCTION;
+            heuristicFunction = LowLevelHeuristic.MULTI_ARMED_BANDIT;
 
-            w = maxEvaluations / 5;
-            c = 7;
-            debug = false;
-            executions = 30;
+            w = populationSize / 2;
+            c = 5;
+            debug = true;
+            executions = 10;
             path = "experiment/";
         }
 
@@ -268,6 +268,12 @@ public class NSGAIIHyperheuristicMain {
                     int[] executionTimesApplied = algorithm.getLowLevelHeuristicsNumberOfTimesApplied();
                     for (int i = 0; i < executionTimesApplied.length; i++) {
                         allTimesApplied[i] += executionTimesApplied[i];
+                    }
+                    
+                    if (debug) {
+                        algorithm.closeLowLevelHeuristicsRankPath();
+                        algorithm.closeLowLevelHeuristicsTimePath();
+                        algorithm.closeDebugPath();
                     }
                 }
 

@@ -2,8 +2,8 @@
 
 problems="OO_MyBatis OA_AJHsqldb OA_AJHotDraw OO_BCEL OO_JHotDraw OA_HealthWatcher OA_TollSystems OO_JBoss"
 
-functions="ChoiceFunction"
-#MultiArmedBandit"
+#functions="ChoiceFunction"
+functions="MultiArmedBandit"
 
 
 alpha=1.0
@@ -20,15 +20,15 @@ population=300
 crossover=1
 mutation=1
 
-executions=30
+executions=10
 
 path="experiment/"
 
 rm -f run.txt
 
-for beta in $betas
-do
-	path="experiment_"$beta"/"
+#for beta in $betas
+#do
+#	path="experiment_"$beta"/"
 	for objectives in $objectivesArray
 	do
 		#echo "java -cp dist/MECBA-Hyp.jar jmetal.experiments.Combined_NSGAII_"$objectives"obj" >> run.txt
@@ -40,21 +40,21 @@ do
 			done
 		done
 	done
-done
+#done
 
 cat run.txt | xargs -I CMD -P 8 bash -c CMD &
 wait
 
 rm -f run.txt
 
-for beta in $betas
-do
-	path="experiment_"$beta"/"
+#for beta in $betas
+#do
+#	path="experiment_"$beta"/"
 	for objectives in $objectivesArray
 	do
 		echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $path $path $path $objectives $problems" >> run.txt
 	done
-done
+#done
 
 cat run.txt | xargs -I CMD -P 8 bash -c CMD &
 wait

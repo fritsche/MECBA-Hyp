@@ -54,6 +54,8 @@ public class NSGAIIHyperheuristic extends Algorithm {
     private FileWriter lowLevelHeuristicsTimeWriter;
     private FileWriter qDebugWriter;
     private FileWriter auxDebugWriter;
+    private FileWriter nDebugWriter;
+    private FileWriter rDebugWriter;
     private String generationsOutputDirectory;
 
     /**
@@ -85,7 +87,7 @@ public class NSGAIIHyperheuristic extends Algorithm {
         }
         return null;
     }
-
+    
     public void clearLowLeverHeuristics() {
         lowLevelHeuristics.clear();
     }
@@ -118,10 +120,41 @@ public class NSGAIIHyperheuristic extends Algorithm {
     }
 
     public void setLowLevelHeuristicsTimePath(String path) throws IOException {
+        System.out.println("String: "+path);
         if (lowLevelHeuristicsTimeWriter != null) {
             lowLevelHeuristicsTimeWriter.close();
         }
         lowLevelHeuristicsTimeWriter = new FileWriter(path);
+    }
+    
+    public void closeLowLevelHeuristicsRankPath() throws IOException
+    {
+        if (lowLevelHeuristicsRankWriter != null) {
+            lowLevelHeuristicsRankWriter.close();
+        }
+    }
+    
+    public void closeDebugPath() throws IOException
+    {
+        if (qDebugWriter != null) {
+            qDebugWriter.close();
+        }
+        if (auxDebugWriter != null) {
+            auxDebugWriter.close();
+        }
+        if (rDebugWriter != null) {
+            rDebugWriter.close();
+        }
+        if (nDebugWriter != null) {
+            nDebugWriter.close();
+        }
+    }
+    
+    public void closeLowLevelHeuristicsTimePath() throws IOException
+    {
+        if (lowLevelHeuristicsTimeWriter != null) {
+            lowLevelHeuristicsTimeWriter.close();
+        }
     }
 
     public void setDebugPath(String path) throws IOException {
@@ -133,6 +166,14 @@ public class NSGAIIHyperheuristic extends Algorithm {
             auxDebugWriter.close();
         }
         auxDebugWriter = new FileWriter(path+"_aux.txt");
+         if (rDebugWriter != null) {
+            rDebugWriter.close();
+        }
+        rDebugWriter = new FileWriter(path+"_r.txt");
+         if (nDebugWriter != null) {
+            nDebugWriter.close();
+        }
+        nDebugWriter = new FileWriter(path+"_n.txt");
     }
 
     public void setGenerationsOutputDirectory(String path) throws IOException {
@@ -142,14 +183,14 @@ public class NSGAIIHyperheuristic extends Algorithm {
     public void printLowLevelHeuristicsInformation(String filePath) {
         try (FileWriter writer = new FileWriter(filePath)) {
             for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
-                writer.append("Name: " + lowLevelHeuristic.getName() + ":\n");
-                writer.append("\tRank: " + lowLevelHeuristic.getRank() + "\n");
-                writer.append("\tElapsed Time: " + lowLevelHeuristic.getElapsedTime() + "\n");
-                writer.append("\tChoice Value: " + lowLevelHeuristic.getChoiceFunctionValue() + "\n");
-                writer.append("\tNumber of Times Applied: " + lowLevelHeuristic.getNumberOfTimesApplied() + "\n");
-                writer.append("\n");
+                writer.write("Name: " + lowLevelHeuristic.getName() + ":\n");
+                writer.write("\tRank: " + lowLevelHeuristic.getRank() + "\n");
+                writer.write("\tElapsed Time: " + lowLevelHeuristic.getElapsedTime() + "\n");
+                writer.write("\tChoice Value: " + lowLevelHeuristic.getChoiceFunctionValue() + "\n");
+                writer.write("\tNumber of Times Applied: " + lowLevelHeuristic.getNumberOfTimesApplied() + "\n");
+                writer.write("\n");
             }
-            writer.append("----------------------\n\n");
+            writer.write("----------------------\n\n");
         } catch (IOException ex) {
             Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -246,9 +287,9 @@ public class NSGAIIHyperheuristic extends Algorithm {
                     if (qDebugWriter != null) {
                         try {
                             for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
-                                qDebugWriter.append(lowLevelHeuristic.getQ() + "\t");
+                                qDebugWriter.write(lowLevelHeuristic.getQ() + "\t");
                             }
-                            qDebugWriter.append("\n");
+                            qDebugWriter.write("\n");
                         } catch (IOException ex) {
                             Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -257,9 +298,31 @@ public class NSGAIIHyperheuristic extends Algorithm {
                     if (auxDebugWriter != null) {
                         try {
                             for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
-                                auxDebugWriter.append(lowLevelHeuristic.getAux() + "\t");
+                                auxDebugWriter.write(lowLevelHeuristic.getAux() + "\t");
                             }
-                            auxDebugWriter.append("\n");
+                            auxDebugWriter.write("\n");
+                        } catch (IOException ex) {
+                            Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    if (rDebugWriter != null) {
+                        try {
+                            for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
+                                rDebugWriter.write(lowLevelHeuristic.getR() + "\t");
+                            }
+                            rDebugWriter.write("\n");
+                        } catch (IOException ex) {
+                            Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+
+                    if (nDebugWriter != null) {
+                        try {
+                            for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
+                                nDebugWriter.write(lowLevelHeuristic.getN() + "\t");
+                            }
+                            nDebugWriter.write("\n");
                         } catch (IOException ex) {
                             Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -277,9 +340,9 @@ public class NSGAIIHyperheuristic extends Algorithm {
                 if (lowLevelHeuristicsRankWriter != null) {
                     try {
                         for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
-                            lowLevelHeuristicsRankWriter.append(lowLevelHeuristic.getRank() + "\t");
+                            lowLevelHeuristicsRankWriter.write(lowLevelHeuristic.getRank() + "\t");
                         }
-                        lowLevelHeuristicsRankWriter.append("\n");
+                        lowLevelHeuristicsRankWriter.write("\n");
                     } catch (IOException ex) {
                         Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -287,11 +350,13 @@ public class NSGAIIHyperheuristic extends Algorithm {
 
                 if (lowLevelHeuristicsTimeWriter != null) {
                     try {
+                        //System.out.println("Escrevendo em : "+lowLevelHeuristicsTimeWriter.);
                         for (LowLevelHeuristic lowLevelHeuristic : lowLevelHeuristics) {
-                            lowLevelHeuristicsTimeWriter.append(lowLevelHeuristic.getElapsedTime() + "\t");
+                            lowLevelHeuristicsTimeWriter.write(lowLevelHeuristic.getElapsedTime() + "\t");
                         }
-                        lowLevelHeuristicsTimeWriter.append("\n");
+                        lowLevelHeuristicsTimeWriter.write("\n");
                     } catch (IOException ex) {
+                        System.out.println("erro");
                         Logger.getLogger(NSGAIIHyperheuristic.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }

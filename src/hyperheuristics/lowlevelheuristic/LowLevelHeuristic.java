@@ -63,12 +63,12 @@ public class LowLevelHeuristic extends Operator {
      */
     private static int IT = 0;
     private static int REBOOTS = 0;
-    private static double SUM_N = 0;
+    private static double SUM_N = 1;
 
     //Empirical Rewards.
-    private double q = 0;
-    private double r = 0;
-    private double aux = 0;
+    private double q = 1.0;
+    private double r = 1.0;
+    private double aux = 1.0;
 
     //Usage
     private final Comparator dominanceComparator;
@@ -95,7 +95,8 @@ public class LowLevelHeuristic extends Operator {
         this.numberOfTimesApplied = 0;
         this.lastTimeApplied = 0;
         this.n = 1;
-
+        this.q = 1;
+        
         if (parameters.containsKey("name")) {
             this.name = (String) parameters.get("name");
         }
@@ -148,6 +149,14 @@ public class LowLevelHeuristic extends Operator {
         return rank;
     }
 
+    public double getR(){
+        return r;
+    }
+    
+    public double getN(){
+        return n;
+    }
+    
     public double getElapsedTime() {
         return elapsedTime;
     }
@@ -256,7 +265,7 @@ public class LowLevelHeuristic extends Operator {
     }
 
     public void updateReward() {
-        double max = -Double.MAX_VALUE;
+        double max = .0;
         int j = 0;
         LowLevelHeuristic h = SLIDING_WINDOW_HEURISTIC[j];
         double im = SLIDING_WINDOW_IMPROVEMENT[j];
@@ -270,6 +279,18 @@ public class LowLevelHeuristic extends Operator {
         r = max;
     }
 
+    public void updateQ(){
+        double e = (double) elapsedTime;
+        double w = (double) W;
+        q = q * (w / (w + e)) + r * (1.0 / (n + 1.0));
+    }
+    
+    public void updateN(){
+        double e = (double) elapsedTime;
+        double w = (double) W;
+        n = n * ((w / (w + e))+(1.0 / (n + 1.0)));
+    }
+    
     public void creditAssignment(List<LowLevelHeuristic> heuristics) {
         if (W != 0) {
             LowLevelHeuristic temp = SLIDING_WINDOW_HEURISTIC[I];
@@ -282,22 +303,22 @@ public class LowLevelHeuristic extends Operator {
             I++;
             I %= W;
 
-            q = (double) q * (W / (double) W + (IT - lastTimeApplied)) + r * (1.0 / (double) (n + 1));
-            n = (double) n * (W / ((double) W + (IT - lastTimeApplied)) + (1.0 / (double) (n + 1)));
-
             SUM_N = 0;
             for (LowLevelHeuristic heuristic : heuristics) {
+                heuristic.updateQ();
+                heuristic.updateN();
                 SUM_N += heuristic.n;
             }
         }
     }
 
     private void reinitialize() {
-        this.rank = 0;
+        this.rank = 1;
         this.elapsedTime = 0;
         this.numberOfTimesApplied = 0;
-        this.q = 0;
-        this.r = 0;
+        this.q = 1;
+        this.r = 1;
+        this.n = 1;
     }
 
     private static void reinitializeStatic() {
@@ -309,7 +330,9 @@ public class LowLevelHeuristic extends Operator {
     }
 
     public double getMultiArmedBanditValue() {
-        aux = (double) Math.sqrt((2.0 * Math.log(SUM_N)) / (double) n);
+        double a =  Math.log(SUM_N);
+        double b =  Math.sqrt(2.0 * a);
+        aux = b / n;
         return (double) q + c * aux;
     }
 }
