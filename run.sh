@@ -7,10 +7,10 @@ functions="MultiArmedBandit"
 
 
 alpha=1.0
-betas="0.01"
+beta="0.01"
 
 w=150
-c=5.0
+cs="1.0 3.0 5.0 7.0 9.0"
 
 objectivesArray="2 4"
 
@@ -26,9 +26,9 @@ path="experiment/"
 
 rm -f run.txt
 
-#for beta in $betas
-#do
-#	path="experiment_"$beta"/"
+for c in $cs
+do
+	path="experiment_"$c"/"
 	for objectives in $objectivesArray
 	do
 		#echo "java -cp dist/MECBA-Hyp.jar jmetal.experiments.Combined_NSGAII_"$objectives"obj" >> run.txt
@@ -40,21 +40,21 @@ rm -f run.txt
 			done
 		done
 	done
-#done
+done
 
 cat run.txt | xargs -I CMD -P 8 bash -c CMD &
 wait
 
 rm -f run.txt
 
-#for beta in $betas
-#do
-#	path="experiment_"$beta"/"
+for c in $cs
+do
+	path="experiment_"$c"/"
 	for objectives in $objectivesArray
 	do
 		echo "java -cp dist/MECBA-Hyp.jar hyperheuristics.main.CompareHypervolumes $executions $path $path $path $objectives $problems" >> run.txt
 	done
-#done
+done
 
 cat run.txt | xargs -I CMD -P 8 bash -c CMD &
 wait
